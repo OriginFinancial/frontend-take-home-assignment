@@ -1,0 +1,23 @@
+{
+  "name": "frontend-challenge",
+  "version": "0.0.1",
+  "description": "Origin Frontend Challenge",
+  "main": "src/index.ts",
+  "dependencies": {
+    "react": "^16.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OriginFinancial/frontend-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OriginFinancial/frontend-challenge/issues"
+  },
+  "homepage": "https://github.com/OriginFinancial/frontend-challenge#readme"
+}
