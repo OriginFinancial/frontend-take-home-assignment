@@ -1,5 +1,5 @@
 # Origin React Frontend Challenge
-Origin is a platform that helps employees to organizate their financial life. One key of financial organization is plan your saving goals as go to college, throw a wedding party, take some time off and other goals. With that the user can save money to keep his financial life on track. **(what we are and why saving goals).**
+Origin is a platform that helps employees to organizate their financial life. One key of financial organization is plan your saving goals as go to college, throw a wedding party, take some time off and other goals. With that the user can save money to keep his financial life on track.
 
 For this assignment, you will have the opportunity to code a piece of our savings application. We will need you to implement 2 screens (Saving Goal Plan and Dashboard). Here is how your application will need to look like:
 
@@ -35,7 +35,7 @@ Response:
 ```
 
 ## Instructions
-1. We added a project structure (build system with react, redux, styled components and typescript) to not waste your time. We want to see your coding skills, focus on that.
+1. We added a project structure (build system with react, redux, jest, styled components and typescript) to not waste your time. But feel free to change the stack as is more confortable to you.
 2. Develop the pages according to designed mockups.
 3. Take care about our business rules.
-4. You have jest (testing library) available for you in the project. We care a lot about testing our codebase. Make sure to test your application somehow.
+4. We care a lot about testing our codebase. Make sure to test your application somehow.
