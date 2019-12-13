@@ -8,7 +8,7 @@ For this assignment, you will have the opportunity to code a piece of our saving
 
 **url**: `/` (homepage)
 
-![Dashboard Mockup Desktop](https://raw.githubusercontent.com/OriginFinancial/frontend-take-home-assignment/master/mockups/dashboard-desk.png)
+![Dashboard Mockup Desktop](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/dashboard-desk.png)
 ![Dashboard Mockup Mobile](https://raw.githubusercontent.com/OriginFinancial/frontend-take-home-assignment/master/mockups/dashboard-mobile.png)
 
 **When user does not have any planned saving goal**
