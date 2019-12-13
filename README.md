@@ -1,4 +1,3 @@
-
 # Origin Frontend Take Home Assignment
 
 Origin is a platform that helps employees to organize their financial wellness. One of the keys of financial well-being is to plan and save money for your goals. Each user has different goals: go to college, throw a wedding party, take some time and so on. Our job is to help them plan, save and keep their financial life on track.
@@ -50,3 +49,33 @@ Response:
 2. Develop the pages according to designed mockups. You have to implement desktop and mobile versions. Take a look in `mockups` folder
 3. Take care about our business rules.
 4. We care a lot about testing our codebase. Make sure to test your application somehow.
+
+## Usage
+
+This project requires `Node >=12` and `NPM >= 6`.
+
+After you have cloned this repo, install the dependecies with:
+
+```
+npm install
+```
+
+so, you can start the application ruinning:
+
+```
+npm run dev
+```
+
+then, access `http://localhost:1234` in your browser
+
+### Linting
+
+```
+npm run lint
+```
+
+### Testing
+
+```
+npm run test
+```
