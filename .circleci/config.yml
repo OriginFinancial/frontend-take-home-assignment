@@ -1,0 +1,31 @@
+version: 2.1
+jobs:
+  test_and_lint:
+    docker:
+      - image: circleci/node:latest-browsers
+    working_directory: /home/circleci/frontend-take-home-assignment
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - frontend-take-home-assignment-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - frontend-take-home-assignment-deps-develop-{{ checksum "package.json" }}
+            - frontend-take-home-assignment-deps-develop
+      - run:
+          name: Install dependencies
+          command: |
+            npm install
+      - run:
+          name: Linter
+          command: |
+            npm run lint
+      - run:
+          name: Run tests
+          command: |
+            npm run test
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test_and_lint
