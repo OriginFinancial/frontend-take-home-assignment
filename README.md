@@ -31,7 +31,7 @@ Once the user finishes his plan, the application should redirect them back to da
 
 ### API Docs
 
-The api url is **`[https://origin-savings-api.herokuapp.com](https://origin-savings-api.herokuapp.com/)`**
+The api url is **[https://origin-savings-api.herokuapp.com](https://origin-savings-api.herokuapp.com/)**
 
 Request:
 
