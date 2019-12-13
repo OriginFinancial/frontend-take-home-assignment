@@ -1,4 +1,4 @@
-# Origin React Frontend Challenge
+# Origin Frontend Take Home Assignment
 
 Origin is a platform that helps employees to organizate their financial life. One key of financial organization is plan your saving goals as go to college, throw a wedding party, take some time off and other goals. With that the user can save money to keep his financial life on track.
 
