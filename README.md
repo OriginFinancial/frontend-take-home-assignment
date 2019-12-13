@@ -48,6 +48,6 @@ Response:
 ## Instructions
 
 1. We added a project structure (build system with react, redux, jest, styled components and typescript) to not waste your time. But feel free to change the stack as is more confortable to you.
-2. Develop the pages according to designed mockups.
+2. Develop the pages according to designed mockups. You have to implement desktop and mobile versions. Take a look in `mockups` folder
 3. Take care about our business rules.
 4. We care a lot about testing our codebase. Make sure to test your application somehow.
