@@ -9,7 +9,7 @@ For this assignment, you will have the opportunity to code a piece of our saving
 **url**: `/` (homepage)
 
 ![Dashboard Mockup Desktop](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/dashboard-desk.png)
-![Dashboard Mockup Mobile](https://raw.githubusercontent.com/OriginFinancial/frontend-take-home-assignment/master/mockups/dashboard-mobile.png)
+![Dashboard Mockup Mobile](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/dashboard-mobile.png)
 
 **When user does not have any planned saving goal**
 
@@ -23,8 +23,8 @@ For this assignment, you will have the opportunity to code a piece of our saving
 
 **url**: `/saving-goal/:goalName`
 
-![Saving Goal Plan Mockup Desktop](https://raw.githubusercontent.com/OriginFinancial/frontend-take-home-assignment/master/mockups/dashboard-desk.png)
-![Saving Goal Plan Mockup Mobile](https://raw.githubusercontent.com/OriginFinancial/frontend-take-home-assignment/master/mockups/dashboard-mobile.png)
+![Saving Goal Plan Mockup Desktop](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/saving-goal-plan-desk.png)
+![Saving Goal Plan Mockup Mobile](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/saving-goal-plan-mobile.png)
 
 - The monthly amount should a dinamically value based on total amount and months until the target date.
 - Deposits number is the difference of current date and target date in months.
