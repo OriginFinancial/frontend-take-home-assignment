@@ -60,7 +60,7 @@ We've added a project structure (build system with react, redux, jest, styled-co
 
 **Theme Colors:**
 - blue = `#1b31a8`
-- lightBlue = `#0079ff`
+- light blue = `#0079ff`
 - red = `#fe5722`
 - green = `#4fda68`
 - yellow = `#ffcc00`
