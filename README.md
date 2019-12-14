@@ -56,6 +56,28 @@ We expect you to:
 
 We've added a project structure (build system with react, redux, jest, styled-components and typescript) so you don't waste your time with configuration. If you are more comfortable with a different stack, feel free to change it.
 
+## Assets 
+
+**Theme Colors:**
+- blue = `#1b31a8`
+- lightBlue = `#0079ff`
+- red = `#fe5722`
+- green = `#4fda68`
+- yellow = `#ffcc00`
+- black = `#000000`
+- almost black = `#1d1e1f`
+- dark grey = `#657786'`
+- grey = `#aab8c2`
+- light grey = `#e1e8ed`
+- superlight grey = `#f4f8fa`
+- grey blue = `#eff7ff`
+- white = `#ffffff`
+
+**Fonts:**
+- Work Sans
+- Rubik
+
+You can get it from `https://fonts.googleapis.com/css?family=Rubik:400,500,700|Work+Sans:400,600,500,700&display=swap`
 
 ## Usage
 
