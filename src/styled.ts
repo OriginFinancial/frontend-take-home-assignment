@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
   color: inherit;
 }
 body, html {
-  @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700|Work+Sans:400,600,500,700&display=swap');
   min-height: 100vh;
   max-width: 100%;
   overflow-x: hidden;
