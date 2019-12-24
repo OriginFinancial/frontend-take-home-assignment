@@ -1,5 +1,6 @@
 {
   "name": "frontend-challenge",
+  "proxy": "https://origin-savings-api.herokuapp.com",
   "version": "0.0.1",
   "description": "Origin Frontend Challenge",
   "main": "src/index.ts",
