@@ -6,10 +6,10 @@ import { ApplicationState } from '../../store';
 import { SavingGoals } from '../../store/ducks/savings/types';
 import * as SavingActions from '../../store/ducks/savings/actions';
 
-import { Container } from './styles';
 import { Card } from '../../components';
+import * as icon from '../../icons';
 
-import img from '../../icons/academy.svg';
+import { Page } from './styles';
 
 interface StateProps {
   savings: SavingGoals;
@@ -30,15 +30,25 @@ export class Savings extends React.Component<Props> {
   render() {
     const { savings } = this.props;
     return (
-      <Container.Box>
-        {savings.data.map((saving: string) => (
-          <Card.Box key={saving}>
-            <img src={img} alt="academy" />
-            <Card.Title>{saving}</Card.Title>
-            <Card.Button>Start setup</Card.Button>
-          </Card.Box>
-        ))}
-      </Container.Box>
+      <Page.Container>
+        <Page.Nav>
+          <Page.Logo src={icon.logo} alt="logo" />
+        </Page.Nav>
+        <Card.Wrapper>
+          <Card.Title>Here&apos;s your saving goals!</Card.Title>
+          {savings.data.map((saving: string) => {
+            let text = saving.replace(/([A-Z])/g, ' $1').toLowerCase();
+            text = text.charAt(0).toUpperCase() + text.slice(1);
+            return (
+              <Card.Box key={saving}>
+                <Card.Image src={icon[saving]} alt={text} />
+                <Card.Text>{text}</Card.Text>
+                <Card.Button>Start setup</Card.Button>
+              </Card.Box>
+            );
+          })}
+        </Card.Wrapper>
+      </Page.Container>
     );
   }
 }

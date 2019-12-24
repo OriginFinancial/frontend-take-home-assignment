@@ -1,16 +1,23 @@
 import styled from 'styled-components';
 
-export const Container = {
-  Box: styled.div`
+export const Page = {
+  Container: styled.div`
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 5%;
+  `,
 
+  Nav: styled.nav`
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+  `,
+
+  Logo: styled.img`
+    margin: auto;
+    width: 70px;
     @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: flex-start;
+      margin: 20px 50px 14px;
     }
   `
 };
