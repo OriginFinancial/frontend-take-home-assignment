@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import { ApplicationState } from '../../store';
-import { SavingGoals } from '../../store/ducks/savings/types';
+import { SavingGoal } from '../../store/ducks/savings/types';
 import * as SavingActions from '../../store/ducks/savings/actions';
 
 import { Card } from '../../components';
@@ -12,7 +12,9 @@ import * as icon from '../../icons';
 import { Page } from './styles';
 
 interface StateProps {
-  savings: SavingGoals;
+  savings: SavingGoal[];
+  loading: boolean;
+  error: boolean;
 }
 
 interface DispatchProps {
@@ -28,20 +30,23 @@ export class Savings extends React.Component<Props> {
   }
 
   render() {
-    const { savings } = this.props;
+    const { savings, loading, error } = this.props;
     return (
       <Page.Container>
         <Page.Nav>
           <Page.Logo src={icon.logo} alt="logo" />
         </Page.Nav>
         <Card.Wrapper>
-          <Card.Title>Here&apos;s your saving goals!</Card.Title>
-          {savings.data.map((saving: string) => {
-            let text = saving.replace(/([A-Z])/g, ' $1').toLowerCase();
+          <Card.Title>
+            {loading ? 'Loading...' : `Here's your saving goals!`}
+          </Card.Title>
+          {savings.map((saving: SavingGoal) => {
+            const { id, name } = saving;
+            let text = name.replace(/([A-Z])/g, ' $1').toLowerCase();
             text = text.charAt(0).toUpperCase() + text.slice(1);
             return (
-              <Card.Box key={saving}>
-                <Card.Image src={icon[saving]} alt={text} />
+              <Card.Box key={id}>
+                <Card.Image src={icon[name]} alt={text} />
                 <Card.Text>{text}</Card.Text>
                 <Card.Button>Start setup</Card.Button>
               </Card.Box>
@@ -53,8 +58,10 @@ export class Savings extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = ({ savings }: ApplicationState) => ({
-  savings
+const mapStateToProps = (state: ApplicationState) => ({
+  savings: state.savings.data,
+  loading: state.savings.loading,
+  error: state.savings.error
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

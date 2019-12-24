@@ -2,15 +2,7 @@ import { Reducer } from 'redux';
 import { SavingsState, SavingsTypes } from './types';
 
 const INITIAL_STATE: SavingsState = {
-  data: [
-    // 'buyACar',
-    // 'buildAnEmergencyFund',
-    // 'goToCollege',
-    // 'throwAWeddingParty',
-    // 'haveABaby',
-    // 'buyAHouse',
-    // 'takeAVacation'
-  ],
+  data: [],
   error: false,
   loading: false
 };

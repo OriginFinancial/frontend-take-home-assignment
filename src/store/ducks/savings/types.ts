@@ -12,8 +12,13 @@ export enum SavingsTypes {
  * Data types
  */
 
-export interface SavingGoals {
-  data: string[];
+export interface SavingGoal {
+  userId: number;
+  name: string;
+  goal: boolean;
+  value: number;
+  date: string;
+  id: number;
 }
 
 /**
@@ -21,7 +26,7 @@ export interface SavingGoals {
  */
 
 export interface SavingsState {
-  readonly data: string[];
+  readonly data: SavingGoal[];
   readonly loading: boolean;
   readonly error: boolean;
 }
