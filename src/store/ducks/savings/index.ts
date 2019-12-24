@@ -3,13 +3,13 @@ import { SavingsState, SavingsTypes } from './types';
 
 const INITIAL_STATE: SavingsState = {
   data: [
-    'buyACar',
-    'buildAnEmergencyFund',
-    'goToCollege',
-    'throwAWeddingParty',
-    'haveABaby',
-    'buyAHouse',
-    'takeAVacation'
+    // 'buyACar',
+    // 'buildAnEmergencyFund',
+    // 'goToCollege',
+    // 'throwAWeddingParty',
+    // 'haveABaby',
+    // 'buyAHouse',
+    // 'takeAVacation'
   ],
   error: false,
   loading: false
