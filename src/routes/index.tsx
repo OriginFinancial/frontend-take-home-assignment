@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Switch,
   Route,
-  BrowserRouter as Router,
+  HashRouter as Router,
   RouteComponentProps
 } from 'react-router-dom';
 // import { ConnectedRouter } from 'connected-react-router';
@@ -23,7 +23,7 @@ type MatchProps = RouteComponentProps<MatchParams>;
 
 const Routes: React.FC = () => (
   // <ConnectedRouter history={history}>
-  <Router>
+  <Router basename="/">
     <Page.Container>
       <Page.Nav>
         <Page.Logo src={logo} alt="logo" />
