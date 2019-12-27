@@ -13,12 +13,12 @@ export enum SavingsTypes {
  */
 
 export interface SavingGoal {
-  userId: number;
+  userId?: number;
   name: string;
-  goal: boolean;
-  value: number;
-  date: string;
-  id: number;
+  goal?: boolean;
+  value?: number;
+  date?: string;
+  id?: number;
 }
 
 /**

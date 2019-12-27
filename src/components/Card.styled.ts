@@ -10,7 +10,6 @@ const Card = {
     grid-gap: 5px;
     @media (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
-      /* justify-items: center; */
     }
     @media (min-width: 992px) {
       grid-template-columns: repeat(4, 1fr);
@@ -34,15 +33,15 @@ const Card = {
   `,
 
   Box: styled.div`
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 5px;
+    grid-auto-rows: 50%;
     align-items: center;
-    justify-content: space-around;
     background: #ffffff;
     border: #e1e8ed 1px solid;
     border-radius: 10px;
     padding: 20px;
-    margin: 10px;
     min-height: 180px;
     min-width: 200px;
   `,
@@ -50,11 +49,15 @@ const Card = {
   Head: styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
   `,
 
   Body: styled.div`
     display: flex;
     flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   `,
 
   Image: styled.img`
@@ -74,6 +77,21 @@ const Card = {
     border: 0;
     border-radius: 30px;
     padding: 8px 40px;
+    cursor: pointer;
+  `,
+  Value: styled.p`
+    font-size: 20px;
+    font-weight: 600;
+    color: #1b31a8;
+  `,
+  Small: styled.p`
+    font-size: 10px;
+    color: #657786;
+    margin-top: 5px;
+  `,
+  Date: styled.p`
+    font-size: 14px;
+    font-weight: #657786;
   `
 };
 

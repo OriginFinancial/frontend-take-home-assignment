@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Page = {
+const Page = {
   Container: styled.div`
     display: flex;
     flex-direction: column;
@@ -21,3 +21,5 @@ export const Page = {
     }
   `
 };
+
+export default Page;
