@@ -1,11 +1,5 @@
 import styled, { css } from 'styled-components';
-import facepaint from 'facepaint';
-
-const medias = [280, 320, 960, 1200, 1440];
-
-const toMinWidth = value => `@media(min-width: ${value}px)`;
-
-const mq = facepaint(medias.map(toMinWidth));
+import { mq } from '../../utils/mediaQueries';
 
 const gridContainer = ({ container, justifyItems, alignItems, alignContent }) =>
   container &&
@@ -17,11 +11,11 @@ const gridContainer = ({ container, justifyItems, alignItems, alignContent }) =>
 
     ${mq({
       gridTemplateColumns: [
+        'repeat(1, 1fr)',
+        'repeat(1, 1fr)',
         'repeat(2, 1fr)',
         'repeat(2, 1fr)',
-        'repeat(2, 1fr)',
-        'repeat(2, 1fr)',
-        'repeat(4, 1fr)',
+        'repeat(3, 1fr)',
         'repeat(4, 1fr)'
       ],
       gridColumnGap: ['8px', '8px', '8px', '16px', '24px', '24px'],

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const maxWidthXs = `
-  @media (min-width: 320px) {
+  @media (min-width: 375px) {
     max-width: 280px;
   }
 `;
