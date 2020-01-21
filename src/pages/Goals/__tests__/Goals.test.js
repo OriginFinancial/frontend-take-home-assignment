@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Goals from '../Goals';
+import { Goals } from '../Goals';
 
-describe('Page: Goals', () => {
-  test('renders a list of goals', () => {
+describe('Page: Goals', function() {
+  test('renders a list of goals', function() {
     const goals = [{title: 'car', icon: <i>car</i>}]
 
     const { getByTestId } = render(<Goals goals={goals}/>);

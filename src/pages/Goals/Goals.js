@@ -31,7 +31,11 @@ const baby = {
 
 const defaultGoals = [college, vacation, car, weeding, emergency, baby];
 
-const EmptyList = () => <Typography variant="h3">Sorry, we don't have goals =(</Typography>
+const EmptyList = () => (
+  <Typography data-testid="empty-list" variant="h3">
+    Sorry, we don't have goals =(
+  </Typography>
+)
 
 const Goals = ({ goals=defaultGoals }) => (
   <Container fixed>
@@ -46,7 +50,7 @@ const Goals = ({ goals=defaultGoals }) => (
             <Typography variant="h4">{goal.title}</Typography>
           </Card>
         </Grid>
-      )) : <EmptyList data-testid="empty-list"/> }
+      )) : <EmptyList/> }
     </Grid>
   </Container>
 );
