@@ -6,14 +6,9 @@ const propTypes = {
   height: string
 };
 
-const Back = props => {
+const Back = ({ width = '4em', height = '4em', ...props }) => {
   return (
-    <svg
-      width={props.width}
-      height={props.height}
-      viewBox="0 0 19 20"
-      {...props}
-    >
+    <svg width={width} height={height} viewBox="0 0 19 20" {...props}>
       <g
         strokeWidth={3}
         stroke="#1D1E1F"

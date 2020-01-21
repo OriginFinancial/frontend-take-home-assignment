@@ -6,14 +6,9 @@ const propTypes = {
   height: string
 };
 
-const Tip = props => {
+const Tip = ({ width = '4em', height = '4em', ...props }) => {
   return (
-    <svg
-      width={props.width}
-      height={props.height}
-      viewBox="0 0 18 18"
-      {...props}
-    >
+    <svg width={width} height={height} viewBox="0 0 18 18" {...props}>
       <g fill="none" fillRule="evenodd">
         <path
           d="M9 17A8 8 0 109 1a8 8 0 000 16zm0 1A9 9 0 119 0a9 9 0 010 18z"
