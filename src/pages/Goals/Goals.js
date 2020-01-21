@@ -16,7 +16,7 @@ const EmptyList = () => (
 );
 
 const Goals = ({ goals = defaultGoals }) => (
-  <Container fixed>
+  <Container minWidth="xs">
     <Typography variant="h1">{`Here's your saving goals`}</Typography>
     <Grid container>
       {goals.length ? (

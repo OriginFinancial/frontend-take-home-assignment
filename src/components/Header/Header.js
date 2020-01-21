@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mq } from '../utils/mediaQueries';
 import { node } from 'prop-types';
 
 const propTypes = {
@@ -8,11 +9,7 @@ const propTypes = {
 
 const HeaderStyled = styled.div`
   background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 70px;
-  align-items: center;
-  height: 70px;
+  ${mq({ textAlign: ['center', 'center', 'center', 'center', 'left'] })}
 `;
 
 const Header = ({ children }) => (
