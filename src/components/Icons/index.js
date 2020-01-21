@@ -8,4 +8,3 @@ export { Economy } from './Economy';
 export { Logo } from './Logo';
 export { Rings } from './Rings';
 export { Tip } from './Tip';
-

@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { node } from 'prop-types';
+
+const propTypes = {
+  children: node.isRequired
+};
 
 const HeaderStyled = styled.div`
   background-color: #fff;
@@ -11,7 +16,10 @@ const HeaderStyled = styled.div`
 `;
 
 const Header = ({ children }) => (
-  <HeaderStyled data-testid='header-component'>{children}</HeaderStyled>
+  <HeaderStyled data-testid="header-component">{children}</HeaderStyled>
 );
+
+Header.displayName = 'Header';
+Header.propTypes = propTypes;
 
 export { Header };

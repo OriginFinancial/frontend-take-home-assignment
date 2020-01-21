@@ -23,7 +23,7 @@ const App = () => (
   <Body>
     <Global />
     <Header>
-      <Logo width="5em" height="5em"/>
+      <Logo width="5em" height="5em" />
     </Header>
 
     <Router>

@@ -1,8 +1,19 @@
-import React from "react";
+import React from 'react';
+import { string } from 'prop-types';
 
-function Back(props) {
+const propTypes = {
+  width: string,
+  height: string
+};
+
+const Back = props => {
   return (
-    <svg width={props.width} height={props.height} viewBox="0 0 19 20" {...props}>
+    <svg
+      width={props.width}
+      height={props.height}
+      viewBox="0 0 19 20"
+      {...props}
+    >
       <g
         strokeWidth={3}
         stroke="#1D1E1F"
@@ -15,7 +26,8 @@ function Back(props) {
       </g>
     </svg>
   );
-}
+};
+
+Back.propTypes = propTypes;
 
 export { Back };
-

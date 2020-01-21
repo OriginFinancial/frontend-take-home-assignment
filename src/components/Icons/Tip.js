@@ -1,8 +1,19 @@
-import React from "react";
+import React from 'react';
+import { string } from 'prop-types';
 
-function Tip(props) {
+const propTypes = {
+  width: string,
+  height: string
+};
+
+const Tip = props => {
   return (
-    <svg width={props.width} height={props.height} viewBox="0 0 18 18" {...props}>
+    <svg
+      width={props.width}
+      height={props.height}
+      viewBox="0 0 18 18"
+      {...props}
+    >
       <g fill="none" fillRule="evenodd">
         <path
           d="M9 17A8 8 0 109 1a8 8 0 000 16zm0 1A9 9 0 119 0a9 9 0 010 18z"
@@ -16,7 +27,8 @@ function Tip(props) {
       </g>
     </svg>
   );
-}
+};
+
+Tip.propTypes = propTypes;
 
 export { Tip };
-

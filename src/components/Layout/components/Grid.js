@@ -7,12 +7,7 @@ const toMinWidth = value => `@media(min-width: ${value}px)`;
 
 const mq = facepaint(medias.map(toMinWidth));
 
-const gridContainer = ({
-  container,
-  justifyItems,
-  alignItems,
-  alignContent
-}) =>
+const gridContainer = ({ container, justifyItems, alignItems, alignContent }) =>
   container &&
   css`
     display: grid;
@@ -21,25 +16,25 @@ const gridContainer = ({
     align-content: ${alignContent};
 
     ${mq({
-    gridTemplateColumns: [
-      'repeat(2, 1fr)',
-      'repeat(2, 1fr)',
-      'repeat(2, 1fr)',
-      'repeat(2, 1fr)',
-      'repeat(4, 1fr)',
-      'repeat(4, 1fr)'
-    ],
-    gridColumnGap: ['8px', '8px', '8px', '16px', '24px', '24px'],
-    gridRowGap: ['8px', '8px', '8px', '16px', '24px', '24px'],
-    padding: [
-      [0, '20px'],
-      [0, '20px'],
-      [0, '24px'],
-      [0, '40px'],
-      [0, '71px'],
-      [0, '252px']
-    ]
-  })}
+      gridTemplateColumns: [
+        'repeat(2, 1fr)',
+        'repeat(2, 1fr)',
+        'repeat(2, 1fr)',
+        'repeat(2, 1fr)',
+        'repeat(4, 1fr)',
+        'repeat(4, 1fr)'
+      ],
+      gridColumnGap: ['8px', '8px', '8px', '16px', '24px', '24px'],
+      gridRowGap: ['8px', '8px', '8px', '16px', '24px', '24px'],
+      padding: [
+        [0, '20px'],
+        [0, '20px'],
+        [0, '24px'],
+        [0, '40px'],
+        [0, '71px'],
+        [0, '252px']
+      ]
+    })}
   `;
 
 const gridItem = ({
