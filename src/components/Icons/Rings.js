@@ -6,7 +6,7 @@ const propTypes = {
   height: string
 };
 
-const Rings = ({ width = '4em', height = '4em', ...props }) => {
+const Rings = ({ width = '2.5em', height = '2.5em', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 40 35" {...props}>
       <path

@@ -6,7 +6,7 @@ const propTypes = {
   height: string
 };
 
-const Arrow = ({ width = '4em', height = '4em', ...props }) => {
+const Arrow = ({ width = '2.5em', height = '2.5em', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 10 19" {...props}>
       <path

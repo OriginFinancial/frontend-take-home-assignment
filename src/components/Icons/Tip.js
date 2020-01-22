@@ -6,7 +6,7 @@ const propTypes = {
   height: string
 };
 
-const Tip = ({ width = '4em', height = '4em', ...props }) => {
+const Tip = ({ width = '2.5em', height = '2.5em', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 18 18" {...props}>
       <g fill="none" fillRule="evenodd">

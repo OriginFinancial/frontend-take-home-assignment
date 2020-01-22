@@ -6,7 +6,7 @@ const propTypes = {
   height: string
 };
 
-const Baby = ({ width = '4em', height = '4em', ...props }) => {
+const Baby = ({ width = '2.5em', height = '2.5em', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 25 40" {...props}>
       <path
