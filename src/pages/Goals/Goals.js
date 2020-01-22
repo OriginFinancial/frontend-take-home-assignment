@@ -3,7 +3,7 @@ import { array } from 'prop-types';
 import { Typography } from '../../components/Typography';
 import { Grid, Container } from '../../components/Layout';
 import { Goal } from '../../components/Goal';
-import defaultGoals from './defaultGoals';
+import defaultGoals from '../../enums/goals';
 
 const propTypes = {
   goals: array
@@ -16,11 +16,11 @@ const EmptyList = () => (
 );
 
 const Goals = ({ goals = defaultGoals }) => (
-  <Container minWidth="xs">
+  <Container maxWidth="xl">
     <Typography variant="h1">{`Here's your saving goals`}</Typography>
     <Grid container>
       {goals.length ? (
-        goals.map((goal, index) => <Goal goal={goal} key={index} />)
+        goals.map(goal => <Goal goal={goal} key={goal.id} />)
       ) : (
         <EmptyList />
       )}
