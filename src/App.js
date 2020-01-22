@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Logo } from './components/Icons';
 import { Global } from './components/Global';
 import { Goals } from './pages/Goals';
+import { Details } from './pages/Details';
 
 WebFont.load({
   google: {
@@ -27,7 +28,8 @@ const App = () => (
     </Header>
 
     <Router>
-      <Goals path="goals" default />
+      <Goals path="/" />
+      <Details path="details/:goalId" />
     </Router>
   </Body>
 );
