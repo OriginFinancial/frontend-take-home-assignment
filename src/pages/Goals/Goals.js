@@ -1,32 +1,41 @@
 import React from 'react';
-import { array } from 'prop-types';
+import { array, func } from 'prop-types';
+import Styled from 'styled-components';
+import { mq } from '../../components/utils/mediaQueries';
 import { Typography } from '../../components/Typography';
 import { Grid, Container } from '../../components/Layout';
 import { Goal } from '../../components/Goal';
-import defaultGoals from '../../enums/goals';
+import { useGoals } from '../../hooks/useGoals';
 
 const propTypes = {
-  goals: array
+  goals: array,
+  setupGoal: func.isRequired
 };
 
-const EmptyList = () => (
-  <Typography data-testid="empty-list" variant="h3">
-    {`Sorry, we don't have goals =(`}
-  </Typography>
-);
+const Wrapper = Styled.div`
+  padding: 4em 0 2em;
+  ${mq({
+    textAlign: ['center', 'center', 'center', 'center', 'left']
+  })}
+`;
 
-const Goals = ({ goals = defaultGoals }) => (
-  <Container maxWidth="xl">
-    <Typography variant="h1">{`Here's your saving goals`}</Typography>
-    <Grid container>
-      {goals.length ? (
-        goals.map(goal => <Goal goal={goal} key={goal.id} />)
-      ) : (
-        <EmptyList />
-      )}
-    </Grid>
-  </Container>
-);
+const Goals = ({ goals: stateGoals, setupGoal }) => {
+  const { goals } = useGoals(stateGoals);
+
+  return (
+    <Container maxWidth="xl">
+      <Wrapper>
+        <Typography variant="h1">{`Here's your saving goals!`}</Typography>
+      </Wrapper>
+
+      <Grid container>
+        {goals.map(goal => (
+          <Goal goal={goal} key={goal.id} setupGoal={setupGoal} />
+        ))}
+      </Grid>
+    </Container>
+  );
+};
 
 Goals.propTypes = propTypes;
 Goals.displayName = 'Goals';
