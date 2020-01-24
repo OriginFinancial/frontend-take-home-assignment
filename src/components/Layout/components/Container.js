@@ -12,7 +12,7 @@ const maxWidthSm = `
 `;
 const maxWidthMd = `
   @media (min-width: 414px) {
-    max-width: 960px;
+    max-width: 660px;
   }
 `;
 const maxWidthLg = `
