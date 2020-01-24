@@ -41,7 +41,12 @@ const InputAmount = ({ setAmount }) => {
   return (
     <Wrapper>
       <Currency>{'$'}</Currency>
-      <Input type="tel" value={value} onChange={onChange} />
+      <Input
+        data-testid="input-amount"
+        type="tel"
+        value={value}
+        onChange={onChange}
+      />
     </Wrapper>
   );
 };

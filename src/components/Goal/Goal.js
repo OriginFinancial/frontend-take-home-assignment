@@ -3,7 +3,7 @@ import { navigate } from '@reach/router';
 import { object } from 'prop-types';
 import { Grid } from '../Layout';
 import { Typography } from '../Typography';
-import { Card, CardMedia, CardAction } from '../Card';
+import { Card, CardMedia, CardContent, CardAction } from '../Card';
 import { Button } from '../Button';
 import * as Icons from '../Icons';
 import { Plan } from '../Plan';
@@ -25,9 +25,13 @@ const Goal = ({ goal: { plan, category, id, title } }) => {
         <Typography variant="h4">{title}</Typography>
 
         {plan ? (
-          <Plan amount={plan.amount} reachDate={plan.reachDate} />
+          <Plan
+            data-testid="goal-plan"
+            amount={plan.amount}
+            reachDate={plan.reachDate}
+          />
         ) : (
-          <CardAction>
+          <CardAction data-testid="goal-setup">
             <Button onClick={openGoal}>Start setup</Button>
           </CardAction>
         )}

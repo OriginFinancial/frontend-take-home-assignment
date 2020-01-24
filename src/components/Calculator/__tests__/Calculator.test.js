@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { Calculator } from '../Calculator';
 import dayjs from 'dayjs';
 
-describe('Page: Calculator', function() {
+describe('Component: Calculator', function() {
   function setup() {
     const amount = 1000;
     const reachDate = dayjs().add(2, 'month');

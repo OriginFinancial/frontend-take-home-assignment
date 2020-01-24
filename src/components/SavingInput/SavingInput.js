@@ -35,11 +35,15 @@ const SavingInput = ({ setAmount, setReach }) => {
     <Wrapper>
       <Amount>
         <Typography variant="title2">Total amount</Typography>
-        <InputAmount setAmount={setAmount} />
+        <InputAmount data-testid="input-amount" setAmount={setAmount} />
       </Amount>
       <Reach>
         <Typography variant="title2">Reach goal by</Typography>
-        <InputMonth type="month" setReach={setReach} />
+        <InputMonth
+          data-testid="input-month"
+          type="month"
+          setReach={setReach}
+        />
       </Reach>
     </Wrapper>
   );

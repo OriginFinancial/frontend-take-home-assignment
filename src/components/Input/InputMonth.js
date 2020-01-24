@@ -38,8 +38,8 @@ const Increment = Styled.button`
   border-radius: 0 5px 5px 0;
 `;
 
-const InputMonth = ({ setReach }) => {
-  const [monthYear, setMonthYear] = useState(dayjs);
+const InputMonth = ({ setReach, ...props }) => {
+  const [monthYear, setMonthYear] = useState(dayjs());
 
   const decrementMonth = () => {
     const newDate = monthYear.subtract(1, 'month');
@@ -56,14 +56,21 @@ const InputMonth = ({ setReach }) => {
   };
 
   return (
-    <Wrapper>
-      <Decrement onClick={decrementMonth}>{`<`}</Decrement>
+    <Wrapper {...props}>
+      <Decrement
+        data-testid="decrement-date"
+        onClick={decrementMonth}
+      >{`<`}</Decrement>
       <Input
+        data-testid="formated-reach-date"
         value={monthYear.format('MMMM YYYY')}
         textAlign="center"
         readOnly
       />
-      <Increment onClick={incrementMonth}>{`>`}</Increment>
+      <Increment
+        data-testid="increment-date"
+        onClick={incrementMonth}
+      >{`>`}</Increment>
     </Wrapper>
   );
 };

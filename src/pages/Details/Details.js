@@ -39,7 +39,11 @@ const Details = ({ goals, goalId, updateGoal, navigate }) => {
     <Container maxWidth="md">
       <Nav>
         <NavItem>
-          <Button rounded onClick={() => navigate('/')}>
+          <Button
+            data-testid="navigate-back"
+            rounded
+            onClick={() => navigate('/')}
+          >
             <Arrow size="xs" />
           </Button>
         </NavItem>
@@ -54,7 +58,9 @@ const Details = ({ goals, goalId, updateGoal, navigate }) => {
         <Card alignItems="left" padding="2.5em">
           <CardMedia alignItems="left">
             <Icon />
-            <Typography variant="h2">{goal.title}</Typography>
+            <Typography data-testid="goal-title" variant="h2">
+              {goal.title}
+            </Typography>
             <Typography variant="subtitle1" color="grey">
               Saving goal
             </Typography>
@@ -65,7 +71,7 @@ const Details = ({ goals, goalId, updateGoal, navigate }) => {
           <Calculator amount={amount} reachDate={reachDate} />
 
           <CardAction>
-            <Button minWidth="lg" onClick={saveGoal}>
+            <Button data-testid="save-goal" minWidth="lg" onClick={saveGoal}>
               Finish
             </Button>
           </CardAction>

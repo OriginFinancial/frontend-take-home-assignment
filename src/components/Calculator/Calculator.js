@@ -59,11 +59,10 @@ const Calculator = ({ amount, reachDate }) => {
       </Wrapper>
 
       <Resume>
-        {`You're`} planning
-        <strong data-testid="resume-deposits">{months} monthly deposits</strong>
-        to reach your
-        <strong data-testid="resume-goal-amount">$ {amount}</strong>
-        goal by
+        {`You're`} planning{' '}
+        <strong data-testid="resume-deposits">{months} monthly deposits</strong>{' '}
+        to reach your{' '}
+        <strong data-testid="resume-goal-amount">$ {amount}</strong> goal by{' '}
         <strong data-testid="resume-reach">{formatedReach}</strong>.
       </Resume>
     </InfoBox>
