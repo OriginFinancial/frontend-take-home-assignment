@@ -1,12 +1,14 @@
 import React from 'react';
 import { string } from 'prop-types';
+import Sizes from '../../components/utils/iconSizes';
 
 const propTypes = {
-  width: string,
-  height: string
+  size: string
 };
 
-const Arrow = ({ width = '2.5em', height = '2.5em', ...props }) => {
+const Arrow = ({ size = 'md', ...props }) => {
+  const { width, height } = Sizes[size];
+
   return (
     <svg width={width} height={height} viewBox="0 0 10 19" {...props}>
       <path
