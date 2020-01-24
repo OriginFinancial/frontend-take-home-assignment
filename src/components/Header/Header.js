@@ -9,7 +9,12 @@ const propTypes = {
 
 const HeaderStyled = styled.div`
   background-color: #fff;
-  ${mq({ textAlign: ['center', 'center', 'center', 'center', 'left'] })}
+  ${mq({
+    textAlign: ['center', 'center', 'center', 'center', 'left']
+  })}
+  ${mq({
+    padding: ['0', '0', '0', '0', '0 4em']
+  })}
 `;
 
 const Header = ({ children }) => (
