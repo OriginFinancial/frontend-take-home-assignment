@@ -1,15 +1,20 @@
 import styled, { css } from 'styled-components';
 
-const cardStyle = ({ alignItems = 'center' }) => css`
+const cardStyle = ({
+  alignItems = 'center',
+  minHeight = '15em',
+  padding = '1em'
+}) => css`
   background-color: #fff;
-  border: 1px solid #f4f8fa;
+  border: 1px solid #e1e8ed;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: ${alignItems};
   justify-content: ${alignItems};
   box-sizing: border-box;
-  padding: 1.5em;
+  min-height: ${minHeight};
+  padding: ${padding};
 `;
 
 export { cardStyle };
