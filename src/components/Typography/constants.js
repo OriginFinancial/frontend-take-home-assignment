@@ -6,16 +6,12 @@ const VARIANTS = {
   h5: 'h5',
   h6: 'h6',
   paragraph: 'p',
-  button: 'p',
-  action: 'p',
-  form: 'p',
-  title: 'h2',
   subtitle1: 'h4',
-  subtitle2: 'h5',
+  subtitle2: 'p',
+  title1: 'p',
+  title2: 'p',
   body1: 'p',
-  textParagraph: 'p',
-  labelAction: 'p',
-  labelButton: 'p'
+  textParagraph: 'p'
 };
 
 export { VARIANTS };
