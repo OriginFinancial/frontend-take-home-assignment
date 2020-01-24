@@ -1,12 +1,14 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { Router } from '@reach/router';
 import styled from 'styled-components';
 import WebFont from 'webfontloader';
-import { Router } from '@reach/router';
 import { Header } from './components/Header';
 import { Logo } from './components/Icons';
 import { Global } from './components/Global';
-import { Goals } from './pages/Goals';
-import { Details } from './pages/Details';
+import Goals from './pages/Goals';
+import Details from './pages/Details';
+import { store } from './store';
 
 WebFont.load({
   google: {
@@ -15,22 +17,24 @@ WebFont.load({
 });
 
 const Body = styled.div`
-  background-color: #e1e8ed;
+  background-color: #f4f8fa;
   min-height: 100vh;
-  font-size: 14px;
+  font-size: 16px;
 `;
 
 const App = () => (
   <Body>
     <Global />
     <Header>
-      <Logo width="5em" height="5em" />
+      <Logo size="xl" />
     </Header>
 
-    <Router>
-      <Goals path="/" />
-      <Details path="details/:goalId" />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Goals path="/" />
+        <Details path="details/:goalId" />
+      </Router>
+    </Provider>
   </Body>
 );
 
