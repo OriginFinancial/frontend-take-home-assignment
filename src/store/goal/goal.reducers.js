@@ -1,12 +1,8 @@
 import { createReducer } from 'redux-act';
 import { updateGoal } from './goal.actions';
-import defaultGoals from '../../enums/goals';
+import initialState from './initialState';
 
 const STATE_KEY = 'goalState';
-
-const initialState = {
-  goals: defaultGoals
-};
 
 const updateGoalData = ({ goals }, updatedGoal) => {
   const newGoals = goals.map(goal => {

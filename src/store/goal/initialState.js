@@ -1,35 +1,40 @@
-import React from 'react';
-import { Academy, Beach, Car, Rings, Economy, Baby } from '../components/Icons';
-
 const college = {
   id: 'goToCollege',
   title: 'Go to college',
-  icon: <Academy />
+  plan: null,
+  category: 'Academy'
 };
 const vacation = {
   id: 'takeAVacation',
   title: 'Take a vacation',
-  icon: <Beach />
+  plan: null,
+  category: 'Beach'
 };
 const car = {
   id: 'buyACar',
   title: 'Buy a car',
-  icon: <Car />
+  plan: null,
+  category: 'Car'
 };
 const weeding = {
   id: 'throwAWeddingParty',
   title: 'Throw a wedding party',
-  icon: <Rings />
+  plan: null,
+  category: 'Rings'
 };
 const emergency = {
   id: 'buildAnEmergencyFund',
   title: 'Build an emergency fund',
-  icon: <Economy />
+  plan: null,
+  category: 'Economy'
 };
 const baby = {
   id: 'haveABaby',
   title: 'Have a baby',
-  icon: <Baby />
+  plan: null,
+  category: 'Baby'
 };
 
-export default [college, vacation, car, weeding, emergency, baby];
+export default {
+  goals: [college, vacation, car, weeding, emergency, baby]
+};
