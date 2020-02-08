@@ -10,9 +10,9 @@ You will build a piece of our savings feature by creating the the saving plan si
 
 ![Saving Goal Plan Mockup Desktop](https://github.com/OriginFinancial/frontend-take-home-assignment/blob/master/mockups/saving-goal-plan-desk.png)
 
-This screen will simulate just go to college saving goal for instance.
+You will build a screen where the user will simulate saving towards the "go to college" saving goal.
 
-Here the users choose (i) the value they want to save and (ii) the date they plan to reach the goal.
+In it, the users choose (i) the value they want to save and (ii) the date they plan to reach the goal.
 
 When the users change the value of any of the inputs, the monthly deposit value is calculated and displayed to them.
 
