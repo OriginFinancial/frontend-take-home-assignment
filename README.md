@@ -35,7 +35,7 @@ Once you have opened the link you must sign up and log in so you can have access
 The money input component should:
 
 - Allow only numbers
-- Display the value formatted as money (e.g 3500.45 should be 3,500.44)
+- Display the value formatted as money (e.g 3500.45 should be 3,500.45)
 
 #### Date input
 
