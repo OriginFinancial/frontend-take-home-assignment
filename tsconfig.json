@@ -7,7 +7,13 @@
     "target": "es6",
     "jsx": "react",
     "allowJs": true,
-    "checkJs": false
+    "checkJs": false,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
 }
