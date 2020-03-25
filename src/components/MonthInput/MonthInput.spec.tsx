@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { addMonths } from 'date-fns';
+import * as renderer from 'react-test-renderer';
 import MonthInput from './index';
 import { leftArrow, rightArrow } from './keycodes';
 import { InputWrapper, ArrowLeft, ArrowRight } from './styles';
@@ -12,6 +13,7 @@ describe('<MonthInput />', () => {
 
   beforeEach(() => {
     setState = jest.fn();
+
     monthInput = shallow(<MonthInput label="Reach goal by" selectedDate={nextMonth} isPastDisabled={false} setDate={setState} />);
   });
 
@@ -47,5 +49,19 @@ describe('<MonthInput />', () => {
     monthInput.find(InputWrapper).simulate('keyup', { keyCode: 32 });
 
     expect(setState).toBeCalledTimes(1);
+  });
+
+  it('Arrow left render with disabled true', () => {
+    const setDate = jest.fn();
+    const arrowLeft = renderer.create(<ArrowLeft disabled={true} onClick={setDate}></ArrowLeft>).toJSON();
+
+    expect(arrowLeft).toMatchSnapshot();
+  });
+
+  it('Arrow left render with disabled false', () => {
+    const setDate = jest.fn();
+    const arrowLeft = renderer.create(<ArrowLeft disabled={false} onClick={setDate}></ArrowLeft>).toJSON();
+
+    expect(arrowLeft).toMatchSnapshot();
   });
 });
