@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from 'react';
-import { format, differenceInCalendarMonths, addMonths, isBefore } from 'date-fns';
+import { format, differenceInCalendarMonths, addMonths, isBefore, isEqual } from 'date-fns';
 import Header from '~/components/Header';
 import MoneyInput from '~/components/MoneyInput';
 import MonthInput from '~/components/MonthInput';
@@ -21,12 +21,14 @@ import {
 
 const Goal: React.FC = () => {
   const today = new Date();
-  const [totalAmount, setTotalAmount] = React.useState<string>('');
-  const [selectedDate, setSelectedDate] = React.useState<Date>(addMonths(today, 1));
+  const [totalAmount, setTotalAmount] = React.useState('');
+  const [selectedDate, setSelectedDate] = React.useState(addMonths(today, 1));
 
   const distanceInMonths = differenceInCalendarMonths(selectedDate, today);
   const monthlyAmount = '' + parseStringToFloat(totalAmount) / distanceInMonths;
   const goalDate = format(selectedDate, 'MMMM uuuu');
+
+  const isPastDisabled = isBefore(selectedDate, addMonths(today, 1)) || isEqual(selectedDate, addMonths(today, 1));
 
   function parseStringToFloat(value: string): number {
     return value ? parseFloat(value.replace(/,/g, '')) : 0;
@@ -52,12 +54,7 @@ const Goal: React.FC = () => {
 
         <InputsWrapper>
           <MoneyInput id="total-amount" label="Total amount" setAmount={setTotalAmount} />
-          <MonthInput
-            label="Reach goal by"
-            selectedDate={selectedDate}
-            setDate={setSelectedDate}
-            isPastDisabled={isBefore(selectedDate, addMonths(today, 1))}
-          />
+          <MonthInput label="Reach goal by" selectedDate={selectedDate} setDate={setSelectedDate} isPastDisabled={isPastDisabled} />
         </InputsWrapper>
 
         <GoalDetails>
