@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as React from 'react';
-import format from 'date-fns/format';
-import { addMonths, isBefore } from 'date-fns';
-import differenceInCalendarMonths from 'date-fns/differenceInCalendarMonths';
+import { format, differenceInCalendarMonths, addMonths, isBefore } from 'date-fns';
 import Header from '~/components/Header';
 import MoneyInput from '~/components/MoneyInput';
 import MonthInput from '~/components/MonthInput';
@@ -23,8 +21,8 @@ import {
 
 const Goal: React.FC = () => {
   const today = new Date();
-  const [totalAmount, setTotalAmount] = React.useState('');
-  const [selectedDate, setSelectedDate] = React.useState(addMonths(today, 1));
+  const [totalAmount, setTotalAmount] = React.useState<string>('');
+  const [selectedDate, setSelectedDate] = React.useState<Date>(addMonths(today, 1));
 
   const distanceInMonths = differenceInCalendarMonths(selectedDate, today);
   const monthlyAmount = '' + parseStringToFloat(totalAmount) / distanceInMonths;
@@ -53,7 +51,7 @@ const Goal: React.FC = () => {
         <Description>Saving goal</Description>
 
         <InputsWrapper>
-          <MoneyInput label="Total amount" setAmount={setTotalAmount} />
+          <MoneyInput id="total-amount" label="Total amount" setAmount={setTotalAmount} />
           <MonthInput
             label="Reach goal by"
             selectedDate={selectedDate}

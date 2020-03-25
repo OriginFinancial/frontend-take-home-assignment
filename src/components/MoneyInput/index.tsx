@@ -10,24 +10,21 @@ const moneyMask = createNumberMask({
   decimalLimit: 2
 });
 
-const MoneyInput: React.FC<{
+interface MoneyInputProps {
+  id: string;
   label: string;
   setAmount: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ label, setAmount }) => {
-  const labelId = generateLabelId(label);
+}
 
-  function generateLabelId(label: string): string {
-    return label.toLowerCase().replace(/ /g, '');
-  }
-
+const MoneyInput: React.FC<MoneyInputProps> = ({ id, label, setAmount }) => {
   return (
     <InputWrapper>
-      <Label htmlFor={labelId}>{label}</Label>
+      <Label htmlFor={id}>{label}</Label>
       <Currency>$</Currency>
       <MaskedInput
         mask={moneyMask}
         guide={false}
-        render={(ref, props) => <Input id={labelId} ref={ref} {...props} onChange={event => setAmount(event.target.value)} />}
+        render={(ref, props) => <Input id={id} ref={ref} {...props} onChange={event => setAmount(event.target.value)} />}
       />
     </InputWrapper>
   );

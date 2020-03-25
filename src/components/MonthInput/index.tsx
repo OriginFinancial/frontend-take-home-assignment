@@ -3,19 +3,16 @@ import { format, addMonths, subMonths } from 'date-fns';
 import { Label, InputWrapper, ArrowLeft, ArrowRight, DateWrapper, Month, Year } from './styles';
 import { leftArrow, rightArrow } from './keycodes';
 
-const MonthInput: React.FC<{
+interface MonthInputProps {
   label: string;
   selectedDate: Date;
   isPastDisabled: boolean;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
-}> = ({ label, selectedDate, isPastDisabled, setDate }) => {
+}
+
+const MonthInput: React.FC<MonthInputProps> = ({ label, selectedDate, isPastDisabled, setDate }) => {
   const month = format(selectedDate, 'MMMM');
   const year = format(selectedDate, 'uuuu');
-  const labelId = generateLabelId(label);
-
-  function generateLabelId(label: string): string {
-    return label.toLowerCase().replace(/ /g, '');
-  }
 
   function getPrevMonth() {
     return subMonths(selectedDate, 1);
@@ -34,7 +31,7 @@ const MonthInput: React.FC<{
 
   return (
     <InputWrapper tabIndex={0} onKeyUp={event => setDate(handleKeyUp(event))}>
-      <Label htmlFor={labelId}>{label}</Label>
+      <Label>{label}</Label>
       <ArrowLeft disabled={isPastDisabled} onClick={() => setDate(getPrevMonth())}></ArrowLeft>
       <DateWrapper>
         <Month>{month}</Month>
