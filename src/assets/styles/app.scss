@@ -1,0 +1,61 @@
+@import '~/assets/styles/_colors.scss';
+@import '~/assets/styles/_globalVars.scss';
+
+$p: calc((#{$space} / 35) + 7px);
+
+body {
+  margin: 0 auto;
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.origin {
+  width: 100%;
+  background: $color_light;
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  & p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  input,
+  small,
+  label,
+  button {
+    margin: 0;
+    padding: 0;
+  }
+
+  & p {
+    font-size: $p;
+  }
+  & h1 {
+    font-size: calc(#{$p} * 2.5);
+    font-weight: normal;
+  }
+  & h2 {
+    font-size: calc(#{$p} * 2);
+    font-weight: 600;
+  }
+  & h3 {
+    font-size: calc(#{$p} * 1.5);
+    font-weight: normal;
+  }
+  & h4 {
+    font-size: calc(#{$p} * 1.25);
+    font-weight: 600;
+  }
+  & h5 {
+    font-size: calc(#{$p} * 1.13);
+    font-weight: 500;
+  }
+}
+
+@media all and (min-width: 280px) and (max-width: 679px) {
+}

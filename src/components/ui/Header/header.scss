@@ -1,0 +1,14 @@
+@import '~/assets/styles/_colors.scss';
+@import '~/assets/styles/_globalVars.scss';
+
+.mainHeader {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: $color_light_soft;
+  padding: 2.5vh $screen_horizontal_padding 1.5vh;
+
+  & img {
+    height: $logo_height;
+  }
+}

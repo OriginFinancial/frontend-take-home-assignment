@@ -1,0 +1,6 @@
+$space: calc(20vw + 20vh);
+$screen_horizontal_padding: 3.6vw;
+$logo_height: calc((#{$space} / 35) + 20px);
+// Example:
+// width: calc((#{$space} / 100) + 10px);
+// calculate size based on screen size / divided by scale amount
