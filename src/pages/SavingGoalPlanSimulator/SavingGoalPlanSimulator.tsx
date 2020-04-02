@@ -22,41 +22,42 @@ const months = [
 ];
 
 const SavingGoalPlanSimulator: React.FC = () => {
-  const [month, setMonth] = React.useState(currentMonth);
-  const [year, setYear] = React.useState(currentYear);
+  const [month, setMonth] = React.useState<string>(currentMonth);
+  const [year, setYear] = React.useState<number>(currentYear);
+  const [disabledMonths, setDisabledMonths] = React.useState<string[]>([]);
+
+  React.useEffect(() => {
+    // console.log(months.indexOf(month));
+    setDisabledMonths(
+      months.filter((e, index) => {
+        if (index < months.indexOf(month)) {
+          return e;
+        }
+      })
+    );
+  }, []);
 
   const addMonthHandler = (): void => {
-    const currMonth = months.indexOf(month);
-
+    const currMonthIndex = months.indexOf(month);
     month === 'December'
       ? (setMonth('January'), setYear(year + 1))
-      : setMonth(months[currMonth + 1]);
-
-    console.log('next');
+      : setMonth(months[currMonthIndex + 1]);
   };
 
   const subtractMonthHandler = (): void => {
-    const currMonth = months.indexOf(month);
-
-    if (month === currentMonth && year === currentYear) {
-      console.log('s');
-    } else if (month === 'January') {
-      setMonth('December');
-      setYear(year - 1);
-    } else {
-      setMonth(months[currMonth - 1]);
-    }
-    console.log('previous');
+    const currMonthIndex = months.indexOf(month);
+    month === currentMonth && year === currentYear
+      ? null
+      : month === 'January'
+      ? (setMonth('December'), setYear(year - 1))
+      : setMonth(months[currMonthIndex - 1]);
   };
 
-  const pickedDateHandler = (pickedMonth: number): void => {
-    const currMonthIndex = months.indexOf(month);
-
-    if (pickedMonth <= currMonthIndex && year === currentYear) {
-      setMonth(months[pickedMonth]);
-    } else {
-      setMonth(months[pickedMonth + 1]);
-    }
+  const pickedDateHandler = (pickedMonth: number) => {
+    const currMonthIndex = months.indexOf(currentMonth);
+    pickedMonth <= currMonthIndex && year === currentYear
+      ? null
+      : setMonth(months[pickedMonth]);
   };
 
   return (
@@ -75,15 +76,18 @@ const SavingGoalPlanSimulator: React.FC = () => {
           <Input />
           <DatePicker
             months={months}
-            currentMonth={month}
-            currentYear={year}
+            stateMonth={month}
+            stateYear={year}
+            currentMonth={currentMonth}
+            currentYear={currentYear}
+            disableds={disabledMonths}
             subtractMonth={() => subtractMonthHandler()}
             addMonth={() => addMonthHandler()}
             previousYear={() =>
               setYear(year === currentYear ? currentYear : year - 1)
             }
             nextYear={() => setYear(year + 1)}
-            pickedDate={(pickedMonth: number) => pickedDateHandler(pickedMonth)}
+            pickedDate={pickedMonth => pickedDateHandler(pickedMonth)}
           />
         </div>
         {/* PLAN SUMMARY */}

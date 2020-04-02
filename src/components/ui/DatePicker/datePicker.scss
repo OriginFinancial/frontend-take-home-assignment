@@ -58,11 +58,14 @@
     position: absolute;
     top: -1px;
     left: -1px;
-    z-index: 1;
+    z-index: 2;
     width: calc(100% + 2px);
     background: $color_light_soft;
     border: $border;
     border-radius: calc(#{$radius} * 2);
+    // transition: all 0.2s ease-in-out;
+    animation: fade 0.25s ease-in-out;
+    animation-iteration-count: 1;
 
     & .row {
       height: 6vh;
@@ -74,6 +77,10 @@
 
       & .pickerDisplay {
         cursor: default;
+
+        & p {
+          color: $color_primary_soft;
+        }
       }
     }
 
@@ -82,14 +89,16 @@
       flex-wrap: wrap;
       padding: 1vh 2vw 2.5vh;
       box-shadow: 0 1vh 3vh rgba(black, 0.1);
+      z-index: 1;
 
       & li {
+        user-select: none;
         cursor: pointer;
         width: 33.3%;
         text-align: center;
         padding: 0.75vh 0;
         border-radius: 100px;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.15s ease-in-out;
 
         &:hover {
           background: $color_primary;
@@ -106,6 +115,29 @@
           & p {
             color: $color_light_soft;
           }
+        }
+      }
+
+      & .disabled {
+        cursor: default;
+        & p {
+          color: $color_dark_soft;
+        }
+
+        &:hover {
+          background: inherit;
+
+          & p {
+            color: $color_dark_soft;
+          }
+        }
+      }
+
+      & .current {
+        background: $color_primary_soft;
+
+        & p {
+          color: $color_light_soft;
         }
       }
     }

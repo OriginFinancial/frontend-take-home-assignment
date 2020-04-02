@@ -125,5 +125,14 @@ body {
   }
 }
 
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media all and (min-width: 280px) and (max-width: 679px) {
 }

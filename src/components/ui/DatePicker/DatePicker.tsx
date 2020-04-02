@@ -1,27 +1,50 @@
 import * as React from 'react';
 import './datePicker.scss';
 
-const DatePicker: React.FC = props => {
+interface Props {
+  stateMonth: string;
+  stateYear: number;
+  currentMonth: string;
+  currentYear: number;
+  disableds: string[];
+  months: string[];
+  subtractMonth: () => void;
+  addMonth: () => void;
+  previousYear?: () => void;
+  nextYear?: () => void;
+  pickedDate: (monthIndex: number) => number | void;
+}
+
+const DatePicker: React.FC<Props> = props => {
   const [picker, setPicker] = React.useState(false);
 
+  const pickDateHandler = (monthIndex: number) => {
+    setPicker(false);
+    props.pickedDate(monthIndex);
+  };
+
+  const buttonHandler = (type: string) => {
+    type === 'previous' ? props.subtractMonth() : props.addMonth();
+  };
+
   return (
-    <label className="datePicker">
-      Reach goal by
+    <div className="datePicker" onFocus={() => setPicker(true)}>
+      <label>Reach goal by</label>
       {/* DISPLAY */}
       <span className="innerHolder">
-        <button className="back" onClick={props.subtractMonth}>
+        <button className="back" onClick={() => buttonHandler('previous')}>
           <img src={require('~/assets/icons/arrow.svg')} />
         </button>
         <button className="pickerDisplay" onClick={() => setPicker(!picker)}>
           <p>
-            {props.currentMonth}
+            {props.stateMonth}
             <small>
               <br />
-              {props.currentYear}
+              {props.stateYear}
             </small>
           </p>
         </button>
-        <button className="forward" onClick={props.addMonth}>
+        <button className="forward" onClick={() => buttonHandler('next')}>
           <img src={require('~/assets/icons/arrow.svg')} />
         </button>
         {/* PICKER */}
@@ -35,7 +58,7 @@ const DatePicker: React.FC = props => {
                 className="pickerDisplay"
                 onClick={() => setPicker(!picker)}
               >
-                <p> {props.currentYear} </p>
+                <p> {props.stateYear} </p>
               </button>
               <button className="forward" onClick={props.nextYear}>
                 <img src={require('~/assets/icons/arrow.svg')} />
@@ -46,6 +69,14 @@ const DatePicker: React.FC = props => {
                 <li
                   key={indx}
                   onClick={() => (props.pickedDate(indx), setPicker(false))}
+                  className={
+                    props.disableds.includes(m) &&
+                    props.stateYear === props.currentYear
+                      ? 'disabled'
+                      : m === props.stateMonth
+                      ? 'current'
+                      : null
+                  }
                 >
                   <p>{m.substring(3, 0)}</p>
                 </li>
@@ -54,7 +85,7 @@ const DatePicker: React.FC = props => {
           </div>
         ) : null}
       </span>
-    </label>
+    </div>
   );
 };
 
