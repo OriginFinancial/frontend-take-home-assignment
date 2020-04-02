@@ -4,8 +4,61 @@ import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import './savingGoalPlanSimulator.scss';
 
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+
 const SavingGoalPlanSimulator: React.FC = () => {
-  const [zz, setZz] = React.useState(1);
+  const [month, setMonth] = React.useState(currentMonth);
+  const [year, setYear] = React.useState(currentYear);
+
+  const addMonthHandler = (): void => {
+    const currMonth = months.indexOf(month);
+
+    month === 'December'
+      ? (setMonth('January'), setYear(year + 1))
+      : setMonth(months[currMonth + 1]);
+
+    console.log('next');
+  };
+
+  const subtractMonthHandler = (): void => {
+    const currMonth = months.indexOf(month);
+
+    if (month === currentMonth && year === currentYear) {
+      console.log('s');
+    } else if (month === 'January') {
+      setMonth('December');
+      setYear(year - 1);
+    } else {
+      setMonth(months[currMonth - 1]);
+    }
+    console.log('previous');
+  };
+
+  const pickedDateHandler = (pickedMonth: number): void => {
+    const currMonthIndex = months.indexOf(month);
+
+    if (pickedMonth <= currMonthIndex && year === currentYear) {
+      setMonth(months[pickedMonth]);
+    } else {
+      setMonth(months[pickedMonth + 1]);
+    }
+  };
+
   return (
     <section className="savingGoalPlanSimulator">
       <h3>
@@ -20,13 +73,26 @@ const SavingGoalPlanSimulator: React.FC = () => {
         </div>
         <div className="row">
           <Input />
-          <DatePicker />
+          <DatePicker
+            months={months}
+            currentMonth={month}
+            currentYear={year}
+            subtractMonth={() => subtractMonthHandler()}
+            addMonth={() => addMonthHandler()}
+            previousYear={() =>
+              setYear(year === currentYear ? currentYear : year - 1)
+            }
+            nextYear={() => setYear(year + 1)}
+            pickedDate={(pickedMonth: number) => pickedDateHandler(pickedMonth)}
+          />
         </div>
         {/* PLAN SUMMARY */}
         <div className="planSummary">
           <div className="row">
             <h5>Monthly amount</h5>
-            <h1>$521</h1>
+            <h1>
+              $<strong>521</strong>
+            </h1>
           </div>
           <div className="row">
             <p>

@@ -23,18 +23,19 @@
 
     & .heading {
       align-items: flex-start;
-      margin-bottom: 4vh;
+      margin-bottom: 3.6vh;
 
       & img {
         width: calc((#{$space} / 20) + 20px);
-        margin-bottom: 0.5vh;
+        margin-bottom: 0.36vh;
       }
 
       & h2 {
-        margin-bottom: 0.5vh;
+        margin-bottom: 0.36vh;
       }
 
       & p {
+        color: $color_dark;
       }
     }
 
@@ -51,21 +52,20 @@
 
     & .planSummary {
       width: 100%;
-      margin: 3vh 0;
+      margin: 2.5vh 0;
       border-radius: calc(#{$radius} * 2);
       border: $border;
 
       & :nth-child(1).row {
         align-items: center;
         justify-content: space-between;
-        padding: 4vh $base_padding_hor;
+        padding: 3.6vh $base_padding_hor;
 
         & h5 {
           font-weight: 500;
         }
 
         & h1 {
-          font-weight: 500;
           color: $color_primary_soft;
           letter-spacing: -0.02em;
         }
@@ -74,14 +74,7 @@
       & :nth-child(2).row {
         padding: 2vh $base_padding_hor;
         background: $color_light;
-
-        & p {
-          & small {
-          }
-
-          & strong {
-          }
-        }
+        border-radius: 0 0 $border $border;
       }
     }
   }

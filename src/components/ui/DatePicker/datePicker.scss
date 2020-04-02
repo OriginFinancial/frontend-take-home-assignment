@@ -5,23 +5,109 @@
   display: flex;
   flex-direction: column;
 
+  & button {
+    letter-spacing: -0.01em;
+    height: 100%;
+
+    & img {
+      width: calc(((#{$space} / 35) + 7px) * 0.5);
+    }
+  }
+
+  & .back {
+    flex: 20;
+    background: $color_light_hard;
+  }
+  & .forward {
+    flex: 20;
+    background: $color_light_hard;
+    transform: rotate(180deg);
+  }
+  & .pickerDisplay {
+    flex: 60;
+    flex-flow: column;
+    line-height: line-heigth;
+    position: relative;
+
+    & p {
+      font-size: calc(((#{$space} / 35) + 7px) * 1.2);
+      text-transform: capitalize;
+      line-height: 1.33em;
+
+      & small {
+        font-weight: normal;
+        font-size: 0.7em;
+        line-height: 0.7em;
+      }
+    }
+  }
+
   & .innerHolder {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     width: 100%;
+    height: 6vh;
+    margin-top: 0.5vh;
+    border: $border;
+    border-radius: calc(#{$radius} * 2);
+  }
+
+  & .picker {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    z-index: 1;
+    width: calc(100% + 2px);
+    background: $color_light_soft;
     border: $border;
     border-radius: calc(#{$radius} * 2);
 
-    & button {
-      letter-spacing: -0.01em;
+    & .row {
+      height: 6vh;
+
+      & .back,
+      .forward {
+        background: transparent;
+      }
+
+      & .pickerDisplay {
+        cursor: default;
+      }
     }
 
-    & .back {
-    }
-    & .forward {
-    }
-    & .pickerDisplay {
+    & ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 1vh 2vw 2.5vh;
+      box-shadow: 0 1vh 3vh rgba(black, 0.1);
+
+      & li {
+        cursor: pointer;
+        width: 33.3%;
+        text-align: center;
+        padding: 0.75vh 0;
+        border-radius: 100px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: $color_primary;
+
+          & p {
+            color: $color_light_soft;
+          }
+        }
+
+        &:active {
+          background: $color_primary_soft;
+          color: $color_light_soft;
+
+          & p {
+            color: $color_light_soft;
+          }
+        }
+      }
     }
   }
 }

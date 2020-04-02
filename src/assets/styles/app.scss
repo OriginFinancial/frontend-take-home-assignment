@@ -12,6 +12,7 @@ body {
   & * {
     box-sizing: border-box;
     color: $color_dark_hard;
+    outline: none;
   }
 
   * strong,
@@ -33,13 +34,20 @@ body {
   input,
   small,
   label,
+  ul,
+  li,
   button {
     margin: 0;
     padding: 0;
     border: 0;
   }
 
+  & li {
+    list-style: none;
+  }
+
   & label {
+    font-size: $p;
     user-select: none;
   }
 
@@ -76,6 +84,8 @@ body {
     font-size: calc(#{$p} * 1.25);
     font-weight: 600;
     font-family: 'Work Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   & button,
@@ -84,14 +94,19 @@ body {
   }
 
   & button {
+    font-family: 'Work Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     display: flex;
     align-items: center;
     justify-content: center;
-    outline: none;
     font-size: calc(#{$p} * 1.13);
     font-weight: 600;
+    background: transparent;
     color: white;
+    -webkit-tap-highlight-color: transparent;
     letter-spacing: 0.04em;
+    transition: all 0.2s ease-in-out;
   }
 }
 

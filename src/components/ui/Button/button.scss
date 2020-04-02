@@ -3,8 +3,18 @@
 
 .button {
   width: 80%;
-  padding: 2vh 0;
+  padding: 1.6vh 0;
   background: $color_primary;
   border-radius: 50px;
   margin: 0 auto;
+
+  &:hover {
+    background: $color_primary_soft;
+    box-shadow: 0 1vh 3vh rgba($color_primary, 0.3);
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
 }
