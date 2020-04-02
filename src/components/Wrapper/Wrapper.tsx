@@ -6,7 +6,7 @@ const Wrapper: React.FC = ({ children }) => {
   return (
     <>
       <Header />
-      <main className={'wrapper'}>{children}</main>
+      <main className="wrapper">{children}</main>
     </>
   );
 };

@@ -2,7 +2,87 @@
 @import '~/assets/styles/_globalVars.scss';
 
 .savingGoalPlanSimulator {
-  // & * {
-  //   color: $color_primary;
-  // }
+  max-width: calc((#{$space} * 1.35) + 150px);
+
+  & h3 {
+    text-align: center;
+    padding: 0 0 4vh 0;
+    color: $color_primary;
+  }
+
+  & .goalPlanCalculator {
+    background-color: $color_light_soft;
+    border-radius: calc(#{$radius} * 4);
+    border: $border;
+    padding: $base_padding_hor;
+
+    & .column,
+    .row {
+      flex-wrap: wrap;
+    }
+
+    & .heading {
+      align-items: flex-start;
+      margin-bottom: 4vh;
+
+      & img {
+        width: calc((#{$space} / 20) + 20px);
+        margin-bottom: 0.5vh;
+      }
+
+      & h2 {
+        margin-bottom: 0.5vh;
+      }
+
+      & p {
+      }
+    }
+
+    & :nth-child(2).row {
+      justify-content: space-between;
+
+      & .input {
+        width: 47.5%;
+      }
+      & .datePicker {
+        width: 47.5%;
+      }
+    }
+
+    & .planSummary {
+      width: 100%;
+      margin: 3vh 0;
+      border-radius: calc(#{$radius} * 2);
+      border: $border;
+
+      & :nth-child(1).row {
+        align-items: center;
+        justify-content: space-between;
+        padding: 4vh $base_padding_hor;
+
+        & h5 {
+          font-weight: 500;
+        }
+
+        & h1 {
+          font-weight: 500;
+          color: $color_primary_soft;
+          letter-spacing: -0.02em;
+        }
+      }
+
+      & :nth-child(2).row {
+        padding: 2vh $base_padding_hor;
+        background: $color_light;
+
+        & p {
+          & small {
+          }
+
+          & strong {
+          }
+        }
+      }
+    }
+  }
 }

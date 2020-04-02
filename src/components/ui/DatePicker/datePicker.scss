@@ -1,0 +1,27 @@
+@import '~/assets/styles/_colors.scss';
+@import '~/assets/styles/_globalVars.scss';
+
+.datePicker {
+  display: flex;
+  flex-direction: column;
+
+  & .innerHolder {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    border: $border;
+    border-radius: calc(#{$radius} * 2);
+
+    & button {
+      letter-spacing: -0.01em;
+    }
+
+    & .back {
+    }
+    & .forward {
+    }
+    & .pickerDisplay {
+    }
+  }
+}

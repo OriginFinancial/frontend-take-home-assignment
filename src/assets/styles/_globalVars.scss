@@ -1,6 +1,10 @@
-$space: calc(20vw + 20vh);
-$screen_horizontal_padding: 3.6vw;
+@import '~/assets/styles/_colors.scss';
+
+$space: calc(16vw + 16vh);
+$base_padding_hor: 3.6vw;
 $logo_height: calc((#{$space} / 35) + 20px);
+$radius: 2px;
+$border: 1px solid $color_light_hard;
 // Example:
 // width: calc((#{$space} / 100) + 10px);
 // calculate size based on screen size / divided by scale amount

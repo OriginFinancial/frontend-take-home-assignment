@@ -1,0 +1,10 @@
+@import '~/assets/styles/_colors.scss';
+@import '~/assets/styles/_globalVars.scss';
+
+.button {
+  width: 80%;
+  padding: 2vh 0;
+  background: $color_primary;
+  border-radius: 50px;
+  margin: 0 auto;
+}

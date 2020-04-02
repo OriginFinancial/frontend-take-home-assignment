@@ -8,14 +8,20 @@ body {
   font-family: 'Work Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.origin {
-  width: 100%;
-  background: $color_light;
 
   & * {
     box-sizing: border-box;
+    color: $color_dark_hard;
+  }
+
+  * strong,
+  small {
+    color: inherit;
+  }
+
+  & img,
+  button {
+    user-select: none;
   }
 
   & p,
@@ -30,30 +36,77 @@ body {
   button {
     margin: 0;
     padding: 0;
+    border: 0;
+  }
+
+  & label {
+    user-select: none;
   }
 
   & p {
     font-size: $p;
+    line-height: 1.2em;
   }
   & h1 {
     font-size: calc(#{$p} * 2.5);
     font-weight: normal;
+    line-height: 1.2em;
   }
   & h2 {
     font-size: calc(#{$p} * 2);
     font-weight: 600;
+    line-height: 1.2em;
   }
   & h3 {
     font-size: calc(#{$p} * 1.5);
     font-weight: normal;
+    line-height: 1.2em;
   }
   & h4 {
     font-size: calc(#{$p} * 1.25);
     font-weight: 600;
+    line-height: 1.2em;
   }
   & h5 {
     font-size: calc(#{$p} * 1.13);
     font-weight: 500;
+    line-height: 1.2em;
+  }
+  & input {
+    font-size: calc(#{$p} * 1.25);
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+  }
+
+  & button,
+  a {
+    cursor: pointer;
+  }
+
+  & button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-size: calc(#{$p} * 1.13);
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.04em;
+  }
+}
+
+.origin {
+  width: 100%;
+  background: $color_light;
+
+  & .column {
+    display: flex;
+    flex-flow: column;
+  }
+
+  & .row {
+    display: flex;
+    flex-flow: row;
   }
 }
 

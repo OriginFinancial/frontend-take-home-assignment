@@ -1,0 +1,26 @@
+@import '~/assets/styles/_colors.scss';
+@import '~/assets/styles/_globalVars.scss';
+
+.input {
+  display: flex;
+  flex-direction: column;
+
+  & .innerHolder {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: $border;
+    border-radius: calc(#{$radius} * 2);
+
+    & .icon {
+      flex: 15;
+      text-align: center;
+    }
+
+    & input {
+      flex: 85;
+      width: inherit;
+      letter-spacing: -0.01em;
+    }
+  }
+}

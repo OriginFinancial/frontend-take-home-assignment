@@ -1,45 +1,26 @@
 import * as React from 'react';
+import DatePicker from '../../components/UI/DatePicker/DatePicker';
+import Button from '../../components/UI/Button/Button';
+import Input from '../../components/UI/Input/Input';
 import './savingGoalPlanSimulator.scss';
 
 const SavingGoalPlanSimulator: React.FC = () => {
   const [zz, setZz] = React.useState(1);
   return (
-    <section className={'savingGoalPlanSimulator'}>
+    <section className="savingGoalPlanSimulator">
       <h3>
         Let's plan your <strong>saving goal.</strong>
       </h3>
       {/* CALCULATOR */}
       <div className="goalPlanCalculator">
-        <div className="column">
+        <div className="heading column">
           <img src={require('~/assets/icons/house.svg')} alt="House" />
           <h2>Buy a house</h2>
           <p>Saving goal</p>
         </div>
         <div className="row">
-          {/* INPUT COMPONENT */}
-          <div className="inputComp">
-            <label htmlFor="">Total amount</label>
-            <span className="input">
-              <span>$</span>
-              <input type="number" />
-            </span>
-          </div>
-          {/* INPUT COMPONENT */}
-          <div className="datePickerComp">
-            <label htmlFor="">Reach goal by</label>
-            <span>
-              <button className="back">
-                <img src={require('~/assets/icons/arrow.svg')} />
-              </button>
-              <button className="pickerDisplay">
-                <h4>October</h4>
-                <p>2020</p>
-              </button>
-              <button className="forward">
-                <img src={require('~/assets/icons/arrow.svg')} />
-              </button>
-            </span>
-          </div>
+          <Input />
+          <DatePicker />
         </div>
         {/* PLAN SUMMARY */}
         <div className="planSummary">
@@ -57,8 +38,8 @@ const SavingGoalPlanSimulator: React.FC = () => {
             </p>
           </div>
         </div>
-        {/* BUTTON COMPONENT */}
-        <button>Confirm</button>
+        {/* OBJECTIVE */}
+        <Button />
       </div>
     </section>
   );
