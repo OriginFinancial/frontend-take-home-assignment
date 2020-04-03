@@ -17,6 +17,13 @@
   & .back {
     flex: 20;
     background: $color_light_hard;
+
+    &:disabled {
+      background: $color_light;
+      & img {
+        opacity: 0.3;
+      }
+    }
   }
   & .forward {
     flex: 20;

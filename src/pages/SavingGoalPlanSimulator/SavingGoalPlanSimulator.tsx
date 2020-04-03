@@ -4,8 +4,6 @@ import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import './savingGoalPlanSimulator.scss';
 
-const currentYear = new Date().getFullYear();
-const currentMonth = new Date().toLocaleString('en-US', { month: 'long' });
 const months = [
   'January',
   'February',
@@ -20,9 +18,14 @@ const months = [
   'November',
   'December'
 ];
+const currentYear = new Date().getFullYear(); // 2020
+const currentMonth = new Date().toLocaleString('en-US', { month: 'long' }); // APRIL
+const minMonthGoalPeriod = 1; // 1
+const minStartingMonthIndex = months.indexOf(currentMonth) + minMonthGoalPeriod; // 4
+const minStartingMonth = months[minStartingMonthIndex]; // may
 
 const SavingGoalPlanSimulator: React.FC = () => {
-  const [month, setMonth] = React.useState<string>(currentMonth);
+  const [month, setMonth] = React.useState<string>(minStartingMonth);
   const [year, setYear] = React.useState<number>(currentYear);
   const [disabledMonths, setDisabledMonths] = React.useState<string[]>([]);
 
@@ -35,30 +38,30 @@ const SavingGoalPlanSimulator: React.FC = () => {
         }
       })
     );
-  }, []);
+  }, []); // sets disabled months
 
   const addMonthHandler = (): void => {
     const currMonthIndex = months.indexOf(month);
     month === 'December'
       ? (setMonth('January'), setYear(year + 1))
       : setMonth(months[currMonthIndex + 1]);
-  };
+  }; // pull next month
 
   const subtractMonthHandler = (): void => {
     const currMonthIndex = months.indexOf(month);
-    month === currentMonth && year === currentYear
+    month === minStartingMonth && year === currentYear
       ? null
       : month === 'January'
       ? (setMonth('December'), setYear(year - 1))
       : setMonth(months[currMonthIndex - 1]);
-  };
+  }; // pull previous month
 
   const pickedDateHandler = (pickedMonth: number) => {
     const currMonthIndex = months.indexOf(currentMonth);
     pickedMonth <= currMonthIndex && year === currentYear
       ? null
       : setMonth(months[pickedMonth]);
-  };
+  }; // set picked date by datepicker ul
 
   return (
     <section className="savingGoalPlanSimulator">
@@ -81,12 +84,19 @@ const SavingGoalPlanSimulator: React.FC = () => {
             currentMonth={currentMonth}
             currentYear={currentYear}
             disableds={disabledMonths}
+            minStart={minStartingMonth}
             subtractMonth={() => subtractMonthHandler()}
             addMonth={() => addMonthHandler()}
             previousYear={() =>
               setYear(year === currentYear ? currentYear : year - 1)
             }
             nextYear={() => setYear(year + 1)}
+            validateYear={() =>
+              months.indexOf(month) < minStartingMonthIndex &&
+              year === currentYear
+                ? setYear(year + 1)
+                : null
+            }
             pickedDate={pickedMonth => pickedDateHandler(pickedMonth)}
           />
         </div>

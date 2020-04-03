@@ -8,34 +8,59 @@ interface Props {
   currentYear: number;
   disableds: string[];
   months: string[];
+  minStart: string;
   subtractMonth: () => void;
   addMonth: () => void;
-  previousYear?: () => void;
-  nextYear?: () => void;
+  previousYear: () => void;
+  nextYear: () => void;
+  validateYear: () => void;
   pickedDate: (monthIndex: number) => number | void;
 }
 
 const DatePicker: React.FC<Props> = props => {
   const [picker, setPicker] = React.useState(false);
 
-  const pickDateHandler = (monthIndex: number) => {
-    setPicker(false);
-    props.pickedDate(monthIndex);
+  const pickDateHandler = (pickState: boolean) => {
+    setPicker(pickState);
+    props.validateYear();
   };
 
   const buttonHandler = (type: string) => {
     type === 'previous' ? props.subtractMonth() : props.addMonth();
   };
 
+  const handleKeyPress = (event: object) => {
+    if (event.key === 'ArrowLeft') {
+      buttonHandler('previous');
+    }
+    if (event.key === 'ArrowRight') {
+      buttonHandler('next');
+    }
+  };
+
   return (
-    <div className="datePicker" onFocus={() => setPicker(true)}>
+    <div className="datePicker">
       <label>Reach goal by</label>
       {/* DISPLAY */}
       <span className="innerHolder">
-        <button className="back" onClick={() => buttonHandler('previous')}>
+        <button
+          className="back"
+          disabled={
+            props.currentYear === props.stateYear &&
+            props.minStart === props.stateMonth
+              ? true
+              : false
+          }
+          onClick={() => buttonHandler('previous')}
+          onKeyDown={() => handleKeyPress(event)}
+        >
           <img src={require('~/assets/icons/arrow.svg')} />
         </button>
-        <button className="pickerDisplay" onClick={() => setPicker(!picker)}>
+        <button
+          className="pickerDisplay"
+          onClick={() => pickDateHandler(!picker)}
+          onKeyDown={() => handleKeyPress(event)}
+        >
           <p>
             {props.stateMonth}
             <small>
@@ -44,19 +69,23 @@ const DatePicker: React.FC<Props> = props => {
             </small>
           </p>
         </button>
-        <button className="forward" onClick={() => buttonHandler('next')}>
+        <button
+          className="forward"
+          onClick={() => buttonHandler('next')}
+          onKeyDown={() => handleKeyPress(event)}
+        >
           <img src={require('~/assets/icons/arrow.svg')} />
         </button>
         {/* PICKER */}
         {picker ? (
-          <div className="picker" onMouseLeave={() => setPicker(false)}>
+          <div className="picker" onMouseLeave={() => pickDateHandler(false)}>
             <div className="row">
               <button className="back" onClick={props.previousYear}>
                 <img src={require('~/assets/icons/arrow.svg')} />
               </button>
               <button
                 className="pickerDisplay"
-                onClick={() => setPicker(!picker)}
+                onClick={() => pickDateHandler(!picker)}
               >
                 <p> {props.stateYear} </p>
               </button>
@@ -68,7 +97,9 @@ const DatePicker: React.FC<Props> = props => {
               {props.months.map((m, indx) => (
                 <li
                   key={indx}
-                  onClick={() => (props.pickedDate(indx), setPicker(false))}
+                  onClick={() => (
+                    props.pickedDate(indx), pickDateHandler(false)
+                  )}
                   className={
                     props.disableds.includes(m) &&
                     props.stateYear === props.currentYear
