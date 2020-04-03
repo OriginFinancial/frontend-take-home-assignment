@@ -1,4 +1,5 @@
 import * as React from 'react';
+import moment from 'moment';
 import DatePicker from '../../components/UI/DatePicker/DatePicker';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
@@ -28,9 +29,11 @@ const SavingGoalPlanSimulator: React.FC = () => {
   const [month, setMonth] = React.useState<string>(minStartingMonth);
   const [year, setYear] = React.useState<number>(currentYear);
   const [disabledMonths, setDisabledMonths] = React.useState<string[]>([]);
+  const [deposits, setDeposits] = React.useState<number>(minMonthGoalPeriod);
+  const [value, setValue] = React.useState<number>(0);
+  const [installment, setInstallment] = React.useState<number>(0);
 
   React.useEffect(() => {
-    // console.log(months.indexOf(month));
     setDisabledMonths(
       months.filter((e, index) => {
         if (index < months.indexOf(month)) {
@@ -39,6 +42,21 @@ const SavingGoalPlanSimulator: React.FC = () => {
       })
     );
   }, []); // sets disabled months
+
+  React.useEffect(() => {
+    setDeposits(
+      moment([year, months.indexOf(month), 1]).diff(
+        moment([currentYear, months.indexOf(currentMonth), 1]),
+        'months',
+        true
+      )
+    );
+    setInstallment(value / deposits);
+    return () => {
+      setDeposits(minMonthGoalPeriod);
+      setInstallment(0);
+    };
+  }, [month, year, value, deposits]);
 
   const addMonthHandler = (): void => {
     const currMonthIndex = months.indexOf(month);
@@ -76,7 +94,11 @@ const SavingGoalPlanSimulator: React.FC = () => {
           <p>Saving goal</p>
         </div>
         <div className="row">
-          <Input />
+          <Input
+            onChange={e => setValue(e.target.value)}
+            type="number"
+            initialValue={value}
+          />
           <DatePicker
             months={months}
             stateMonth={month}
@@ -105,15 +127,34 @@ const SavingGoalPlanSimulator: React.FC = () => {
           <div className="row">
             <h5>Monthly amount</h5>
             <h1>
-              $<strong>521</strong>
+              $
+              <strong>
+                {new Intl.NumberFormat('en-US', {
+                  useGrouping: true,
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                }).format(installment)}
+              </strong>
             </h1>
           </div>
           <div className="row">
             <p>
               <small>
-                You're planning <strong>48 monthly deposits</strong> to reach
-                your <strong>$25,000</strong> goal by
-                <strong> October 2020</strong>.
+                You're planning <strong>{deposits} monthly deposits</strong> to
+                reach your{' '}
+                <strong>
+                  $
+                  {new Intl.NumberFormat('en-US', {
+                    useGrouping: true,
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  }).format(value)}
+                </strong>{' '}
+                goal by
+                <strong>
+                  {` ${month}`} {year}
+                </strong>
+                .
               </small>
             </p>
           </div>
