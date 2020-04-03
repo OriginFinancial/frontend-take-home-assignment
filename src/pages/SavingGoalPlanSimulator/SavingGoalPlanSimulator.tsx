@@ -30,7 +30,7 @@ const SavingGoalPlanSimulator: React.FC = () => {
   const [year, setYear] = React.useState<number>(currentYear);
   const [disabledMonths, setDisabledMonths] = React.useState<string[]>([]);
   const [deposits, setDeposits] = React.useState<number>(minMonthGoalPeriod);
-  const [value, setValue] = React.useState<number>(0);
+  const [value, setValue] = React.useState<number | string>(0);
   const [installment, setInstallment] = React.useState<number>(0);
 
   React.useEffect(() => {
@@ -138,25 +138,31 @@ const SavingGoalPlanSimulator: React.FC = () => {
             </h1>
           </div>
           <div className="row">
-            <p>
-              <small>
-                You're planning <strong>{deposits} monthly deposits</strong> to
-                reach your{' '}
-                <strong>
-                  $
-                  {new Intl.NumberFormat('en-US', {
-                    useGrouping: true,
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                  }).format(value)}
-                </strong>{' '}
-                goal by
-                <strong>
-                  {` ${month}`} {year}
-                </strong>
-                .
-              </small>
-            </p>
+            {value === 0 || value === '' ? (
+              <p style={{ margin: '0 auto', lineHeight: '2.4em' }}>
+                <small>Insert total amount and choose a date.</small>
+              </p>
+            ) : (
+              <p>
+                <small>
+                  You're planning <strong>{deposits} monthly deposits</strong>{' '}
+                  to reach your{' '}
+                  <strong>
+                    $
+                    {new Intl.NumberFormat('en-US', {
+                      useGrouping: true,
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    }).format(value)}
+                  </strong>{' '}
+                  goal by
+                  <strong>
+                    {` ${month}`} {year}
+                  </strong>
+                  .
+                </small>
+              </p>
+            )}
           </div>
         </div>
         {/* OBJECTIVE */}

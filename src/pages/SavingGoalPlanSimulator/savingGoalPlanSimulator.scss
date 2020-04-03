@@ -3,6 +3,7 @@
 
 .savingGoalPlanSimulator {
   max-width: calc((#{$space} * 1.35) + 150px);
+  min-width: calc((#{$space} * 1.35) + 150px);
 
   & h3 {
     text-align: center;
