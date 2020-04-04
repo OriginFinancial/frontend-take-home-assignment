@@ -30,7 +30,7 @@ const SavingGoalPlanSimulator: React.FC = () => {
   const [year, setYear] = React.useState<number>(currentYear);
   const [disabledMonths, setDisabledMonths] = React.useState<string[]>([]);
   const [deposits, setDeposits] = React.useState<number>(minMonthGoalPeriod);
-  const [value, setValue] = React.useState<number | string>(0);
+  const [value, setValue] = React.useState<number>(0);
   const [installment, setInstallment] = React.useState<number>(0);
 
   React.useEffect(() => {
@@ -95,8 +95,9 @@ const SavingGoalPlanSimulator: React.FC = () => {
         </div>
         <div className="row">
           <Input
-            onChange={e => setValue(e.target.value)}
+            valueSetter={e => setValue(e)}
             type="number"
+            autofocus={true}
             initialValue={value}
           />
           <DatePicker

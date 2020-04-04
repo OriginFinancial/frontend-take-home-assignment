@@ -64,18 +64,19 @@
 
         & h5 {
           font-weight: 500;
+          letter-spacing: -0.02em;
         }
 
         & h1 {
           color: $color_primary_soft;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.04em;
         }
       }
 
       & :nth-child(2).row {
         padding: 2vh $base_padding_hor;
         background: $color_light;
-        border-radius: 0 0 $border $border;
+        border-radius: 0 0 calc(#{$radius} * 2) calc(#{$radius} * 2);
       }
     }
   }
