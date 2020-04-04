@@ -7,7 +7,7 @@
 
   & h3 {
     text-align: center;
-    padding: 0 0 4vh 0;
+    padding: 4vh 0 4vh 0;
     color: $color_primary;
   }
 
@@ -16,6 +16,7 @@
     border-radius: calc(#{$radius} * 4);
     border: $border;
     padding: $base_padding_hor;
+    margin-bottom: 4vh;
 
     & .column,
     .row {
@@ -62,6 +63,10 @@
         justify-content: space-between;
         padding: 3.6vh $base_padding_hor;
 
+        & .monthlyMobile {
+          display: none;
+        }
+
         & h5 {
           font-weight: 500;
           letter-spacing: -0.02em;
@@ -77,6 +82,139 @@
         padding: 2vh $base_padding_hor;
         background: $color_light;
         border-radius: 0 0 calc(#{$radius} * 2) calc(#{$radius} * 2);
+      }
+    }
+  }
+}
+
+@media all and (min-width: 280px) and (max-width: 679px) and (orientation: portrait) {
+  .savingGoalPlanSimulator {
+    z-index: 1;
+    max-width: 100%;
+    min-width: 100%;
+    // align-self: flex-end;
+
+    & h3 {
+      padding: 2.5vh 10vw 2.5vh;
+    }
+
+    & .goalPlanCalculator {
+      border: 0px;
+      padding: $base_padding_hor_mobile;
+      border-radius: calc(#{$radius} * 8) calc(#{$radius} * 8) 0 0;
+      margin-bottom: 0;
+      box-shadow: 0 -1vh 1vh rgba(black, 0.02);
+
+      & .heading {
+        align-items: flex-start;
+        margin-bottom: 3.5vh;
+      }
+
+      & :nth-child(2).row {
+        & .input {
+          width: 100%;
+          margin-bottom: 2vh;
+        }
+        & .datePicker {
+          width: 100%;
+        }
+      }
+
+      & .planSummary {
+        margin: 3vh 0;
+
+        & :nth-child(1).row {
+          padding: 2vh $base_padding_hor_mobile;
+
+          & .monthly {
+            display: none;
+          }
+
+          & .monthlyMobile {
+            display: block;
+          }
+        }
+
+        & :nth-child(2).row {
+          padding: 2vh $base_padding_hor_mobile;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-height: 280px) and (max-height: 679px) and (orientation: landscape) {
+  .savingGoalPlanSimulator {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+    padding: 0 0 0 calc(#{$base_padding_hor} * 2);
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+
+    & h3 {
+      flex: 25;
+      font-size: calc(#{$p} * 2.5);
+      line-height: 1em;
+      padding: 5vw 0 0;
+      padding-right: 5vw;
+      text-align: left;
+    }
+
+    & .goalPlanCalculator {
+      flex: 75;
+      border: 0px;
+      padding: 5vw $base_padding_hor_mobile;
+      padding-bottom: 10vw;
+      border-radius: 0;
+      margin-bottom: 0;
+      box-shadow: 0 -1vh 1vh rgba(black, 0.02);
+      max-height: calc((100vh - (#{$logo_height} + 4vh)));
+      overflow: overlay;
+
+      & .heading {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 3.5vh;
+
+        & img {
+          margin-right: 2vw;
+        }
+
+        & p {
+          display: none;
+        }
+      }
+
+      & :nth-child(2).row {
+        & .input {
+          // width: 100%;
+          margin-bottom: 2vh;
+        }
+        & .datePicker {
+          // width: 100%;
+        }
+      }
+
+      & .planSummary {
+        margin: 3vh 0;
+
+        & :nth-child(1).row {
+          padding: 2vh $base_padding_hor_mobile;
+
+          & .monthly {
+            display: none;
+          }
+
+          & .monthlyMobile {
+            display: block;
+          }
+        }
+
+        & :nth-child(2).row {
+          padding: 2vh $base_padding_hor_mobile;
+        }
       }
     }
   }

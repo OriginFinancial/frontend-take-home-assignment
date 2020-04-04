@@ -4,7 +4,9 @@ import './header.scss';
 const Header: React.FC = () => {
   return (
     <header className="mainHeader">
-      <img src={require('~/assets/images/logoPrimary.svg')} alt="Origin" />
+      <a href="/">
+        <img src={require('~/assets/images/logoPrimary.svg')} alt="Origin" />
+      </a>
     </header>
   );
 };

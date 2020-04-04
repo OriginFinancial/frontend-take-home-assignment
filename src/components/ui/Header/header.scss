@@ -7,8 +7,21 @@
   width: 100%;
   background-color: $color_light_soft;
   padding: 2.5vh $base_padding_hor 1.5vh;
+  z-index: 10;
 
   & img {
     height: $logo_height;
+  }
+}
+
+@media all and (min-height: 280px) and (max-height: 679px) {
+  .mainHeader {
+    box-shadow: 0 2vh 10vh rgba(black, 0.1);
+  }
+}
+
+@media all and (min-height: 280px) and (max-height: 679px) and (orientation: landscape) {
+  .mainHeader {
+    padding: 2.5vh calc(#{$base_padding_hor} * 2) 1.5vh;
   }
 }

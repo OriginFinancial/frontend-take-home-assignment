@@ -4,11 +4,11 @@ import Wrapper from './components/Wrapper/Wrapper';
 import './assets/styles/app.scss';
 
 const App: React.FunctionComponent = () => {
-  const [colorTheme, setColorTheme] = React.useState('light');
   return (
-    <div className={'origin ' + colorTheme}>
+    <div className="origin" data-theme="light">
       <Wrapper>
         <SavingGoalPlanSimulator />
+        <div className="endMobile"></div>
       </Wrapper>
     </div>
   );

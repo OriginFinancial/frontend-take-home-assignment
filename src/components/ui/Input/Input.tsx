@@ -4,9 +4,7 @@ import './input.scss';
 
 interface Props {
   type?: string;
-  initialValue?: number;
-  autofocus?: boolean;
-  valueSetter?: () => void;
+  valueSetter: () => number;
 }
 
 const Input: React.FC<Props> = props => {
@@ -24,15 +22,17 @@ const Input: React.FC<Props> = props => {
       <span className="innerHolder">
         <span className="icon">$</span>
         <CurrencyInput
-          decimalSeparator="."
-          thousandSeparator=","
-          onChangeEvent={(event, maskedValue, floatValue) => (
-            props.valueSetter(floatValue), setValue(floatValue)
-          )}
+          onChangeEvent={(
+            event: object,
+            maskedValue: string,
+            floatValue: number
+          ) => (props.valueSetter(floatValue), setValue(floatValue))}
           ref={refInput}
           maxLength="11"
           value={value}
           size="9"
+          decimalSeparator="."
+          thousandSeparator=","
           selectAllOnFocus
           autoFocus
         />
