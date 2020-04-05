@@ -142,7 +142,10 @@ const SavingGoalPlanSimulator: React.FC = () => {
             ) : (
               <p>
                 <small>
-                  You're planning <strong>{deposits} monthly deposits</strong>{' '}
+                  You're planning{' '}
+                  <strong>
+                    {deposits} {deposits <= 1 ? 'deposit' : 'monthly deposites'}
+                  </strong>{' '}
                   to reach your <strong>${formatter.format(value)}</strong> goal
                   by
                   <strong>
