@@ -11,6 +11,13 @@
 
     & img {
       width: calc(((#{$space} / 35) + 7px) * 0.5);
+      transition: all 0.2s ease-out;
+    }
+
+    &:active {
+      & img {
+        transform: scale(0.8);
+      }
     }
   }
 

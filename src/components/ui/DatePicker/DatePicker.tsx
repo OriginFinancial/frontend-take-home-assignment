@@ -22,7 +22,7 @@ interface Event {
 }
 
 const DatePicker: React.FC<Props> = props => {
-  const [picker, setPicker] = React.useState(false);
+  const [picker, setPicker] = React.useState<boolean>(false);
 
   const pickDateHandler = (pickState: boolean) => {
     setPicker(pickState);

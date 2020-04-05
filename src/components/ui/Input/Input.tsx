@@ -9,7 +9,7 @@ interface Props {
 
 const Input: React.FC<Props> = props => {
   const [value, setValue] = React.useState<string>('0');
-  const refInput = React.useRef<object>();
+  const refInput = React.useRef<HTMLInputElement>(null);
 
   const sendHandler = floatValue => {
     props.valueSetter(value);

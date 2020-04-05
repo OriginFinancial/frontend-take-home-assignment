@@ -25,6 +25,8 @@
       color: $color_dark;
       height: 100%;
       border-right: 1px solid $color_light_hard;
+      animation: icon 60s ease-in-out;
+      animation-iteration-count: infinite;
     }
 
     & input {
@@ -48,6 +50,24 @@
         margin: 0;
       }
     }
+  }
+}
+
+@keyframes icon {
+  99% {
+    font-size: calc(((#{$space} / 35) + 7px) * 1.25);
+  }
+  99.25% {
+    font-size: calc(((#{$space} / 35) + 7px) * 1);
+  }
+  99.5% {
+    font-size: calc(((#{$space} / 35) + 7px) * 1.15);
+  }
+  99.75% {
+    font-size: calc(((#{$space} / 35) + 7px) * 1);
+  }
+  100% {
+    font-size: calc(((#{$space} / 35) + 7px) * 1.25);
   }
 }
 
