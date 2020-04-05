@@ -4,17 +4,12 @@ import './input.scss';
 
 interface Props {
   type?: string;
-  valueSetter: () => number;
+  valueSetter: (floatValue: number) => number | void;
 }
 
 const Input: React.FC<Props> = props => {
-  const [value, setValue] = React.useState<string>('0');
+  const [value, setValue] = React.useState<number>(0);
   const refInput = React.useRef<HTMLInputElement>(null);
-
-  const sendHandler = floatValue => {
-    props.valueSetter(value);
-    setValue(floatValue);
-  };
 
   return (
     <label className="input">

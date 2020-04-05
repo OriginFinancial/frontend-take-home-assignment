@@ -101,7 +101,7 @@ const SavingGoalPlanSimulator: React.FC = () => {
           <p>Saving goal</p>
         </div>
         <div className="row">
-          <Input valueSetter={(e: number) => setValue(e)} type="number" />
+          <Input valueSetter={e => setValue(e)} type="number" />
           <DatePicker
             months={months}
             stateMonth={month}
