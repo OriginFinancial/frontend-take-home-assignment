@@ -22,6 +22,7 @@ We expect you to:
 1. Develop the page as close as possible to the mockups, both on mobile & desktop.
 2. Implement business rules.
 3. Test the codebase.
+4. Create an organized structure of files. Make things reusable as much as possible.
 
 ### Assets
 
