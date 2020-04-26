@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { GlobalStyle } from './styles/global';
 
 const App: React.FunctionComponent = () => {
-  return <div>Origin Frontend Take Home</div>;
+  return (
+    <>
+      <GlobalStyle />
+    </>
+  );
 };
 
 export default App;
