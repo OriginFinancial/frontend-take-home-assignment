@@ -8,8 +8,8 @@ interface DateInputProps {
   className?: string;
   month: number;
   year: number;
-  setMonth: () => void;
-  setYear: () => void;
+  setMonth: (value: number) => void;
+  setYear: (value: number) => void;
 }
 
 const StyledContainer = styled.div`
@@ -74,7 +74,7 @@ const DateInput: React.FC<DateInputProps> = ({
   );
 
   React.useEffect(() => {
-    const handleKeyDown = (e: React.KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       /* keycode for ->  39 */
       if (e.keyCode === 39) {
         handleChange(Side.right);
@@ -84,9 +84,9 @@ const DateInput: React.FC<DateInputProps> = ({
         handleChange(Side.left);
       }
     };
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', event => handleKeyDown(event));
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('keydown', event => handleKeyDown(event));
     };
   }, [handleChange, isCurrentDate]);
 

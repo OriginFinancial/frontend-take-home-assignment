@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 `;
 
 interface Props {
-  onClick: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent) => void;
   className?: string;
 }
 

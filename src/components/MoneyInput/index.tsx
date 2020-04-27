@@ -32,6 +32,7 @@ const StyledInput = styled.input`
 interface Props {
   className?: string;
   onChange?: (value: number) => void;
+  value?: number;
 }
 
 const MoneyInput: React.FC<Props> = ({ className, onChange, value }) => (
@@ -40,7 +41,7 @@ const MoneyInput: React.FC<Props> = ({ className, onChange, value }) => (
     <StyledInput
       type="text"
       onChange={e => {
-        onChange(e.target.value.replace(/\D/gi, ''));
+        onChange(Number(e.target.value.replace(/\D/gi, '')));
       }}
       value={toCurrency(value)}
     />

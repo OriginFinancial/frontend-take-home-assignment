@@ -76,13 +76,16 @@ interface SavingCardProps {
   iconSrc: string;
   iconAlt: string;
   title: string;
+  className?: string;
+  handleSubmit?: (e: React.MouseEvent) => void;
 }
 
 const SavingCard: React.FC<SavingCardProps> = ({
   iconSrc,
   iconAlt,
   title,
-  className
+  className,
+  handleSubmit
 }) => {
   const [moneyValue, setMoneyValue] = React.useState(25000);
   const today = new Date();
@@ -91,7 +94,7 @@ const SavingCard: React.FC<SavingCardProps> = ({
 
   const monthsToPay = monthsDiffFromToday(year, month);
   const monthlyPayment =
-    monthsToPay === 0 ? null : (moneyValue / monthsToPay).toFixed(0);
+    monthsToPay === 0 ? null : Number((moneyValue / monthsToPay).toFixed(0));
 
   return (
     <StyledCard className={className}>
@@ -125,7 +128,7 @@ const SavingCard: React.FC<SavingCardProps> = ({
           {months[month]} {year}.
         </strong>
       </StyledSummary>
-      <StyledButton>Confirm</StyledButton>
+      <StyledButton onClick={handleSubmit}>Confirm</StyledButton>
     </StyledCard>
   );
 };
