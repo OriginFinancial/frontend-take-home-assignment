@@ -53,7 +53,13 @@ const StyledButton = styled(Button)`
 
   ${media.desktop} {
     margin-top: 3.1rem;
+    align-self: center;
   }
+`;
+
+const StyledCard = styled(Card)`
+  display: flex;
+  flex-direction: column;
 `;
 
 interface SavingCardProps {
@@ -62,7 +68,12 @@ interface SavingCardProps {
   title: string;
 }
 
-const SavingCard: React.FC<SavingCardProps> = ({ iconSrc, iconAlt, title }) => {
+const SavingCard: React.FC<SavingCardProps> = ({
+  iconSrc,
+  iconAlt,
+  title,
+  className
+}) => {
   const [moneyValue, setMoneyValue] = React.useState(25000);
   const today = new Date();
   const [month, setMonth] = React.useState(today.getMonth());
@@ -73,7 +84,7 @@ const SavingCard: React.FC<SavingCardProps> = ({ iconSrc, iconAlt, title }) => {
     monthsToPay === 0 ? null : (moneyValue / monthsToPay).toFixed(0);
 
   return (
-    <Card>
+    <StyledCard className={className}>
       <CardIcon src={iconSrc} alt={iconAlt} />
       <StyledCardTitle>{title}</StyledCardTitle>
       <StyledCardSubtitle>Saving goal</StyledCardSubtitle>
@@ -103,7 +114,7 @@ const SavingCard: React.FC<SavingCardProps> = ({ iconSrc, iconAlt, title }) => {
         </strong>
       </StyledSummary>
       <StyledButton>Confirm</StyledButton>
-    </Card>
+    </StyledCard>
   );
 };
 
