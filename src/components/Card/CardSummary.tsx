@@ -57,6 +57,10 @@ const StyledChildrenContainer = styled.div`
   & > strong {
     font-weight: 600;
   }
+
+  ${media.desktop} {
+    padding: 1.6rem 3.2rem 1.8rem;
+  }
 `;
 
 const CardSummary: React.FC<CardSummaryProps> = ({
