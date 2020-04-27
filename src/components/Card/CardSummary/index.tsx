@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toCurrency } from '../MoneyInput/utils';
-import { media } from '../../styles/mediaQueries';
+import { toCurrency } from '../../MoneyInput/utils';
+import { media } from '../../../styles/mediaQueries';
 
 interface CardSummaryProps {
   value: number;
