@@ -22,6 +22,10 @@ const StyledSummaryValueContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${media.desktop} {
+    margin: 1.6rem 3.2rem 1.8rem;
+  }
 `;
 
 const StyledSummaryValueLabel = styled.span`
