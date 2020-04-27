@@ -32,6 +32,7 @@ body {
 	line-height: 1;
   font-family: 'Work Sans', sans-serif;
 	font-size: 1.6rem; /* resets default font-size to 16px (and scales what user defines in browser settings) */
+  color: #1C1E1F;
 }
 ol, ul {
 	list-style: none;
