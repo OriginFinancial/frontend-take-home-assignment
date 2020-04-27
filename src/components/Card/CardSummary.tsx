@@ -24,7 +24,7 @@ const StyledSummaryValueContainer = styled.div`
   justify-content: space-between;
 
   ${media.desktop} {
-    margin: 1.6rem 3.2rem 1.8rem;
+    margin: 3.6rem 3.2rem 3.4rem;
   }
 `;
 
@@ -45,8 +45,13 @@ const StyledSummaryValue = styled.span`
   line-height: 1.23;
   letter-spacing: -0.02;
   color: #0079ff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 2rem;
 
   ${media.desktop} {
+    margin-left: 4rem;
     font-size: 4rem;
     line-height: 0.8;
   }

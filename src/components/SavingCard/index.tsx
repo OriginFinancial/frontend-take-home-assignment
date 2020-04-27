@@ -115,7 +115,9 @@ const SavingCard: React.FC<SavingCardProps> = ({
       </StyledInputsContainer>
       <StyledSummary value={monthlyPayment}>
         {`You’re planning `}
-        <strong>{monthsToPay} monthly deposits</strong>
+        <strong>
+          {monthsToPay} monthly {monthsToPay === 1 ? 'deposit' : 'deposits'}
+        </strong>
         {` to reach your `}
         <strong>{toCurrency(moneyValue, false)}</strong>
         {` goal by `}
