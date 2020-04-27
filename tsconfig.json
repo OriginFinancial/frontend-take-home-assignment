@@ -9,7 +9,7 @@
     "allowJs": true,
     "checkJs": false,
     "esModuleInterop": true,
-    "types": ["react"]
+    "types": ["react", "jest"]
   },
   "include": ["./src/**/*", "./custom.d.ts"]
 }
