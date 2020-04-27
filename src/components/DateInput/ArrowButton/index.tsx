@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import arrowSVG from '../../icons/arrow.svg';
-import { Side } from './utils';
+import arrowSVG from '../../../icons/arrow.svg';
+import { Side } from '../utils';
 
 interface ButtonProps {
   side: Side;
@@ -34,7 +34,11 @@ const StyledArrow = styled.img`
 `;
 
 const ArrowButton: React.FC<ButtonProps> = ({ side, onClick, disabled }) => {
-  const handleClickCb = React.useCallback(() => onClick(side), [side, onClick]);
+  const handleClickCb = React.useCallback(() => {
+    if (!disabled) {
+      onClick(side);
+    }
+  }, [side, onClick, disabled]);
   return (
     <StyledButton onClick={handleClickCb} side={side} disabled={disabled}>
       <StyledArrow src={arrowSVG} alt="Arrow pointing to the left" />
