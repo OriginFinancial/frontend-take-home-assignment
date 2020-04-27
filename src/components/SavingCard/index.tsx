@@ -34,6 +34,7 @@ const StyledInputsContainer = styled.div`
 
   ${media.desktop} {
     display: flex;
+    justify-content: space-between;
     margin-top: 4rem;
   }
 `;
@@ -41,6 +42,15 @@ const StyledInputsContainer = styled.div`
 const StyledDateInputContainer = styled.div`
   ${media.mobile} {
     margin-top: 1.6rem;
+  }
+  ${media.desktop} {
+    width: calc(50% - 0.85rem);
+  }
+`;
+
+const StyleMoneyInputContainer = styled.div`
+  ${media.desktop} {
+    width: calc(50% - 0.85rem);
   }
 `;
 
@@ -89,10 +99,10 @@ const SavingCard: React.FC<SavingCardProps> = ({
       <StyledCardTitle>{title}</StyledCardTitle>
       <StyledCardSubtitle>Saving goal</StyledCardSubtitle>
       <StyledInputsContainer>
-        <div>
+        <StyleMoneyInputContainer>
           <StyledInputTitle>Total amount</StyledInputTitle>
           <MoneyInput value={moneyValue} onChange={setMoneyValue} />
-        </div>
+        </StyleMoneyInputContainer>
         <StyledDateInputContainer>
           <StyledInputTitle>Reach goal by</StyledInputTitle>
           <DateInput
