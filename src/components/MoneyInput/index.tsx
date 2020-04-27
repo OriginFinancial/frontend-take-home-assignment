@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { toCurrency } from './utils';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -30,13 +31,19 @@ const StyledInput = styled.input`
 
 interface Props {
   className?: string;
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (value: number) => void;
 }
 
-const MoneyInput: React.FC<Props> = ({ className, onChange }) => (
+const MoneyInput: React.FC<Props> = ({ className, onChange, value }) => (
   <StyledContainer className={className}>
     <StyledLabel>$</StyledLabel>
-    <StyledInput type="number" onChange={onChange} />
+    <StyledInput
+      type="text"
+      onChange={e => {
+        onChange(e.target.value.replace(/\D/gi, ''));
+      }}
+      value={toCurrency(value)}
+    />
   </StyledContainer>
 );
 
