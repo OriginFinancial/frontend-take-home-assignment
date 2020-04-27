@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { media } from '../../styles/mediaQueries';
 
-const StyledCard = styled.div`
+export default styled.div`
   padding: 2.8rem 2.4rem;
   border-radius: 0.8rem;
   background: #fff;
@@ -13,8 +13,8 @@ const StyledCard = styled.div`
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
+  ${media.desktop} {
+    padding: 4rem 4rem 4.9rem;
+  }
 `;
-
-const Card: React.FC = ({ children }) => <StyledCard>{children}</StyledCard>;
-
-export default Card;
