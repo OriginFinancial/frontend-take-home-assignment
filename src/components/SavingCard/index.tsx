@@ -11,6 +11,7 @@ import CardSummary from '../Card/CardSummary';
 import { media } from '../../styles/mediaQueries';
 import { toCurrency } from '../MoneyInput/utils';
 import { monthsDiffFromToday, months } from '../../utils/date';
+import { getMonthlyPayment } from './utils';
 
 const StyledCardTitle = styled(CardTitle)`
   margin-top: 0.4rem;
@@ -93,8 +94,7 @@ const SavingCard: React.FC<SavingCardProps> = ({
   const [year, setYear] = React.useState(today.getFullYear());
 
   const monthsToPay = monthsDiffFromToday(year, month);
-  const monthlyPayment =
-    monthsToPay === 0 ? null : Number((moneyValue / monthsToPay).toFixed(0));
+  const monthlyPayment = getMonthlyPayment(monthsToPay, moneyValue);
 
   return (
     <StyledCard className={className}>
