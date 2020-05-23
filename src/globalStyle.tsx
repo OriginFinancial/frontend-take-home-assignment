@@ -1,4 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap');
 
 * {
@@ -10,15 +12,9 @@
 
 body {
   background: #F4F8FA;
+  font-family: Work Sans;
 }
 
-p {
-  text-align: center;
-  margin-top: 134px;
-  font-family: Work Sans;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -0.2px;
-  color: #1B31A8;
-}
+`;
+
+export default GlobalStyle;
