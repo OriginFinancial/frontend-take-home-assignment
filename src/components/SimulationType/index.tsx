@@ -6,9 +6,6 @@ const SimulationType = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-// @media (min-width: 1440px) {
-
-}
 `;
 
 const Icon = styled.img`
@@ -22,7 +19,6 @@ const Icon = styled.img`
 `;
 
 const Title = styled.span`
-  font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
@@ -36,8 +32,6 @@ const Title = styled.span`
 `;
 
 const Subtitle = styled.span`
-  font-style: normal;
-  font-weight: normal;
   font-size: 14px;
   line-height: 20px;
   color: #657786;
