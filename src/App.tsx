@@ -2,11 +2,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 import GlobalStyle from './globalStyle';
 import Header from './components/Header';
+import SavingGoalCard from './components/SavingGoalCard';
+
+const PageStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const ParagraphStyle = styled.p`
   text-align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   font-style: normal;
   font-size: 18px;
   letter-spacing: -0.2px;
@@ -20,11 +27,14 @@ const ParagraphStyle = styled.p`
 const App: React.FC = () => {
   return (
     <div>
-      <GlobalStyle />
-      <Header />
-      <ParagraphStyle>
-        Let&apos;s plan your <strong>saving goal</strong>
-      </ParagraphStyle>
+      <PageStyle>
+        <GlobalStyle />
+        <Header />
+        <ParagraphStyle>
+          Let&apos;s plan your <strong>saving goal</strong>
+        </ParagraphStyle>
+        <SavingGoalCard />
+      </PageStyle>
     </div>
   );
 };

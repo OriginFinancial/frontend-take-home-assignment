@@ -1,18 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import logo from '../../icons/logo.svg';
 
 const HeaderStyle = styled.div`
   background: #fff;
-  width: 100%;
+  width: 100vw;
 `;
 
 const LogoStyle = styled.img`
-  width: 20%;
+  width: 65px;
   margin: 16px 29px 10px;
 
   @media (min-width: 1440px) {
-    width: 8%;
+    width: 95px;
   }
 `;
 
