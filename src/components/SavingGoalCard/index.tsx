@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TypeCard from '../SimulationType';
 import Button from '../Button';
 
 const SavingGoalCard = styled.div`
@@ -23,6 +24,7 @@ const SavingGoalCard = styled.div`
 
 const SavingGoalContainer: React.FC = () => (
   <SavingGoalCard>
+    <TypeCard />
     <Button />
   </SavingGoalCard>
 );
