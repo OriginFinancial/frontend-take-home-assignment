@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import { toCurrencyFormat } from './moneyFormat';
-
-const AmountInputContainer = styled.div`
+const DateInputContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -17,7 +15,7 @@ const Label = styled.span`
   margin-bottom: 4px;
 `;
 
-const AmountInputStyle = styled.div`
+const DateInputStyle = styled.div`
   display: flex;
 `;
 
@@ -40,7 +38,7 @@ const Icon = styled.span`
 `;
 
 const InputStyle = styled.input`
-  width: 257px;
+  width: 200px;
   height: 56px;
   background: #ffffff;
   border: 1px solid #e1e8ed;
@@ -58,27 +56,26 @@ const InputStyle = styled.input`
   }
 `;
 
-interface TotalAmount {
-  value?: number;
-  onChange?: (value: number) => void;
+interface Date {
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
-const AmountInput: React.FC<TotalAmount> = ({ onChange, value }) => (
+const DateInput: React.FC<Date> = ({ onChange, value }) => (
 
-  <AmountInputContainer>
-    <Label>Total amount</Label>
-    <AmountInputStyle>
-      <Icon>$</Icon>
+  <DateInputContainer>
+    <Label>Reach goal by</Label>
+    <DateInputStyle>
+      <Icon>X</Icon>
       <InputStyle
-        type="text"
-        onChange={e => {
-          onChange(Number(e.target.value.replace(/\D/gi, '')));
-        }}
+        type="date"
+        onChange={value}
         value={value}
-    {console.log(value)}
+        {console.log(value)}
       />
-    </AmountInputStyle>
-  </AmountInputContainer>
+      <Icon>X</Icon>
+    </DateInputStyle>
+  </DateInputContainer>
 );
 
-export default AmountInput;
+export default DateInput;

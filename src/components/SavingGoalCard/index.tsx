@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SimulationType from '../SimulationType';
 import AmountInput from '../AmountInput';
+import DateInput from '../DateInput';
 import Button from '../Button';
 
 const SavingGoalCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   width: 360px;
   height: 690px;
@@ -23,12 +24,17 @@ const SavingGoalCard = styled.div`
     height: 600px;
 `;
 
-const SavingGoalContainer: React.FC = () => (
-  <SavingGoalCard>
-    <SimulationType />
-    <AmountInput />
-    <Button />
-  </SavingGoalCard>
-);
+const SavingGoalContainer: React.FC = () => {
+  const [totalAmount, setTotalAmount] = React.useState(25000);
+
+  return (
+    <SavingGoalCard>
+      <SimulationType />
+      <AmountInput value={totalAmount} onChange={setTotalAmount} />
+      <DateInput />
+      <Button />
+    </SavingGoalCard>
+  );
+};
 
 export default SavingGoalContainer;
