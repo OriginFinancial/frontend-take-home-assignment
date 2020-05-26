@@ -69,14 +69,21 @@ const AmountInput: React.FC<TotalAmount> = () => {
     setTotalAmount(e.target.value);
   };
 
+  // const toCurrencyFormat = () => {
+  // console.log(
+  //   Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(
+  //     totalAmount
+  //   )
+  // );
+  // };
+
   return (
     <AmountInputContainer>
       <Label>Total amount</Label>
       <AmountInputStyle>
         <Icon>$</Icon>
         <InputStyle
-          type="number"
-          // pattern="/\d/gi"
+          type="text"
           value={totalAmount}
           onChange={handleAmount}
         />
