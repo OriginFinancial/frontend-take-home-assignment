@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import houseShape from '../../icons/houseShape.svg';
 
-const SimulationType = styled.div`
+const TypeCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -42,12 +42,12 @@ const Subtitle = styled.span`
   }
 `;
 
-const TypeCard: React.FC = () => (
-  <SimulationType>
+const SimulationType: React.FC = () => (
+  <TypeCard>
     <Icon src={houseShape} />
     <Title>Buy a house</Title>
     <Subtitle>Saving goal</Subtitle>
-  </SimulationType>
+  </TypeCard>
 );
 
-export default TypeCard;
+export default SimulationType;
