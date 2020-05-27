@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 const DateInputContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,7 +23,7 @@ const DateInputStyle = styled.div`
 `;
 
 const Icon = styled.span`
-  width: 56px;
+  width: 48px;
   height: 56px
   background: #f4f8fa;
   border: 1px solid #e1e8ed;
@@ -38,44 +41,48 @@ const Icon = styled.span`
 `;
 
 const InputStyle = styled.input`
-  width: 200px;
+  width: 216px;
   height: 56px;
   background: #ffffff;
   border: 1px solid #e1e8ed;
   box-sizing: border-box;
 
-  padding-left: 16px;
+  text-align: center;
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 1440px) {
-    width: 176px;
+  @media (min-width: 1024px) {
+    width: 136px;
   }
 `;
 
 interface Date {
-  onChange?: (value: string) => void;
-  value?: string;
+  // onChange?: (value: number) => void;
+  // value?: number;
 }
 
-const DateInput: React.FC<Date> = ({ onChange, value }) => (
+const DateInput: React.FC<Date> = ({ onChange, value }) => {
 
-  <DateInputContainer>
-    <Label>Reach goal by</Label>
-    <DateInputStyle>
-      <Icon>X</Icon>
-      <InputStyle
-        type="date"
-        onChange={value}
-        value={value}
-        {console.log(value)}
-      />
-      <Icon>X</Icon>
-    </DateInputStyle>
-  </DateInputContainer>
-);
+  return (
+    <DateInputContainer>
+      <Label>Reach goal by</Label>
+      <DateInputStyle>
+        <Icon>X</Icon>
+        <DatePicker
+          selected={value}
+          onChange={date => onChange(date)}
+          dateFormat="MMM yyyy"
+          showMonthYearPicker
+          customInput={<InputStyle />}
+          // {console.log(value)}
+        />
+        <Icon>X</Icon>
+      </DateInputStyle>
+    </DateInputContainer>
+  );
+};
 
 export default DateInput;

@@ -6,6 +6,7 @@ const ButtonStyle = styled.button`
   height: 56px;
   background: #1b31a8;
   border-radius: 32px;
+  border: 0;
 
   font-style: normal;
   font-weight: 600;
@@ -14,7 +15,7 @@ const ButtonStyle = styled.button`
   text-align: center;
   color: #ffffff;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1024px) {
     width: 400px;
     height: 56px;
   }

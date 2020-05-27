@@ -53,7 +53,7 @@ const InputStyle = styled.input`
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1024px) {
     width: 176px;
   }
 `;
@@ -75,7 +75,7 @@ const AmountInput: React.FC<TotalAmount> = ({ onChange, value }) => (
           onChange(Number(e.target.value.replace(/\D/gi, '')));
         }}
         value={value}
-    {console.log(value)}
+    // {console.log(value)}
       />
     </AmountInputStyle>
   </AmountInputContainer>
