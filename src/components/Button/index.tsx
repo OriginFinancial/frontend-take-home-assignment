@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonStyle = styled.button`
-  width: 328px;
+  width: 312px;
   height: 56px;
   background: #1b31a8;
   border-radius: 32px;
@@ -15,7 +15,7 @@ const ButtonStyle = styled.button`
   text-align: center;
   color: #ffffff;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 801px) {
     width: 400px;
     height: 56px;
   }

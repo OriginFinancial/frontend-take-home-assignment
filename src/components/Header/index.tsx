@@ -11,7 +11,7 @@ const LogoStyle = styled.img`
   width: 65px;
   margin: 16px 29px 10px;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 801px) {
     width: 95px;
   }
 `;

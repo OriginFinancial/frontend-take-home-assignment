@@ -12,7 +12,7 @@ const Icon = styled.img`
   width: 32px;
   height: 32px;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 801px) {
     width: 40px;
     height: 40px;
   }

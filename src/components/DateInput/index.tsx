@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import DatePicker from 'react-datepicker';
@@ -54,7 +54,7 @@ const InputStyle = styled.input`
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 801px) {
     width: 136px;
   }
 `;
@@ -65,21 +65,21 @@ interface Date {
 }
 
 const DateInput: React.FC<Date> = ({ onChange, value }) => {
-
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
   return (
     <DateInputContainer>
       <Label>Reach goal by</Label>
       <DateInputStyle>
-        <Icon>X</Icon>
+        <Icon />
         <DatePicker
-          selected={value}
-          onChange={date => onChange(date)}
-          dateFormat="MMM yyyy"
-          showMonthYearPicker
-          customInput={<InputStyle />}
-          // {console.log(value)}
+        selected={selectedDate}
+        onChange={date => setSelectedDate(date)}
+        dateFormat="MMM yyyy"
+        showMonthYearPicker
+        customInput={<InputStyle />}
+        {console.log("data final", selectedDate)}
         />
-        <Icon>X</Icon>
+        <Icon />
       </DateInputStyle>
     </DateInputContainer>
   );

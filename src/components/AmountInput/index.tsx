@@ -53,7 +53,7 @@ const InputStyle = styled.input`
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 801px) {
     width: 176px;
   }
 `;
