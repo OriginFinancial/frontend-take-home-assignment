@@ -64,7 +64,6 @@ interface TotalAmount {
 }
 
 const AmountInput: React.FC<TotalAmount> = ({ onChange, value }) => (
-
   <AmountInputContainer>
     <Label>Total amount</Label>
     <AmountInputStyle>
@@ -75,7 +74,6 @@ const AmountInput: React.FC<TotalAmount> = ({ onChange, value }) => (
           onChange(Number(e.target.value.replace(/\D/gi, '')));
         }}
         value={value}
-    // {console.log(value)}
       />
     </AmountInputStyle>
   </AmountInputContainer>

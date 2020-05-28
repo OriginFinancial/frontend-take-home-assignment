@@ -30,6 +30,10 @@ const MonthlyAmount = styled.div`
     color: #0079ff;
     font-weight: 500;
     font-size: 26px;
+
+    @media (min-width: 801px) {
+      font-size: 40px;
+    }
   }
 
   @media (min-width: 801px) {
@@ -48,6 +52,7 @@ const SavingPlaning = styled.p`
   @media (min-width: 801px) {
     width: 478px;
     height: 66px;
+    font-size: 16px;
   }
 `;
 
@@ -56,11 +61,11 @@ const Result: React.FC = () => {
     <ResultContainer>
       <MonthlyAmount>
         <h4>Monthly Amount</h4>
-        <p>$ xxxx</p>
+        <p>$ {}</p>
       </MonthlyAmount>
       <SavingPlaning>
-        You&apos;re planning <strong>xxx monthly deposits</strong> to reach your{' '}
-        <strong> $xxx</strong> goal by <strong>xxx</strong>.
+        You&apos;re planning <strong>{} monthly deposits</strong> to reach your{' '}
+        <strong> ${}</strong> goal by <strong>{}</strong>.
       </SavingPlaning>
     </ResultContainer>
   );
