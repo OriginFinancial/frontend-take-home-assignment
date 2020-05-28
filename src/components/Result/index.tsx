@@ -15,7 +15,7 @@ const ResultContainer = styled.div`
   }
 `;
 
-const MonthlyAmount = styled.div`
+const MonthlyAmountBox = styled.div`
   width: 310px;
   height: 64px;
   display: flex;
@@ -42,7 +42,7 @@ const MonthlyAmount = styled.div`
   }
 `;
 
-const SavingPlaning = styled.p`
+const SavingPlanBox = styled.p`
   width: 310px;
   height: 70px;
   padding: 16px;
@@ -59,14 +59,18 @@ const SavingPlaning = styled.p`
 const Result: React.FC = () => {
   return (
     <ResultContainer>
-      <MonthlyAmount>
+      <MonthlyAmountBox>
         <h4>Monthly Amount</h4>
-        <p>$ {}</p>
-      </MonthlyAmount>
-      <SavingPlaning>
-        You&apos;re planning <strong>{} monthly deposits</strong> to reach your{' '}
-        <strong> ${}</strong> goal by <strong>{}</strong>.
-      </SavingPlaning>
+        <p>${monthlyAmount}</p>
+      </MonthlyAmountBox>
+      <SavingPlanBox>
+        You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
+        reach your <strong> ${totalAmount}</strong> goal by{' '}
+        <strong>
+          {month} {year}
+        </strong>
+        .
+      </SavingPlanBox>
     </ResultContainer>
   );
 };

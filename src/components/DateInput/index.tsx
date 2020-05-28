@@ -61,8 +61,6 @@ const InputStyle = styled.input`
 
 interface Date {
   onChange?: (value: number) => void;
-  // value?: number;
-  // date?: string;
 }
 
 const DateInput: React.FC<Date> = ({ onChange }) => {
@@ -74,7 +72,7 @@ const DateInput: React.FC<Date> = ({ onChange }) => {
         <DatePicker
           selected={new Date()}
           onChange={date => onChange(date)}
-          dateFormat="MMM yyyy"
+          dateFormat="MMMM yyyy"
           showMonthYearPicker
           customInput={<InputStyle />}
         />

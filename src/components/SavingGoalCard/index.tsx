@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { differenceInCalendarMonths, getYear, format } from 'date-fns';
 
 import SimulationType from '../SimulationType';
 import AmountInput from '../AmountInput';
 import DateInput from '../DateInput';
-import Result from '../Result';
 import Button from '../Button';
-
-import { differenceInCalendarMonths, getYear, format } from 'date-fns';
 
 const SavingGoalCard = styled.form`
   display: flex;
@@ -29,7 +27,7 @@ const SavingGoalCard = styled.form`
   }
 `;
 
-const InputFields = styled.div`
+const InputFieldsContainer = styled.div`
 display: flex;
 flex-direction:column;
 justify-content: space-between;
@@ -42,44 +40,96 @@ height: 176px;
   height: 80px;
 `;
 
+const ResultContainer = styled.div`
+  width: 312px;
+  height: 134px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e8ed;
+  border-radius: 4px;
+
+  @media (min-width: 801px) {
+    width: 480px;
+    height: 168px;
+  }
+`;
+
+const MonthlyAmountBox = styled.div`
+  width: 310px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 20px;
+  background: #ffffff;
+  h4 {
+    font-weight: 500;
+  }
+  p {
+    color: #0079ff;
+    font-weight: 500;
+    font-size: 26px;
+
+    @media (min-width: 801px) {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 801px) {
+    width: 478px;
+    height: 102px;
+  }
+`;
+
+const SavingPlanBox = styled.p`
+  width: 310px;
+  height: 70px;
+  padding: 16px;
+  background: #f4f8fa;
+  font-size: 12px;
+
+  @media (min-width: 801px) {
+    width: 478px;
+    height: 66px;
+    font-size: 16px;
+  }
+`;
+
 const ButtonPosition = styled.div`
   width: 100%;
   text-align: center;
 `;
 
 const SavingGoalContainer: React.FC = () => {
-  const [totalAmount, setTotalAmount] = React.useState(25000);
-  // const [initialDate, setInitialDate] = React.useState(new Date());
+  const [totalAmount, setTotalAmount] = useState(25000);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
   const diffMonths = differenceInCalendarMonths(selectedDate, new Date());
+  const monthlyAmount = (totalAmount / diffMonths).toFixed(0);
+  const month = format(selectedDate, 'MMMM');
+  const year = getYear(selectedDate);
 
   return (
     <SavingGoalCard>
       <SimulationType />
-      <InputFields>
+      <InputFieldsContainer>
         <AmountInput value={totalAmount} onChange={setTotalAmount} />
         <DateInput selected={selectedDate} onChange={setSelectedDate} />
-      </InputFields>
-      <Result
-        // monthlyAmount={totalAmount / diffMonths}
-        // totalMonths={diffMonths}
-        // totalAmount={totalAmount}
-        // goalDate={selectedDate}
-      >
-        {/* You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
-        reach your <strong> ${totalAmount}</strong> goal by{' '}
-        <strong>
-          {format(selectedDate, 'MMMM')} {getYear(selectedDate)}
-        </strong>
-        . */}
-      </Result>
-      {console.log(
-        (totalAmount / diffMonths).toFixed(0),
-        diffMonths,
-        totalAmount,
-        selectedDate
-      )}
+      </InputFieldsContainer>
+      <ResultContainer>
+        <MonthlyAmountBox>
+          <h4>Monthly Amount</h4>
+          <p>${monthlyAmount}</p>
+        </MonthlyAmountBox>
+        <SavingPlanBox>
+          You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
+          reach your <strong> ${totalAmount}</strong> goal by{' '}
+          <strong>
+            {month} {year}
+          </strong>
+          .
+        </SavingPlanBox>
+      </ResultContainer>
       <ButtonPosition>
         <Button />
       </ButtonPosition>
