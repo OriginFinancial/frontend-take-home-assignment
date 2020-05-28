@@ -5,6 +5,7 @@ import AmountInput from '../AmountInput';
 import DateInput from '../DateInput';
 import Result from '../Result';
 import Button from '../Button';
+import differenceInCalendarMonths from 'date-fns/differenceInCalendarMonths';
 
 const SavingGoalCard = styled.form`
   display: flex;
@@ -46,7 +47,10 @@ text-align: center;
 
 const SavingGoalContainer: React.FC = () => {
   const [totalAmount, setTotalAmount] = React.useState(25000);
-  const [initialDate, setInitialDate] = React.useState(new Date());
+  // const [initialDate, setInitialDate] = React.useState(new Date());
+
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const diffMonths = differenceInCalendarMonths(selectedDate, new Date());
 
   return (
     <SavingGoalCard>
@@ -55,15 +59,20 @@ const SavingGoalContainer: React.FC = () => {
         <AmountInput 
           value={totalAmount} 
           onChange={setTotalAmount} 
-          {console.log(totalAmount)} 
         />
         <DateInput 
-          selected={initialDate}
-          onChange={setInitialDate}
-          {console.log("inicial", )} 
-        />
+          selected={selectedDate}
+          onChange={setSelectedDate}
+          />
       </InputFields>
-      <Result />
+      <Result
+          monthlyAmount={totalAmount/diffMonths}
+          totalMonths={diffMonths}
+          totalAmount={totalAmount}
+          goalDate={selectedDate} 
+          {console.log(totalAmount/diffMonths, diffMonths, totalAmount, selectedDate)}
+      
+      />
       <ButtonPosition>
         <Button />
       </ButtonPosition>
