@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import differenceInCalendarMonths from 'date-fns/differenceInCalendarMonths';
 
 const DateInputContainer = styled.div`
   display: flex;
@@ -60,12 +61,13 @@ const InputStyle = styled.input`
 `;
 
 interface Date {
-  // onChange?: (value: number) => void;
-  // value?: number;
+  onChange?: (value: number) => void;
+  value?: number;
 }
 
 const DateInput: React.FC<Date> = ({ onChange, value }) => {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const diffMonths = differenceInCalendarMonths(selectedDate, (new Date())); 
   return (
     <DateInputContainer>
       <Label>Reach goal by</Label>
@@ -77,7 +79,7 @@ const DateInput: React.FC<Date> = ({ onChange, value }) => {
         dateFormat="MMM yyyy"
         showMonthYearPicker
         customInput={<InputStyle />}
-        {console.log("data final", selectedDate)}
+        {console.log("diferença de meses", diffMonths)}
         />
         <Icon />
       </DateInputStyle>

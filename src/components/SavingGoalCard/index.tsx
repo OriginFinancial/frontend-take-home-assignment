@@ -59,8 +59,8 @@ const SavingGoalContainer: React.FC = () => {
         />
         <DateInput 
           selected={initialDate}
-          onChange={setInitialDate} 
-          {console.log("inicial", initialDate)} 
+          onChange={setInitialDate}
+          {console.log("inicial", )} 
         />
       </InputFields>
       <Result />
