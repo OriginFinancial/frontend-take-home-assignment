@@ -1,58 +1,77 @@
 import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import CalcContainer from './components/CalcContainer';
+import CalcContainer from './CalcContainer';
 import logo from './icons/logo.svg';
 
 const App: React.FunctionComponent = () => {
-  const GlobalStyle = createGlobalStyle `
-    * {
+  const GlobalStyle = createGlobalStyle`
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      box-sizing: inherit;
     }
     html {
-      font-size: 62.5%
+      font-size: 62.5%;
+      box-sizing: border-box;
     }
     body {
-      line-height: 1.6;
       background-color: #F2F2F2;
-      font-size: 1.8rem;
-      font-family: Work Sans, sans-serif;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      height: 100%;
+      color: #1C1E1F;
+      font: 400 1.6rem Work Sans, sans-serif;
+      line-height: 1.6;
+      > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+      }
     }
   `;
+
   const Logo = styled.header`
     width: 100%;
-    height: 9%;
-    padding: 1rem 3.7rem;
+    height: 7vw;
+    min-height: 43px;
+    max-height: 56px;
+    padding-left: 2.7%;
     background-color: white;
     display: flex;
     align-items: center;
+    img {
+      min-height: 16px;
+      height: 4vw;
+      max-height: 24px;
+    }
   `;
 
   const Title = styled.h1`
-    color: #1B31A8;
     font-size: 2.4rem;
-    margin-top: 12%;
-    margin-bottom: 5%;
-    span {
-      font-weight: 600;
+    font-weight: unset;
+    color: #1b31a8;
+    margin-top: 38px;
+    margin-bottom: 28px;
+    @media (530px) {
+      font-size: 5.3vw;
+      margin-top: 7%;
+      margin-bottom: 6%;
+    }
+    > span {
+      font-weight: 700;
     }
   `;
 
   return (
     <>
-    <GlobalStyle />
-    <Logo>
-      <img src={logo} alt="Logo"/>
-    </Logo>
-    <Title>
-      Let's plan your <span>saving goal</span>.
-    </Title>
-    <CalcContainer />
+      <GlobalStyle />
+      <Logo>
+        <img src={logo} alt="Logo" />
+      </Logo>
+      <Title>
+        Let’s plan your <span>saving goal</span>.
+      </Title>
+      <CalcContainer />
     </>
   );
 };
