@@ -57,9 +57,6 @@ const App: React.FunctionComponent = () => {
       margin-top: 7%;
       margin-bottom: 6%;
     }
-    > span {
-      font-weight: 700;
-    }
   `;
 
   return (
@@ -69,7 +66,7 @@ const App: React.FunctionComponent = () => {
         <img src={logo} alt="Logo" />
       </Logo>
       <Title>
-        Let’s plan your <span>saving goal</span>.
+        Let’s plan your <b>saving goal</b>.
       </Title>
       <CalcContainer />
     </>
