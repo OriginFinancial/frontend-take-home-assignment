@@ -86,6 +86,8 @@ const Calc: React.FunctionComponent = () => {
     year: '2020'
   });
 
+  const [state, dispatch] = React.useContext(StoreContext);
+
   return (
     <Container>
       <div>

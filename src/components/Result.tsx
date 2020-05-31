@@ -26,7 +26,7 @@ const Result: React.FunctionComponent = () => {
       background-color: #f4f8fa;
       height: 46px;
       font-size: 1.2rem;
-      padding: 4px 36px;
+      padding: 4px 35px;
     }
   `;
 
@@ -39,7 +39,7 @@ const Result: React.FunctionComponent = () => {
         You’re planning <b>48 monthly deposits </b>to reach your <b>$25,000 </b>
         goal by{' '}
         <b>
-          {date.month} {date.year}
+          october 2020
         </b>
         .
       </p>
