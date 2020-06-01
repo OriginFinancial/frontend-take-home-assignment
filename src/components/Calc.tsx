@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import arrowRight from '../icons/arrowRight.svg';
 import arrowLeft from '../icons/arrowLeft.svg';
+import { StoreContext } from '../store/store';
 
 const Calc: React.FunctionComponent = () => {
   const Container = styled.section`
@@ -66,11 +67,6 @@ const Calc: React.FunctionComponent = () => {
     }
   `;
 
-  interface Date {
-    month: string;
-    year: string;
-  }
-
   const currencyMask = (value: string) => {
     return value
       .replace(/(.*){1}/, '$1')
@@ -79,12 +75,6 @@ const Calc: React.FunctionComponent = () => {
       .replace(/^0+(?!\d)(?!$)/, '')
       .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
-
-  const [amount, setAmount] = React.useState('2500000');
-  const [date, setDate] = React.useState<Date>({
-    month: 'October',
-    year: '2020'
-  });
 
   const [state, dispatch] = React.useContext(StoreContext);
 
@@ -96,8 +86,8 @@ const Calc: React.FunctionComponent = () => {
           <span>$</span>
           <InputNumber
             name="Total amount"
-            value={currencyMask(amount)}
-            onChange={e => setAmount(e.target.value)}
+            value={currencyMask(state.amount)}
+            onChange={e => dispatch('AMOUNT', e.target.value)}
             type="text"
             placeholder="0.00"
             maxLength="13"

@@ -18,7 +18,13 @@ const initialState: InitialState = {
   }
 };
 
-export const TodoContext = React.createContext(initialState);
+export const StoreContext = React.createContext<{
+  state: InitialState;
+  dispatch: React.Dispatch<ActionType>;
+}>({
+  state: initialState,
+  dispatch: () => null
+});
 
 export const months: Array<string> = [
   'Janeiro',
@@ -35,7 +41,12 @@ export const months: Array<string> = [
   'Dezembro'
 ];
 
-const reducer = (state, action) => {
+type ActionType =
+  | { type: 'AMOUNT'; payload: string }
+  | { type: 'FORWARD_DATE' }
+  | { type: 'BACKWARD_DATE' };
+
+const reducer = (state: InitialState, action: ActionType) => {
   switch (action.type) {
     case 'AMOUNT':
       return {
@@ -44,21 +55,21 @@ const reducer = (state, action) => {
     case 'FORWARD_DATE':
       return {
         goal: {
-          month: state.month < 11 ? state.month++ : 0,
-          year: state.month++ === 0 ? state.year++ : state.year,
+          month: state.goal.month < 11 ? state.goal.month++ : 0,
+          year: state.goal.month++ === 0 ? state.goal.year++ : state.goal.year,
           period:
-            (state.year - initialState.goal.year) * 12 +
-            Math.abs(state.month - initialState.goal.month)
+            (state.goal.year - initialState.goal.year) * 12 +
+            Math.abs(state.goal.month - initialState.goal.month)
         }
       };
     case 'BACKWARD_DATE':
       return {
         goal: {
-          month: state.month > 0 ? state.month-- : 11,
-          year: state.month-- === 11 ? state.year-- : state.year,
+          month: state.goal.month > 0 ? state.goal.month-- : 11,
+          year: state.goal.month-- === 11 ? state.goal.year-- : state.goal.year,
           period:
-            (state.year - initialState.goal.year) * 12 +
-            Math.abs(state.month - initialState.goal.month)
+            (state.goal.year - initialState.goal.year) * 12 +
+            Math.abs(state.goal.month - initialState.goal.month)
         }
       };
     default:
@@ -66,7 +77,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const StoreContext = props => {
+export const StoreContextProvider: React.FunctionComponent = props => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (

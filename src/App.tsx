@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { StoreContext } from './store/store';
+import { StoreContextProvider } from './store/store';
 import CalcContainer from './CalcContainer';
 import logo from './icons/logo.svg';
 
@@ -69,9 +69,9 @@ const App: React.FunctionComponent = () => {
       <Title>
         Let’s plan your <b>saving goal</b>.
       </Title>
-      <StoreContext>
+      <StoreContextProvider>
         <CalcContainer />
-      </StoreContext>
+      </StoreContextProvider>
     </>
   );
 };
