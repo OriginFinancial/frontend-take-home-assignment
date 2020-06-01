@@ -16,6 +16,10 @@ const Result: React.FunctionComponent = () => {
       align-items: center;
       justify-content: space-between;
       margin: 10px 38px;
+      @media (max-width: 390px) {
+        font-size: 1.6rem;
+        margin: 10px 26px;
+      }
     }
     span {
       font-size: 32px;
@@ -27,6 +31,9 @@ const Result: React.FunctionComponent = () => {
       height: 46px;
       font-size: 1.2rem;
       padding: 4px 35px;
+      @media (max-width: 370px) {
+        padding: 4px 26px;
+      }
     }
   `;
 

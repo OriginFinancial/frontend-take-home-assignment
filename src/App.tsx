@@ -27,6 +27,7 @@ const App: React.FunctionComponent = () => {
         flex-direction: column;
         align-items: center;
         height: 100vh;
+        max-height: 100vh;
       }
     }
   `;
@@ -53,10 +54,13 @@ const App: React.FunctionComponent = () => {
     color: #1b31a8;
     margin-top: 38px;
     margin-bottom: 28px;
-    @media (530px) {
-      font-size: 5.3vw;
+    @media (max-width: 530px) {
+      font-size: 4.5vw;
       margin-top: 7%;
       margin-bottom: 6%;
+    }
+    @media (max-width: 370px) {
+      font-size: 1.8rem;
     }
   `;
 

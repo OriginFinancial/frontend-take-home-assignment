@@ -12,6 +12,11 @@ const Calc: React.FunctionComponent = () => {
     justify-content: space-between;
     margin: 1.1rem 0;
     font-weight: 500;
+    > div {
+      @media (max-width: 380px) {
+        width: 100%;
+      }
+    }
   `;
 
   const Field = styled.div`
@@ -23,6 +28,9 @@ const Calc: React.FunctionComponent = () => {
     border-radius: 4px;
     font-size: 2rem;
     justify-content: space-between;
+    @media (max-width: 380px) {
+      width: 100%;
+    }
     span {
       width: 56px;
       text-align: center;
@@ -39,6 +47,9 @@ const Calc: React.FunctionComponent = () => {
       :hover {
         cursor: pointer;
       }
+      :active {
+        filter: Brightness(0.6);
+      }
     }
   `;
 
@@ -50,6 +61,9 @@ const Calc: React.FunctionComponent = () => {
     font-weight: 600;
     :focus {
       outline: none;
+    }
+    @media (max-width: 380px) {
+      width: 100%;
     }
   `;
 
@@ -64,6 +78,9 @@ const Calc: React.FunctionComponent = () => {
       background-color: white;
       padding: 0;
       margin: -8px 12px;
+      @media (max-width: 370px) {
+        font-size: 1.4rem;
+      }
     }
   `;
 
