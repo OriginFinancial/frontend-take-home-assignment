@@ -68,7 +68,7 @@ const CalcContainer: React.FunctionComponent = () => {
     color: #ffffff;
     font-size: 1.7rem;
     font-weight: 600;
-    @media (max-width: 380px) {
+    @media (max-width: 530px) {
       width: 100%;
     }
   `;
@@ -83,18 +83,7 @@ const CalcContainer: React.FunctionComponent = () => {
   };
 
   const months: Array<string> = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
+    'January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December'
   ];
 
   return (

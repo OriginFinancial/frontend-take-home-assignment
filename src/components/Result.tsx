@@ -1,15 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { StoreContext } from '../store/store';
-
-interface CurrencyMask {
-  (value: string): string;
-}
-
-interface Iprops {
-  currencyMask: CurrencyMask;
-  months: string[];
-}
+import { Iprops } from '../intefaces/interfaces';
 
 const Result: React.FunctionComponent<Iprops> = ({
   currencyMask,
@@ -17,7 +9,6 @@ const Result: React.FunctionComponent<Iprops> = ({
 }: Iprops) => {
   const Container = styled.section`
     margin: 19px 0;
-    height: 119px;
     width: 100%;
     border: 1px solid #e1e8ed;
     border-radius: 8px;
@@ -26,26 +17,36 @@ const Result: React.FunctionComponent<Iprops> = ({
     justify-content: space-between;
     h4 {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       margin: 10px 38px;
-      @media (max-width: 390px) {
+      @media (max-width: 450px) {
         font-size: 1.6rem;
-        margin: 10px 26px;
+        margin: 10px 10px;
       }
     }
     span {
       font-size: 32px;
       color: #0079ff;
       font-weight: 500;
+      @media (max-width: 530px) {
+        font-size: 30px;
+      }
     }
     p {
       background-color: #f4f8fa;
       height: 46px;
       font-size: 1.2rem;
       padding: 4px 35px;
-      @media (max-width: 370px) {
-        padding: 4px 26px;
+      @media (max-width: 390px) {
+        padding: 4px 22px;
+      }
+      @media (max-width: 360px) {
+        padding: 4px 8px;
+      }
+      @media (max-width: 360px) {
+        padding: 4px 3px;
       }
     }
   `;

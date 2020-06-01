@@ -3,15 +3,7 @@ import styled from 'styled-components';
 import arrowRight from '../icons/arrowRight.svg';
 import arrowLeft from '../icons/arrowLeft.svg';
 import { StoreContext } from '../store/store';
-
-interface CurrencyMask {
-  (value: string): string;
-}
-
-interface Iprops {
-  currencyMask: CurrencyMask;
-  months: string[];
-}
+import { Iprops } from '../intefaces/interfaces';
 
 const Calc: React.FunctionComponent<Iprops> = ({
   currencyMask,
@@ -56,10 +48,10 @@ const Calc: React.FunctionComponent<Iprops> = ({
       width: 48px;
       background-color: #e1e8ed;
       border: none;
-      :hover {
+      :hover:enabled {
         cursor: pointer;
       }
-      :active {
+      :active:enabled {
         filter: Brightness(0.6);
       }
     }
@@ -89,7 +81,7 @@ const Calc: React.FunctionComponent<Iprops> = ({
       font-weight: 400;
       background-color: white;
       padding: 0;
-      margin: -8px 12px;
+      margin: -4px 12px;
       @media (max-width: 370px) {
         font-size: 1.4rem;
       }

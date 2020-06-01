@@ -27,7 +27,6 @@ const reducer = (state: InitialState, action: ActionType) => {
   let month, year, period;
   switch (action.type) {
     case 'AMOUNT':
-      console.log(action.payload);
       return {
         ...state,
         amount: action.payload
