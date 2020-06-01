@@ -76,7 +76,60 @@ const Calc: React.FunctionComponent = () => {
       .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   };
 
-  const [state, dispatch] = React.useContext(StoreContext);
+  const months: Array<string> = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+
+//   const { state, dispatch } = React.useContext(StoreContext);
+//   console.log(state);
+
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+  const [amount, setAmount] = React.useState('2500000');
+  const [goal, setGoal] = React.useState({
+    month: currentMonth,
+    year: currentYear,
+    period: 0
+  });
+
+  const updateGoalForward = () => {
+    const month = goal.month < 11 ? goal.month + 1 : 0;
+    const year = month === 0 ? goal.year + 1 : goal.year;
+    const period = goal.period + 1;
+    const newgoal = {
+      month: month,
+      year: year,
+      period: period
+    };
+    setGoal(newgoal);
+  };
+
+  const updateGoalBackward = () => {
+    const month = goal.month > 0 ? goal.month - 1 : 11;
+    const year = month === 11 ? goal.year - 1 : goal.year;
+    const period = goal.period - 1;
+    const newgoal = {
+      month: month,
+      year: year,
+      period: period
+    };
+    setGoal(newgoal);
+  };
+
+//   React.useEffect(() => {
+//     dispatch({ type: 'AMOUNT', payload: amount });
+//   }, [dispatch, amount]);
 
   return (
     <Container>
@@ -86,11 +139,12 @@ const Calc: React.FunctionComponent = () => {
           <span>$</span>
           <InputNumber
             name="Total amount"
-            value={currencyMask(state.amount)}
-            onChange={e => dispatch('AMOUNT', e.target.value)}
+            value={currencyMask(amount)}
+            onChange={e => setAmount(e.target.value)}
             type="text"
             placeholder="0.00"
             maxLength="13"
+            // onBlur={() => dispatch({ type: 'AMOUNT', payload: amount })}
             autoFocus
           />
         </Field>
@@ -99,20 +153,16 @@ const Calc: React.FunctionComponent = () => {
         <label>Reach goal by</label>
         <Field>
           <button
-            onClick={() =>
-              setDate({
-                month: 'September',
-                year: '2020'
-              })
-            }
+            onClick={() => updateGoalBackward()}
+            disabled={goal.month === currentMonth && goal.year === currentYear}
           >
             <img src={arrowLeft} alt="Click Backward" />
           </button>
           <DateGoal>
-            {date.month}
-            <span>{date.year}</span>
+            {months[goal.month]}
+            <span>{goal.year}</span>
           </DateGoal>
-          <button>
+          <button onClick={() => updateGoalForward()}>
             <img src={arrowRight} alt="Click Forward" />
           </button>
         </Field>

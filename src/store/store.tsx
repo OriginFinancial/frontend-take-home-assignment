@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 interface InitialState {
-  amount: string;
-  goal: {
+  amount?: string;
+  goal?: {
     month: number;
     year: number;
     period: number;
@@ -10,13 +10,18 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  amount: '000',
+  amount: '2500000',
   goal: {
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
     period: 0
   }
 };
+
+type ActionType =
+  | { type: 'AMOUNT'; payload: string }
+  | { type: 'FORWARD_DATE' }
+  | { type: 'BACKWARD_DATE' };
 
 export const StoreContext = React.createContext<{
   state: InitialState;
@@ -26,50 +31,35 @@ export const StoreContext = React.createContext<{
   dispatch: () => null
 });
 
-export const months: Array<string> = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro'
-];
-
-type ActionType =
-  | { type: 'AMOUNT'; payload: string }
-  | { type: 'FORWARD_DATE' }
-  | { type: 'BACKWARD_DATE' };
-
 const reducer = (state: InitialState, action: ActionType) => {
+  let month, year, period;
   switch (action.type) {
     case 'AMOUNT':
       return {
-        amount: action.payload
+        amount: action.payload,
+        ...state
       };
     case 'FORWARD_DATE':
+      month = state.goal.month < 11 ? state.goal.month + 1 : 0;
+      year = month === 0 ? state.goal.year + 1 : state.goal.year;
+      period = state.goal.period + 1;
       return {
+        ...state,
         goal: {
-          month: state.goal.month < 11 ? state.goal.month++ : 0,
-          year: state.goal.month++ === 0 ? state.goal.year++ : state.goal.year,
-          period:
-            (state.goal.year - initialState.goal.year) * 12 +
-            Math.abs(state.goal.month - initialState.goal.month)
+          month: month,
+          year: year,
+          period: period
         }
       };
     case 'BACKWARD_DATE':
+      month = state.goal.month > 0 ? state.goal.month - 1 : 11;
+      year = month === 11 ? state.goal.year - 1 : state.goal.year;
+      period = state.goal.period - 1;
       return {
         goal: {
-          month: state.goal.month > 0 ? state.goal.month-- : 11,
-          year: state.goal.month-- === 11 ? state.goal.year-- : state.goal.year,
-          period:
-            (state.goal.year - initialState.goal.year) * 12 +
-            Math.abs(state.goal.month - initialState.goal.month)
+          month: month,
+          year: year,
+          period: period
         }
       };
     default:
@@ -81,7 +71,7 @@ export const StoreContextProvider: React.FunctionComponent = props => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
   return (
-    <StoreContext.Provider value={[state, dispatch]}>
+    <StoreContext.Provider value={{ state, dispatch }}>
       {props.children}
     </StoreContext.Provider>
   );
