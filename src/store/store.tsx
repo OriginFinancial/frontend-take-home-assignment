@@ -23,21 +23,14 @@ type ActionType =
   | { type: 'FORWARD_DATE' }
   | { type: 'BACKWARD_DATE' };
 
-export const StoreContext = React.createContext<{
-  state: InitialState;
-  dispatch: React.Dispatch<ActionType>;
-}>({
-  state: initialState,
-  dispatch: () => null
-});
-
 const reducer = (state: InitialState, action: ActionType) => {
   let month, year, period;
   switch (action.type) {
     case 'AMOUNT':
+      console.log(action.payload);
       return {
-        amount: action.payload,
-        ...state
+        ...state,
+        amount: action.payload
       };
     case 'FORWARD_DATE':
       month = state.goal.month < 11 ? state.goal.month + 1 : 0;
@@ -56,6 +49,7 @@ const reducer = (state: InitialState, action: ActionType) => {
       year = month === 11 ? state.goal.year - 1 : state.goal.year;
       period = state.goal.period - 1;
       return {
+        ...state,
         goal: {
           month: month,
           year: year,
@@ -66,6 +60,15 @@ const reducer = (state: InitialState, action: ActionType) => {
       return state;
   }
 };
+
+export const StoreContext = React.createContext<{
+  state: InitialState;
+  dispatch: React.Dispatch<ActionType>;
+}>({
+  state: initialState,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  dispatch: () => {}
+});
 
 export const StoreContextProvider: React.FunctionComponent = props => {
   const [state, dispatch] = React.useReducer(reducer, initialState);

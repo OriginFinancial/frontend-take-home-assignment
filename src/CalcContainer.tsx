@@ -4,6 +4,15 @@ import Calc from './components/Calc';
 import Result from './components/Result';
 import houseSavings from './icons/houseSavings.svg';
 
+// interface CurrencyMask {
+//   (value: string): string;
+// }
+
+// interface Iprops {
+//   currencyMask: CurrencyMask;
+//   months: [string];
+// }
+
 const CalcContainer: React.FunctionComponent = () => {
   const Container = styled.div`
     background: #ffffff;
@@ -64,6 +73,30 @@ const CalcContainer: React.FunctionComponent = () => {
     }
   `;
 
+  const currencyMask = function(value: string): string {
+    return value
+      .replace(/(.*){1}/, '$1')
+      .replace(/[^\d]/g, '')
+      .replace(/(\d\d?)$/, '.$1')
+      .replace(/^0+(?!\d)(?!$)/, '')
+      .replace(/(\d)(?=(\d{3})+(?!\d)(?!$))/g, '$1,');
+  };
+
+  const months: Array<string> = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+
   return (
     <Container>
       <Title>
@@ -71,8 +104,8 @@ const CalcContainer: React.FunctionComponent = () => {
         <h2>Buy a house</h2>
         <span>saving goal</span>
       </Title>
-      <Calc />
-      <Result />
+      <Calc currencyMask={currencyMask} months={months} />
+      <Result currencyMask={currencyMask} months={months} />
       <SubmitButton disabled>Confirm</SubmitButton>
     </Container>
   );

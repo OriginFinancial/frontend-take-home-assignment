@@ -4,7 +4,19 @@ import arrowRight from '../icons/arrowRight.svg';
 import arrowLeft from '../icons/arrowLeft.svg';
 import { StoreContext } from '../store/store';
 
-const Calc: React.FunctionComponent = () => {
+interface CurrencyMask {
+  (value: string): string;
+}
+
+interface Iprops {
+  currencyMask: CurrencyMask;
+  months: string[];
+}
+
+const Calc: React.FunctionComponent<Iprops> = ({
+  currencyMask,
+  months
+}: Iprops) => {
   const Container = styled.section`
     display: flex;
     flex-wrap: wrap;
@@ -84,69 +96,10 @@ const Calc: React.FunctionComponent = () => {
     }
   `;
 
-  const currencyMask = (value: string) => {
-    return value
-      .replace(/(.*){1}/, '$1')
-      .replace(/[^\d]/g, '')
-      .replace(/(\d\d?)$/, '.$1')
-      .replace(/^0+(?!\d)(?!$)/, '')
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  };
-
-  const months: Array<string> = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro'
-  ];
-
-//   const { state, dispatch } = React.useContext(StoreContext);
-//   console.log(state);
+  const { state, dispatch } = React.useContext(StoreContext);
 
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
-  const [amount, setAmount] = React.useState('2500000');
-  const [goal, setGoal] = React.useState({
-    month: currentMonth,
-    year: currentYear,
-    period: 0
-  });
-
-  const updateGoalForward = () => {
-    const month = goal.month < 11 ? goal.month + 1 : 0;
-    const year = month === 0 ? goal.year + 1 : goal.year;
-    const period = goal.period + 1;
-    const newgoal = {
-      month: month,
-      year: year,
-      period: period
-    };
-    setGoal(newgoal);
-  };
-
-  const updateGoalBackward = () => {
-    const month = goal.month > 0 ? goal.month - 1 : 11;
-    const year = month === 11 ? goal.year - 1 : goal.year;
-    const period = goal.period - 1;
-    const newgoal = {
-      month: month,
-      year: year,
-      period: period
-    };
-    setGoal(newgoal);
-  };
-
-//   React.useEffect(() => {
-//     dispatch({ type: 'AMOUNT', payload: amount });
-//   }, [dispatch, amount]);
 
   return (
     <Container>
@@ -156,12 +109,16 @@ const Calc: React.FunctionComponent = () => {
           <span>$</span>
           <InputNumber
             name="Total amount"
-            value={currencyMask(amount)}
-            onChange={e => setAmount(e.target.value)}
+            value={currencyMask(state.amount)}
+            onChange={e =>
+              dispatch({
+                type: 'AMOUNT',
+                payload: currencyMask(e.target.value)
+              })
+            }
             type="text"
             placeholder="0.00"
             maxLength="13"
-            // onBlur={() => dispatch({ type: 'AMOUNT', payload: amount })}
             autoFocus
           />
         </Field>
@@ -170,16 +127,19 @@ const Calc: React.FunctionComponent = () => {
         <label>Reach goal by</label>
         <Field>
           <button
-            onClick={() => updateGoalBackward()}
-            disabled={goal.month === currentMonth && goal.year === currentYear}
+            onClick={() => dispatch({ type: 'BACKWARD_DATE' })}
+            disabled={
+              state.goal.month === currentMonth &&
+              state.goal.year === currentYear
+            }
           >
             <img src={arrowLeft} alt="Click Backward" />
           </button>
           <DateGoal>
-            {months[goal.month]}
-            <span>{goal.year}</span>
+            {months[state.goal.month]}
+            <span>{state.goal.year}</span>
           </DateGoal>
-          <button onClick={() => updateGoalForward()}>
+          <button onClick={() => dispatch({ type: 'FORWARD_DATE' })}>
             <img src={arrowRight} alt="Click Forward" />
           </button>
         </Field>

@@ -1,7 +1,20 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { StoreContext } from '../store/store';
 
-const Result: React.FunctionComponent = () => {
+interface CurrencyMask {
+  (value: string): string;
+}
+
+interface Iprops {
+  currencyMask: CurrencyMask;
+  months: string[];
+}
+
+const Result: React.FunctionComponent<Iprops> = ({
+  currencyMask,
+  months
+}: Iprops) => {
   const Container = styled.section`
     margin: 19px 0;
     height: 119px;
@@ -37,16 +50,27 @@ const Result: React.FunctionComponent = () => {
     }
   `;
 
+  const { state } = React.useContext(StoreContext);
+
   return (
     <Container>
       <h4>
-        Monthly amount <span>$521</span>
+        Monthly amount{' '}
+        <span>
+          $
+          {Math.round(+state.amount) === 0 || state.goal.period === 0
+            ? '0.00'
+            : currencyMask(
+                (+state.amount.replace(/,/g, '') / state.goal.period).toFixed(2)
+              )}
+        </span>
       </h4>
       <p>
-        You’re planning <b>48 monthly deposits </b>to reach your <b>$25,000 </b>
+        You’re planning <b>{state.goal.period} monthly deposits </b>to reach
+        your <b>${currencyMask(state.amount)} </b>
         goal by{' '}
         <b>
-          october 2020
+          {months[state.goal.month]} {state.goal.year}
         </b>
         .
       </p>
