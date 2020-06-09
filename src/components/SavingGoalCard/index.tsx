@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/mediaQueries';
 import { differenceInCalendarMonths, getYear, format } from 'date-fns';
 
 import SimulationType from '../SimulationType';
@@ -20,7 +21,7 @@ const SavingGoalCard = styled.form`
   background: #ffffff;
   box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     padding: 40px;
     width: 560px;
     height: 600px;
@@ -28,16 +29,17 @@ const SavingGoalCard = styled.form`
 `;
 
 const InputFieldsContainer = styled.div`
-display: flex;
-flex-direction:column;
-justify-content: space-between;
-align-content: space-between;
-height: 176px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 176px;
 
-@media (min-width: 801px) {
-  flex-direction: row;
-  width: 478px;
-  height: 80px;
+  ${mediaQ.desktop} {
+    flex-direction: row;
+    width: 478px;
+    height: 80px;
+  }
 `;
 
 const ResultContainer = styled.div`
@@ -48,7 +50,7 @@ const ResultContainer = styled.div`
   border: 1px solid #e1e8ed;
   border-radius: 4px;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 480px;
     height: 168px;
   }
@@ -70,13 +72,13 @@ const MonthlyAmountBox = styled.div`
     font-weight: 500;
     font-size: 26px;
 
-    @media (min-width: 801px) {
+    ${mediaQ.desktop} {
       font-size: 40px;
     }
   }
 
-  @media (min-width: 801px) {
-    width: 478px;
+  ${mediaQ.desktop} {
+    width: 477px;
     height: 102px;
   }
 `;
@@ -88,8 +90,8 @@ const SavingPlanBox = styled.p`
   background: #f4f8fa;
   font-size: 12px;
 
-  @media (min-width: 801px) {
-    width: 478px;
+  ${mediaQ.desktop} {
+    width: 477px;
     height: 66px;
     font-size: 16px;
   }

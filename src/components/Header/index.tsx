@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/mediaQueries';
 import logo from '../../icons/logo.svg';
 
 const HeaderStyle = styled.div`
@@ -11,7 +12,7 @@ const LogoStyle = styled.img`
   width: 65px;
   margin: 16px 29px 10px;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 95px;
   }
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/mediaQueries';
 
 const ButtonStyle = styled.button`
   width: 312px;
@@ -15,7 +16,7 @@ const ButtonStyle = styled.button`
   text-align: center;
   color: #ffffff;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 400px;
     height: 56px;
   }

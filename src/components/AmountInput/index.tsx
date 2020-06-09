@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/mediaQueries';
 
 // import { toCurrencyFormat } from './moneyFormat';
 
@@ -23,7 +24,7 @@ const AmountInputStyle = styled.div`
 
 const Icon = styled.span`
   width: 56px;
-  height: 56px
+  height: 56px;
   background: #f4f8fa;
   border: 1px solid #e1e8ed;
   box-sizing: border-box;
@@ -31,7 +32,7 @@ const Icon = styled.span`
 
   font-size: 22px;
   line-height: 26px;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +54,7 @@ const InputStyle = styled.input`
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 176px;
   }
 `;
