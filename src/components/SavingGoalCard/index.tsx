@@ -1,34 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { mediaQ } from '../../ui/mediaQueries';
 import { differenceInCalendarMonths, getYear, format } from 'date-fns';
+
+import { mediaQ } from '../../ui/MediaQueries';
+import SavingGoalCard from '../../ui/SavingGoalCard';
 
 import SimulationType from '../SimulationType';
 import AmountInput from '../AmountInput';
 import DateInput from '../DateInput';
 import Button from '../Button';
 
-const SavingGoalCard = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  padding: 24px;
-
-  width: 360px;
-  height: 690px;
-
-  background: #ffffff;
-  box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
-
-  ${mediaQ.desktop} {
-    padding: 40px;
-    width: 560px;
-    height: 600px;
-  }
-`;
-
-const InputFieldsContainer = styled.div`
+const InputFields = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,7 +24,7 @@ const InputFieldsContainer = styled.div`
   }
 `;
 
-const ResultContainer = styled.div`
+const Result = styled.div`
   width: 312px;
   height: 134px;
   display: flex;
@@ -56,8 +38,8 @@ const ResultContainer = styled.div`
   }
 `;
 
-const MonthlyAmountBox = styled.div`
-  width: 310px;
+const MonthlyAmount = styled.div`
+  width: 309px;
   height: 64px;
   display: flex;
   justify-content: space-between;
@@ -83,8 +65,8 @@ const MonthlyAmountBox = styled.div`
   }
 `;
 
-const SavingPlanBox = styled.p`
-  width: 310px;
+const SavingPlan = styled.p`
+  width: 309px;
   height: 70px;
   padding: 16px;
   background: #f4f8fa;
@@ -114,26 +96,26 @@ const SavingGoalContainer: React.FC = () => {
   return (
     <SavingGoalCard>
       <SimulationType />
-      <InputFieldsContainer>
+      <InputFields>
         <AmountInput value={totalAmount} onChange={setTotalAmount} />
         <DateInput selected={selectedDate} onChange={setSelectedDate} />
-      </InputFieldsContainer>
-      <ResultContainer>
-        <MonthlyAmountBox>
+      </InputFields>
+      <Result>
+        <MonthlyAmount>
           <h4>Monthly Amount</h4>
           <p>${monthlyAmount}</p>
-        </MonthlyAmountBox>
-        <SavingPlanBox>
+        </MonthlyAmount>
+        <SavingPlan>
           You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
           reach your <strong> ${totalAmount}</strong> goal by{' '}
           <strong>
             {month} {year}
           </strong>
           .
-        </SavingPlanBox>
-      </ResultContainer>
+        </SavingPlan>
+      </Result>
       <ButtonPosition>
-        <Button />
+        <Button>Confirm</Button>
       </ButtonPosition>
     </SavingGoalCard>
   );

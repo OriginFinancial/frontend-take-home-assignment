@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaQ } from '../../ui/mediaQueries';
+import { mediaQ } from '../../ui/MediaQueries';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
