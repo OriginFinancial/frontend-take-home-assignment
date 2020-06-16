@@ -9,7 +9,7 @@ export default styled.div`
   padding: 24px;
 
   width: 360px;
-  height: 690px;
+  height: 657px;
 
   background: #ffffff;
   box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
