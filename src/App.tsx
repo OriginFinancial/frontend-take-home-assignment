@@ -10,13 +10,10 @@ const PageStyle = styled.div`
   align-items: center;
 `;
 
-const ParagraphStyle = styled.p`
+const Paragraph = styled.p`
   text-align: center;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  font-style: normal;
+  margin: 3%;
   font-size: 18px;
-  letter-spacing: -0.2px;
   color: #1b31a8;
 
   @media (min-width: 1440px) {
@@ -27,12 +24,12 @@ const ParagraphStyle = styled.p`
 const App: React.FC = () => {
   return (
     <div>
+      <GlobalStyle />
       <PageStyle>
-        <GlobalStyle />
         <Header />
-        <ParagraphStyle>
+        <Paragraph>
           Let&apos;s plan your <strong>saving goal</strong>
-        </ParagraphStyle>
+        </Paragraph>
         <SavingGoalCard />
       </PageStyle>
     </div>

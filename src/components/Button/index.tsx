@@ -1,30 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const ButtonStyle = styled.button`
-  width: 312px;
-  height: 56px;
-  background: #1b31a8;
-  border-radius: 32px;
-  border: 0;
-
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 24px;
-  text-align: center;
-  color: #ffffff;
-
-  @media (min-width: 801px) {
-    width: 400px;
-    height: 56px;
-  }
-`;
+import PurpleButton from '../../ui/PurpleButton';
 
 interface Props {
-  onClick?: null;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
-const Button: React.FC<Props> = () => <ButtonStyle>Confirm</ButtonStyle>;
+const Button: React.FC<Props> = ({ onClick, children }) => (
+  <PurpleButton onClick={onClick}>{children}</PurpleButton>
+);
 
 export default Button;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/MediaQueries';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -24,7 +25,7 @@ const DateInputStyle = styled.div`
 
 const Icon = styled.span`
   width: 48px;
-  height: 56px
+  height: 56px;
   background: #f4f8fa;
   border: 1px solid #e1e8ed;
   box-sizing: border-box;
@@ -32,7 +33,7 @@ const Icon = styled.span`
 
   font-size: 22px;
   line-height: 26px;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,23 +55,24 @@ const InputStyle = styled.input`
   letter-spacing: -0.166667px;
   color: #1c1e1f;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 136px;
   }
 `;
 
-interface Date {
-  onChange?: (value: number) => void;
+interface Props {
+  onChange?: (value: Date) => void;
+  selectedDate: Date;
 }
 
-const DateInput: React.FC<Date> = ({ onChange }) => {
+const DateInput: React.FC<Props> = ({ onChange, selectedDate }) => {
   return (
     <DateInputContainer>
       <Label>Reach goal by</Label>
       <DateInputStyle>
         <Icon />
         <DatePicker
-          selected={new Date()}
+          selected={selectedDate}
           onChange={date => onChange(date)}
           dateFormat="MMMM yyyy"
           showMonthYearPicker

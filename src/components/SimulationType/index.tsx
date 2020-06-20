@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mediaQ } from '../../ui/MediaQueries';
 import houseShape from '../../icons/houseShape.svg';
 
 const TypeCard = styled.div`
@@ -12,7 +13,7 @@ const Icon = styled.img`
   width: 32px;
   height: 32px;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 40px;
     height: 40px;
   }
@@ -21,13 +22,10 @@ const Icon = styled.img`
 const Title = styled.span`
   font-weight: 600;
   font-size: 24px;
-  line-height: 32px;
-  letter-spacing: -0.2px;
   color: #1c1e1f;
 
-  @media (min-width: 1440px) {
+  ${mediaQ.desktop} {
     font-size: 32px;
-    line-height: 40px;
   }
 `;
 
@@ -36,7 +34,7 @@ const Subtitle = styled.span`
   line-height: 20px;
   color: #657786;
 
-  @media (min-width: 1440px) {
+  ${mediaQ.desktop} {
     font-size: 16px;
     line-height: 20px;
   }

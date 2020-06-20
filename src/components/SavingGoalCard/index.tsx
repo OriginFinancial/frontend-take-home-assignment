@@ -2,45 +2,30 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { differenceInCalendarMonths, getYear, format } from 'date-fns';
 
+import { mediaQ } from '../../ui/MediaQueries';
+import SavingGoalCard from '../../ui/SavingGoalCard';
+
 import SimulationType from '../SimulationType';
 import AmountInput from '../AmountInput';
+import { currencyFormat } from '../AmountInput/currencyFormat';
 import DateInput from '../DateInput';
 import Button from '../Button';
 
-const SavingGoalCard = styled.form`
+const InputFields = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  padding: 24px;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 176px;
 
-  width: 360px;
-  height: 690px;
-
-  background: #ffffff;
-  box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
-
-  @media (min-width: 801px) {
-    padding: 40px;
-    width: 560px;
-    height: 600px;
+  ${mediaQ.desktop} {
+    flex-direction: row;
+    width: 478px;
+    height: 80px;
   }
 `;
 
-const InputFieldsContainer = styled.div`
-display: flex;
-flex-direction:column;
-justify-content: space-between;
-align-content: space-between;
-height: 176px;
-
-@media (min-width: 801px) {
-  flex-direction: row;
-  width: 478px;
-  height: 80px;
-`;
-
-const ResultContainer = styled.div`
+const Result = styled.div`
   width: 312px;
   height: 134px;
   display: flex;
@@ -48,14 +33,14 @@ const ResultContainer = styled.div`
   border: 1px solid #e1e8ed;
   border-radius: 4px;
 
-  @media (min-width: 801px) {
+  ${mediaQ.desktop} {
     width: 480px;
     height: 168px;
   }
 `;
 
-const MonthlyAmountBox = styled.div`
-  width: 310px;
+const MonthlyAmount = styled.div`
+  width: 309px;
   height: 64px;
   display: flex;
   justify-content: space-between;
@@ -70,26 +55,26 @@ const MonthlyAmountBox = styled.div`
     font-weight: 500;
     font-size: 26px;
 
-    @media (min-width: 801px) {
+    ${mediaQ.desktop} {
       font-size: 40px;
     }
   }
 
-  @media (min-width: 801px) {
-    width: 478px;
+  ${mediaQ.desktop} {
+    width: 477px;
     height: 102px;
   }
 `;
 
-const SavingPlanBox = styled.p`
-  width: 310px;
+const SavingPlan = styled.p`
+  width: 309px;
   height: 70px;
   padding: 16px;
   background: #f4f8fa;
   font-size: 12px;
 
-  @media (min-width: 801px) {
-    width: 478px;
+  ${mediaQ.desktop} {
+    width: 477px;
     height: 66px;
     font-size: 16px;
   }
@@ -112,26 +97,26 @@ const SavingGoalContainer: React.FC = () => {
   return (
     <SavingGoalCard>
       <SimulationType />
-      <InputFieldsContainer>
+      <InputFields>
         <AmountInput value={totalAmount} onChange={setTotalAmount} />
         <DateInput selected={selectedDate} onChange={setSelectedDate} />
-      </InputFieldsContainer>
-      <ResultContainer>
-        <MonthlyAmountBox>
+      </InputFields>
+      <Result>
+        <MonthlyAmount>
           <h4>Monthly Amount</h4>
-          <p>${monthlyAmount}</p>
-        </MonthlyAmountBox>
-        <SavingPlanBox>
+          <p>${currencyFormat(monthlyAmount)}</p>
+        </MonthlyAmount>
+        <SavingPlan>
           You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
-          reach your <strong> ${totalAmount}</strong> goal by{' '}
+          reach your <strong> ${currencyFormat(totalAmount)}</strong> goal by{' '}
           <strong>
             {month} {year}
           </strong>
           .
-        </SavingPlanBox>
-      </ResultContainer>
+        </SavingPlan>
+      </Result>
       <ButtonPosition>
-        <Button />
+        <Button>Confirm</Button>
       </ButtonPosition>
     </SavingGoalCard>
   );
