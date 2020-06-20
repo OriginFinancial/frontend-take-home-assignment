@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { mediaQ } from '../../ui/MediaQueries';
 
-// import { toCurrencyFormat } from './moneyFormat';
+import { currencyFormat } from './currencyFormat';
 
 const AmountInputContainer = styled.div`
   display: flex;
@@ -74,7 +74,7 @@ const AmountInput: React.FC<TotalAmount> = ({ onChange, value }) => (
         onChange={e => {
           onChange(Number(e.target.value.replace(/\D/gi, '')));
         }}
-        value={value}
+        value={currencyFormat(value)}
       />
     </AmountInputStyle>
   </AmountInputContainer>

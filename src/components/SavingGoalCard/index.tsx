@@ -7,6 +7,7 @@ import SavingGoalCard from '../../ui/SavingGoalCard';
 
 import SimulationType from '../SimulationType';
 import AmountInput from '../AmountInput';
+import { currencyFormat } from '../AmountInput/currencyFormat';
 import DateInput from '../DateInput';
 import Button from '../Button';
 
@@ -103,11 +104,11 @@ const SavingGoalContainer: React.FC = () => {
       <Result>
         <MonthlyAmount>
           <h4>Monthly Amount</h4>
-          <p>${monthlyAmount}</p>
+          <p>${currencyFormat(monthlyAmount)}</p>
         </MonthlyAmount>
         <SavingPlan>
           You&apos;re planning <strong>{diffMonths} monthly deposits</strong> to
-          reach your <strong> ${totalAmount}</strong> goal by{' '}
+          reach your <strong> ${currencyFormat(totalAmount)}</strong> goal by{' '}
           <strong>
             {month} {year}
           </strong>
