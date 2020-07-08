@@ -214,7 +214,7 @@ export const CardFooter = styled.div`
 export const ConfirmButton = styled.button`
   width: 105%;
   height: 148px;
-  margin: 90px -2.5%;
+  margin: 90px -2.5% 0px;
   
 
   border: none;
@@ -230,7 +230,7 @@ export const ConfirmButton = styled.button`
   @media ${device.desktop} {
     width: 70%;
     height: 56px;
-    margin: 30px 15%;
+    margin: 40px 15%;
 
     border-radius: 32px;
 

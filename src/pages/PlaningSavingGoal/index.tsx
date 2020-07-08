@@ -13,7 +13,38 @@ import OriginHeader from '../../components/OriginHeader'
 import MoneyInput from '../../components/MoneyInput'
 import MonthlyDateInput from '../../components/MonthlyDateInput'
 
+type MonthChangeData = {
+  elapsedMonths : string,
+  currentDate : string
+}
+
 const PlaningSavingGoal = () => {
+  const [currentAmount, setCurrentAmount] = React.useState('0,00')
+  const [monthlyAmount, setMonthlyAmount] = React.useState('0,00')
+  const [currentDate, setCurrentDate] = React.useState('')
+  const [elapsedMonths, setElapsedMonths] = React.useState('')
+  
+  const handleMonthChange = (data: MonthChangeData) => 
+  {
+    setElapsedMonths(data.elapsedMonths)
+    setCurrentDate(data.currentDate)
+  }
+
+  React.useEffect(() => 
+  {
+    const amountToNumber = Number(currentAmount.replace(/[^0-9\.]+/g,""));
+    const elapsedMonthsToNumber = Number(elapsedMonths)
+
+    if(amountToNumber <= 0 || elapsedMonthsToNumber <= 0){
+      setMonthlyAmount('0,00')
+      return
+    }
+
+    const _monthlyAmount = amountToNumber / elapsedMonthsToNumber
+    setMonthlyAmount(_monthlyAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+  },[currentAmount, currentDate])
+
+
   return (
     <>
       <OriginHeader />
@@ -32,23 +63,23 @@ const PlaningSavingGoal = () => {
         <InputsContainer>
           <InputGroup>
             <InputLabel>Total amount</InputLabel>
-            <MoneyInput />
+            <MoneyInput onChange={setCurrentAmount} />
           </InputGroup>
 
           <InputGroup>
             <InputLabel>Reach goal by</InputLabel>
-            <MonthlyDateInput />
+            <MonthlyDateInput onChangeMonth={handleMonthChange} />
           </InputGroup>
         </InputsContainer>
 
         <SavingCard>
           <CardHeaderContainer>
             <CardHeaderLabel>Monthly</CardHeaderLabel>
-            <CardHeaderText>$521</CardHeaderText>
+            <CardHeaderText>${monthlyAmount}</CardHeaderText>
           </CardHeaderContainer>
 
           <CardFooter>
-            You’re planning <strong>18 monthly deposits</strong> to reach your <strong>$1250,00</strong> goal by <strong>December 2020.</strong>
+            You’re planning <strong>{elapsedMonths} monthly deposits</strong> to reach your <strong>${currentAmount}</strong> goal by <strong>{currentDate}.</strong>
           </CardFooter>
         </SavingCard>
 
