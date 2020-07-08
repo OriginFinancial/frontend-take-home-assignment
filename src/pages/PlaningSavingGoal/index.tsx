@@ -1,10 +1,13 @@
 import * as React from 'react'
 
 import './styles'
+import OriginHeader from '../../components/OriginHeader'
 
 const PlaningSavingGoal = () => {
   return (
-    <h1>Title</h1>
+    <>
+      <OriginHeader />
+    </>
   )
 }
 

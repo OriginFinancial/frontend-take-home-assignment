@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
 const breakpoints = {
-  laptop: '1360px',
+  desktop: '1360px',
 }
 
 export const device = {
-  laptop: `(min-width: ${breakpoints.laptop})`,
+  desktop: `(min-width: ${breakpoints.desktop})`,
 };
 
 const GlobalStyle = createGlobalStyle`
