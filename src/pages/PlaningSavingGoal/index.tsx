@@ -11,6 +11,7 @@ import {
 
 
 import OriginHeader from '../../components/OriginHeader'
+import MoneyInput from '../../components/MoneyInput'
 
 const PlaningSavingGoal = () => {
   return (
@@ -31,7 +32,7 @@ const PlaningSavingGoal = () => {
         <InputsContainer>
           <InputGroup>
             <InputLabel>Total amount</InputLabel>
-            <input />
+            <MoneyInput />
           </InputGroup>
 
           <InputGroup>
