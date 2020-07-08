@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import { device } from '../../GlobalStyle'
 
 type CustomCurrencyInputProps = {
-  className : string,
-  children: string,
-  onChangeEvent: CallableFunction,
-  value: string
+  className?: string,
+  children?: string,
+  onChangeEvent?: CallableFunction,
+  value?: string
 }
 
 const CustomCurrencyInput = (props: CustomCurrencyInputProps) => (
