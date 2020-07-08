@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Container } from '..';
-import { media } from '../../styles';
 import OriginLogo from '../../icons/logo.svg';
 
 const Header: React.FunctionComponent = () => {
@@ -18,7 +17,7 @@ const Wrapper = styled.header`
   background-color: ${props => props.theme.colors.white};
   padding: 1.2rem 0.8rem;
 
-  ${media.lg} {
+  ${props => props.theme.media.lg} {
     padding: 2rem 0;
   }
 `;

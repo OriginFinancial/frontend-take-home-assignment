@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { media, text } from '../../styles';
+import { text } from '../../styles';
 import { Button, DatePicker, GoalSummary, Paper, TextInput } from '..';
-import HouseIcon from '../../icons/home.png';
+import HomeIcon from '../../icons/home.png';
 import { SavingGoalFormProps } from '../../models';
 
 const SavingGoalForm: React.FunctionComponent<SavingGoalFormProps> = ({
@@ -25,7 +25,7 @@ const SavingGoalForm: React.FunctionComponent<SavingGoalFormProps> = ({
       <Paper>
         <Content>
           <Top>
-            <TopHouseImage src={HouseIcon} />
+            <TopHouseImage src={HomeIcon} />
             <TopTitle>Buy a house</TopTitle>
             <TopText>Saving goal</TopText>
           </Top>
@@ -74,7 +74,7 @@ const SavingGoalForm: React.FunctionComponent<SavingGoalFormProps> = ({
 const Wrapper = styled.div`
   margin: 0 auto;
 
-  ${media.md} {
+  ${props => props.theme.media.md} {
     width: 47.5rem;
   }
 `;
@@ -101,7 +101,7 @@ const Goal = styled.div`
   flex-direction: column;
   margin-bottom: 3.2rem;
 
-  ${media.md} {
+  ${props => props.theme.media.md} {
     flex-direction: row;
   }
 `;
@@ -110,7 +110,7 @@ const GoalTotal = styled.div`
   margin-bottom: 1.6rem;
   width: 100%;
 
-  ${media.md} {
+  ${props => props.theme.media.md} {
     width: 50%;
     padding-right: 1.6rem;
     margin: 0;
@@ -120,7 +120,7 @@ const GoalTotal = styled.div`
 const GoalDate = styled.div`
   width: 100%;
 
-  ${media.md} {
+  ${props => props.theme.media.md} {
     width: 50%;
   }
 `;

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { media } from '../../styles';
 import { ChildrenProps } from '../../models';
 
 const Container: React.FunctionComponent<ChildrenProps> = ({ children }) => {
@@ -11,12 +10,12 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 100%;
 
-  ${media.lg} {
+  ${props => props.theme.media.lg} {
     padding: 0 0.8rem;
     width: 80%;
   }
 
-  ${media.xl} {
+  ${props => props.theme.media.xl} {
     width: 40%;
   }
 `;

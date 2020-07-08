@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { KeyboardEvent, MonthYear } from '../../models';
 import * as utils from '../../utils';
-import { media } from '../../styles';
 import { SavingGoalForm } from '../../components';
 
 const Home: React.FunctionComponent = () => {
