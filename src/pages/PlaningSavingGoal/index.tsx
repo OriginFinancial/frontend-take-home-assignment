@@ -9,9 +9,9 @@ import {
   ConfirmButton
 } from './styles'
 
-
 import OriginHeader from '../../components/OriginHeader'
 import MoneyInput from '../../components/MoneyInput'
+import MonthlyDateInput from '../../components/MonthlyDateInput'
 
 const PlaningSavingGoal = () => {
   return (
@@ -37,7 +37,7 @@ const PlaningSavingGoal = () => {
 
           <InputGroup>
             <InputLabel>Reach goal by</InputLabel>
-            <input />
+            <MonthlyDateInput />
           </InputGroup>
         </InputsContainer>
 
