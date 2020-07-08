@@ -3,8 +3,10 @@ import * as React from 'react'
 import insuranceIcon from '../../assets/icons/insurance.svg'
 import {
   Title, 
-  Container, ContainerHeader, ContainerHeaderTitle, HouseIcon, ContainerHeaderSubtitle
+  Container, ContainerHeader, ContainerHeaderTitle, HouseIcon, ContainerHeaderSubtitle,
   InputsContainer, InputGroup, InputLabel,
+  SavingCard, CardHeaderContainer, CardFooter, CardHeaderLabel, CardHeaderText,
+  ConfirmButton
 } from './styles'
 
 
@@ -37,6 +39,19 @@ const PlaningSavingGoal = () => {
             <input />
           </InputGroup>
         </InputsContainer>
+
+        <SavingCard>
+          <CardHeaderContainer>
+            <CardHeaderLabel>Monthly</CardHeaderLabel>
+            <CardHeaderText>$521</CardHeaderText>
+          </CardHeaderContainer>
+
+          <CardFooter>
+            You’re planning <strong>18 monthly deposits</strong> to reach your <strong>$1250,00</strong> goal by <strong>December 2020.</strong>
+          </CardFooter>
+        </SavingCard>
+
+        <ConfirmButton>Confirm</ConfirmButton>
 
       </Container> 
     </>
