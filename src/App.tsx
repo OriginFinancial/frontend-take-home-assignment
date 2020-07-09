@@ -8,8 +8,8 @@ import 'typeface-inter';
 const App: React.FunctionComponent = () => {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Layout>
-        <GlobalStyle />
         <Home />
       </Layout>
     </ThemeProvider>

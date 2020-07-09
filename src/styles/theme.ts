@@ -1,5 +1,9 @@
+import { ThemeModel } from '../models';
 import { colors, media } from '.';
-export default {
+
+const theme: ThemeModel = {
   colors,
   media
 };
+
+export default theme;

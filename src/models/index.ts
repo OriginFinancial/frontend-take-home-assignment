@@ -5,3 +5,4 @@ export * from './GoalSummary.model';
 export * from './SavingGoalForm.model';
 export * from './Paper.model';
 export * from './TextInput.model';
+export * from './Theme.model';
