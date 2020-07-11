@@ -12,6 +12,7 @@
     "typeface-inter": "^3.12.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.10.4",
     "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.9.1",
     "@types/react": "^16.9.27",

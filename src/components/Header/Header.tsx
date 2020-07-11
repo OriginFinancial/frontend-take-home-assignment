@@ -14,16 +14,16 @@ const Header: React.FunctionComponent = () => {
 };
 
 const Wrapper = styled.header`
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props?.theme?.colors?.white};
   padding: 1.2rem 0.8rem;
 
-  ${props => props.theme.media.lg} {
+  ${props => props?.theme?.media?.lg} {
     padding: 2rem 0;
   }
 `;
 
 const Logo = styled.img`
-  color: ${props => props.theme.colors.text.main};
+  color: ${props => props?.theme?.colors?.text?.main};
   width: 6rem;
   height: auto;
 `;

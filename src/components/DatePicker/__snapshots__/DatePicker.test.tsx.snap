@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatePicker component renders initial layout 1`] = `
+Array [
+  <DatePicker
+    actions={
+      Object {
+        "handlePressKeyboardArrows": [MockFunction],
+        "handlePressNextDate": [MockFunction],
+        "handlePressPreviousDate": [MockFunction],
+      }
+    }
+    data={
+      Object {
+        "isPrevButtonDisabled": false,
+        "selectedDate": Object {
+          "month": "August",
+          "year": 2020,
+        },
+      }
+    }
+  />,
+]
+`;

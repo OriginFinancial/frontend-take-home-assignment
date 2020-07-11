@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders initial layout 1`] = `
+Array [
+  <Header />,
+]
+`;

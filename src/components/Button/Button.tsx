@@ -7,10 +7,10 @@ const Button: React.FunctionComponent<ChildrenProps> = ({ children }) => {
 };
 
 const Wrapper = styled.button`
-  background-color: ${props => props.theme.colors.primary.main};
-  border: 0.1rem solid ${props => props.theme.colors.primary.main};
+  background-color: ${props => props?.theme?.colors?.primary?.main};
+  border: 0.1rem solid ${props => props?.theme?.colors?.primary?.main};
   border-radius: 3rem;
-  color: ${props => props.theme.colors.white};
+  color: ${props => props?.theme?.colors?.white};
   cursor: pointer;
   font-weight: 700;
   padding: 1.8rem 0.8rem;
@@ -19,11 +19,11 @@ const Wrapper = styled.button`
   width: 100%;
 
   &:hover {
-    background-color: ${props => props.theme.colors.primary.dark};
+    background-color: ${props => props?.theme?.colors?.primary?.dark};
   }
 
   &:focus {
-    outline: 0.1rem solid ${props => props.theme.colors.primary.light};
+    outline: 0.1rem solid ${props => props?.theme?.colors?.primary?.light};
   }
 `;
 

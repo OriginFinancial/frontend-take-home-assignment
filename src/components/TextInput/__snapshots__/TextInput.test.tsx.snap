@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput component renders initial layout 1`] = `
+Array [
+  <TextInput
+    handleChange={[MockFunction]}
+    label="Total amount"
+    value="1,000"
+  />,
+]
+`;

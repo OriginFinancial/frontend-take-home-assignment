@@ -44,10 +44,10 @@ const Group = styled.div`
 `;
 
 const Input = styled.input`
-  background-color: ${props => props.theme.colors.white};
-  border: 0.1rem solid ${props => props.theme.colors.primary.extralight};
+  background-color: ${props => props?.theme?.colors?.white};
+  border: 0.1rem solid ${props => props?.theme?.colors?.primary?.extralight};
   border-radius: 0.3rem;
-  color: ${props => props.theme.colors.text.main};
+  color: ${props => props?.theme?.colors?.text?.main};
   font-weight: 700;
   height: 5rem;
   padding-left: 7rem;
@@ -58,11 +58,11 @@ const Input = styled.input`
 
 const DollarSign = styled.div`
   align-items: center;
-  border: 0.1rem solid ${props => props.theme.colors.secondary.main};
+  border: 0.1rem solid ${props => props?.theme?.colors?.secondary?.main};
   border-bottom-left-radius: 0.4rem;
   border-top-left-radius: 0.4rem;
-  background-color: ${props => props.theme.colors.primary.extralight};
-  color: ${props => props.theme.colors.text.light};
+  background-color: ${props => props?.theme?.colors?.primary?.extralight};
+  color: ${props => props?.theme?.colors?.text?.light};
   display: flex;
   font-size: 1.8rem;
   height: 4.8rem;

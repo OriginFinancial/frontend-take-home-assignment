@@ -22,8 +22,8 @@ const DatePicker: React.FunctionComponent<DatePickerProps> = ({
         <ArrowLeftIcon src={ArrowIcon} />
       </IconButton>
       <DateInfo>
-        <Month>{selectedDate && selectedDate.month}</Month>
-        <Year>{selectedDate && selectedDate.year}</Year>
+        <Month id="testDateMonth">{selectedDate?.month}</Month>
+        <Year id="testDateYear">{selectedDate?.year}</Year>
       </DateInfo>
       <IconButton
         onClick={handlePressNextDate}
@@ -56,8 +56,8 @@ const DateInfo = styled.p`
 
 const IconButton = styled.button<{ disabled?: boolean }>`
   align-items: center;
-  background-color: ${props => props.theme.colors.primary.extralight};
-  border: 0.1rem solid ${props => props.theme.colors.secondary.main};
+  background-color: ${props => props?.theme?.colors?.primary?.extralight};
+  border: 0.1rem solid ${props => props?.theme?.colors?.secondary?.main};
   border-radius: 0.3rem;
   cursor: pointer;
   display: flex;
@@ -67,7 +67,7 @@ const IconButton = styled.button<{ disabled?: boolean }>`
   ${props =>
     props.disabled &&
     css`
-      background: ${props => props.theme.colors.white};
+      background: ${props => props?.theme?.colors?.white};
     `}
   ${form.formComponentFocus};
 `;
