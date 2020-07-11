@@ -4,7 +4,7 @@ import { constants } from '.';
 export const generateYearsArray = (yearsQuantity: number): number[] => {
   const currentYear: number = new Date().getFullYear();
   const maxYear: number = currentYear + yearsQuantity;
-  let years: number[] = [];
+  const years: number[] = [];
 
   for (let i = currentYear; i <= maxYear; i++) {
     years.push(i);
@@ -16,7 +16,7 @@ export const getCurrentYear = (): number => {
   return new Date().getFullYear();
 };
 
-export const getCurrentMonth = (monthsFromNow: number = 0): string => {
+export const getCurrentMonth = (monthsFromNow = 0): string => {
   const month: number = new Date().getMonth();
   return constants.months[month + monthsFromNow];
 };

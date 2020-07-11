@@ -8,10 +8,10 @@ const gray = {
   '01': '#e1e8ed',
   '02': '#657786'
 };
-const white: string = '#ffffff';
-const dark: string = '#1c1e1f';
-const black: string = '#000000';
-const none: string = 'transparent';
+const white = '#ffffff';
+const dark = '#1c1e1f';
+const black = '#000000';
+const none = 'transparent';
 
 export default {
   primary: {

@@ -1,4 +1,4 @@
-export * as form from './form';
+export * from './form';
 
 export { default as colors } from './colors';
 export { default as text } from './text';

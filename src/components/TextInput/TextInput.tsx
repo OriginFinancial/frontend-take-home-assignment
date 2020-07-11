@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { form } from '../../styles';
+import { formComponentFocus } from '../../styles';
 import { TextInputProps } from '../../models';
 
 const TextInput: React.FunctionComponent<TextInputProps> = ({
@@ -53,7 +53,7 @@ const Input = styled.input`
   padding-left: 7rem;
   width: 100%;
 
-  ${form.formComponentFocus};
+  ${formComponentFocus};
 `;
 
 const DollarSign = styled.div`

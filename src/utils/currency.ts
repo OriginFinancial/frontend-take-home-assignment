@@ -1,7 +1,4 @@
-export const formatToDollars = (
-  value: string,
-  style: string = 'decimal'
-): string => {
+export const formatToDollars = (value: string, style = 'decimal'): string => {
   const stringify = String(value);
   if (!stringify || stringify.length < 1) return '';
 

@@ -31,7 +31,7 @@ const GoalSummary: React.FunctionComponent<GoalSummaryProps> = ({
               </b>
             </>
           ) : (
-            <>Type a value and let's start your plan!</>
+            <>Type a value and let&apos;s start your plan!</>
           )}
         </SummaryResume>
       </Paper>

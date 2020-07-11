@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { DatePickerProps } from '../../models';
-import { form } from '../../styles';
+import { formComponentFocus } from '../../styles';
 import ArrowIcon from '../../icons/arrow.svg';
 
 const DatePicker: React.FunctionComponent<DatePickerProps> = ({
@@ -69,7 +69,7 @@ const IconButton = styled.button<{ disabled?: boolean }>`
     css`
       background: ${props => props?.theme?.colors?.white};
     `}
-  ${form.formComponentFocus};
+  ${formComponentFocus};
 `;
 const ArrowLeftIcon = styled.img`
   height: 1.2rem;

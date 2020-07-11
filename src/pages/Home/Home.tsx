@@ -16,6 +16,10 @@ const Home: React.FunctionComponent = () => {
     month: '',
     year: null
   });
+  const isItPreviousDate = utils.date.isItPreviousDate(selectedDate);
+  const monthsDifferenceBetweenDates = utils.date.getMonthsDifferenceUntillDate(
+    selectedDate
+  );
 
   React.useEffect(() => {
     const { month, year } = utils.date.getCurrentDate();
@@ -33,11 +37,6 @@ const Home: React.FunctionComponent = () => {
     setPrevButtonDisabled(isItPreviousDate);
     setTotalOfMonths(monthsDifferenceBetweenDates);
   }, [selectedDate]);
-
-  const isItPreviousDate = utils.date.isItPreviousDate(selectedDate);
-  const monthsDifferenceBetweenDates = utils.date.getMonthsDifferenceUntillDate(
-    selectedDate
-  );
 
   const handlePressNextDate = () => {
     const { month, year } = utils.date.getNextDate(selectedDate);
@@ -82,7 +81,7 @@ const Home: React.FunctionComponent = () => {
     <div>
       <div>
         <Heading>
-          Let's plan you <b>saving goal.</b>
+          Let&apos;s plan you <b>saving goal.</b>
         </Heading>
       </div>
 
