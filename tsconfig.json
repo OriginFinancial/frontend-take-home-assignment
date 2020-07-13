@@ -9,5 +9,10 @@
     "allowJs": true,
     "checkJs": false
   },
-  "include": ["./src/**/*", "src/custom.d.ts", "spec/Home.test.js"]
+  "include": [
+    "./src/**/*",
+    "src/custom.d.ts",
+    "src/styled.d.ts",
+    "spec/Home.test.js"
+  ]
 }
