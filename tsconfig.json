@@ -8,8 +8,8 @@
     "jsx": "react",
     "allowJs": true,
     "checkJs": false,
-    "types": ["react"],
+    "types": ["react", "jest"],
     "esModuleInterop": true,
   },
-  "include": ["./src/**/*", "d.ts"],
+  "include": ["./src/**/*"],
 }

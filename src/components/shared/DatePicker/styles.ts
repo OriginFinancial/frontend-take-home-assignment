@@ -25,7 +25,7 @@ export const DateInputStyle = styled.div`
   }
 `;
 
-export const ArrowIcon = styled.span<{ direction: 'left' | 'right' }>`
+export const ArrowIcon = styled.button<{ direction: 'left' | 'right' }>`
   background-image: url(${arrowIcon});
   background-color: #f4f8fa;
   background-repeat: no-repeat;
