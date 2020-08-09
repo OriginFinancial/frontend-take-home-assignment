@@ -8,7 +8,9 @@ export const Logo = styled.img`
 
 export const Bar = styled.div`
   width: 100%;
-  position: absolute;
+  /* height: 80px; */
+  position: sticky;
+  overflow: hidden;
   top: 0;
   background-color: #ffffff;
 `;

@@ -3,7 +3,9 @@ import { addMonths } from 'date-fns';
 
 import {
   DateField,
+  InputLabel,
   InputContainer,
+  FieldContainer,
   LeftButton,
   RightButton,
   Year,
@@ -37,17 +39,20 @@ const DateInput = props => {
 
   return (
     <InputContainer>
-      <LeftButton
-        onClick={() => changeDate(MINUS_ONE)}
-        disabled={isSameMonth(value, MINIMUM_DATE)}
-      >
-        {'<'}
-      </LeftButton>
-      <DateField>
-        <Month>{parseSelectedMonth(value)}</Month>
-        <Year>{value.getFullYear()}</Year>
-      </DateField>
-      <RightButton onClick={() => changeDate(PLUS_ONE)}>{'>'}</RightButton>
+      <InputLabel>Reach goal by</InputLabel>
+      <FieldContainer>
+        <LeftButton
+          onClick={() => changeDate(MINUS_ONE)}
+          disabled={isSameMonth(value, MINIMUM_DATE)}
+        >
+          {'<'}
+        </LeftButton>
+        <DateField>
+          <Month>{parseSelectedMonth(value)}</Month>
+          <Year>{value.getFullYear()}</Year>
+        </DateField>
+        <RightButton onClick={() => changeDate(PLUS_ONE)}>{'>'}</RightButton>
+      </FieldContainer>
     </InputContainer>
   );
 };

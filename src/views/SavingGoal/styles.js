@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 import Button from '../../components/Button';
 import CurrencyField from '../../components/CurrencyField';
+import DateInput from '../../components/DateInput';
 
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
+
+  @media (max-width: 376px) {
+    justify-content: flex-start;
+    padding-top: 23px;
+  }
 `;
 
 export const Header = styled.span`
@@ -21,6 +27,11 @@ export const Header = styled.span`
   margin-bottom: 40px;
 
   color: #1b31a8;
+
+  @media (max-width: 376px) {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const HomeIcon = styled.img`
@@ -42,20 +53,16 @@ export const ContainerSubtitle = styled.span`
 export const SavingsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   background: #ffffff;
   max-width: 600px;
-  /* height: 500px; */
   border: 1px solid #e1e8ed;
   box-shadow: 0px 1px 4px rgba(150, 164, 176, 0.1);
   border-radius: 8px;
   padding: 40 40px;
 
-  /* TODO RESPONSIVENESS */
   @media (max-width: 376px) {
-    width: 100%;
     max-width: 100%;
+    padding: 24px 24px;
   }
 `;
 
@@ -92,20 +99,46 @@ export const Amount = styled.span`
   font-weight: 500;
   font-size: 40px;
   line-height: 32px;
+
+  @media (max-width: 376px) {
+    font-size: 26px;
+  }
 `;
 
 export const InputsContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-top: 40px;
+
+  @media (max-width: 376px) {
+    flex-direction: column;
+  }
 `;
 
 export const SCurrencyField = styled(CurrencyField)`
   margin-right: 17px;
+
+  @media (max-width: 376px) {
+    width: 100%;
+    margin-bottom: 16px;
+    margin-right: 0px;
+  }
+`;
+
+export const SDateField = styled(DateInput)`
+  @media (max-width: 376px) {
+    width: 100%;
+    margin-bottom: 16px;
+  }
 `;
 
 export const ConfirmButton = styled(Button)`
   align-self: center;
   width: 400px;
   margin: 9 40 0 40px;
+
+  @media (max-width: 376px) {
+    width: 100%;
+    margin: 25px 0 36px 0;
+  }
 `;

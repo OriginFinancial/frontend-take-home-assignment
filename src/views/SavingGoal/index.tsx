@@ -14,25 +14,25 @@ import {
   Amount,
   InputsContainer,
   SCurrencyField,
+  SDateField
 } from './styles';
 
 import Button from '../../components/Button';
 // import CurrencyField from '../../components/CurrencyField';
-import DateInput from '../../components/DateInput';
 import { differenceInCalendarMonths, addMonths } from 'date-fns';
 
 const SavingGoal = () => {
   const [savingAmount, setSavingAmount] = useState(0);
   const [goalDate, setGoalDate] = useState(addMonths(new Date(), 1));
   const [monthlyAmount, setMonthlyAmount] = useState(0);
-  const TODAY = new Date()
+  const TODAY = new Date();
 
   useEffect(() => {
-    const monthDiff: number = differenceInCalendarMonths(goalDate, TODAY)
-    const monthlyAmountResult: number = monthDiff > 0 ? savingAmount/monthDiff : savingAmount;
-    setMonthlyAmount(monthlyAmountResult);  
-
-  }, [goalDate, savingAmount])
+    const monthDiff: number = differenceInCalendarMonths(goalDate, TODAY);
+    const monthlyAmountResult: number =
+      monthDiff > 0 ? savingAmount / monthDiff : savingAmount;
+    setMonthlyAmount(monthlyAmountResult);
+  }, [goalDate, savingAmount]);
 
   const currencyFormatter = (value: number): string => {
     const formatter = new Intl.NumberFormat('en-US', {
@@ -42,9 +42,7 @@ const SavingGoal = () => {
       minimumFractionDigits: 2
     });
 
-    return formatter
-      .format(value)
-      .toString()
+    return formatter.format(value).toString();
   };
 
   const setDate = (value: Date): void => {
@@ -54,10 +52,10 @@ const SavingGoal = () => {
   return (
     <Main>
       <Header>
-        {"Let's plan your"} <b>saving goal</b>
+        {"Let's plan your"} <strong>saving goal.</strong>
       </Header>
       <SavingsContainer>
-        <HomeIcon src={homeIcon}/>
+        <HomeIcon src={homeIcon} />
         <ContainerTitle>Buy a house</ContainerTitle>
         <ContainerSubtitle>Saving goal</ContainerSubtitle>
 
@@ -66,7 +64,7 @@ const SavingGoal = () => {
             onChange={value => setSavingAmount(value)}
             value={savingAmount}
           />
-          <DateInput value={goalDate} onChange={setDate} />
+          <SDateField value={goalDate} onChange={setDate} />
         </InputsContainer>
 
         <ResultContainer>
@@ -75,12 +73,23 @@ const SavingGoal = () => {
             <Amount>{currencyFormatter(monthlyAmount)}</Amount>
           </MonthlyAmountContainer>
           <ResultMessage>
-            {
-              `You're planning ${(differenceInCalendarMonths(goalDate, TODAY)} montly deposits to reach your ${currencyFormatter(savingAmount)} goal by ${goalDate.toLocaleString('default', { month: 'long', year: 'numeric' })}`
-            }
+            You're planning{' '}
+            <strong>
+              {differenceInCalendarMonths(goalDate, TODAY)} monthly deposits
+            </strong>{' '}
+            to reach your <strong>{currencyFormatter(savingAmount)}</strong>{' '}
+            goal by{' '}
+            <strong>
+              {goalDate.toLocaleString('default', {
+                month: 'long',
+                year: 'numeric'
+              })}
+            </strong>
           </ResultMessage>
         </ResultContainer>
-        <ConfirmButton onClick={() => alert("You won $1M")}>Confirm</ConfirmButton>
+        <ConfirmButton onClick={() => alert('You won $1M')}>
+          Confirm
+        </ConfirmButton>
       </SavingsContainer>
     </Main>
   );

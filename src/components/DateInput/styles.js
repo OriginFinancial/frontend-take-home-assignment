@@ -6,7 +6,9 @@ export const DateField = styled.div`
   justify-content: center;
   align-items: center;
   height: 56px;
-  width: 136px;
+  min-width: 136px;
+  flex-grow: 1;
+  max-width: 100%;
   background: #ffffff;
   border: 1px solid #e1e8ed;
   box-sizing: border-box;
@@ -25,8 +27,20 @@ export const Year = styled.span`
   line-height: 20px;
 `;
 
+export const FieldContainer = styled.div`
+  display: flex;
+`;
+
 export const InputContainer = styled.div`
   display: flex;
+  flex-direction: column;
+`;
+
+export const InputLabel = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 4px;
 `;
 
 export const InputButton = styled.button`

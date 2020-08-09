@@ -5,7 +5,7 @@ import GlobalStyle from './styles';
 
 const App: React.FunctionComponent = () => {
   return (
-    <main>
+    <main id="main">
       <GlobalStyle />
       <AppBar />
       <SavingGoal />

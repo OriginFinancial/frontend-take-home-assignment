@@ -17,6 +17,12 @@ body, html {
   font-family: 'Work Sans', sans-serif;
   background-color: #f4f8fa;
 }
+
+#main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 `;
 
 export default GlobalStyle;

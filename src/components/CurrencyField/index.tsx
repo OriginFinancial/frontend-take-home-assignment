@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   CurrencyField as SCurrencyField,
+  FieldContainer,
+  InputLabel,
   InputContainer,
   InputAdornment
 } from './styles';
@@ -15,15 +17,17 @@ const CurrencyField = props => {
 
   return (
     <InputContainer>
-      <InputAdornment>$</InputAdornment>
-      <SCurrencyField
-        // value={currencyFormatter(value)}
-        onChange={onChange_}
-        decimalSeparator="."
-        thousandSeparator=","
-        precision="2"
-        {...rest}
-      />
+      <InputLabel>Total Amount</InputLabel>
+      <FieldContainer>
+        <InputAdornment>$</InputAdornment>
+        <SCurrencyField
+          onChange={onChange_}
+          decimalSeparator="."
+          thousandSeparator=","
+          precision="2"
+          {...rest}
+        />
+      </FieldContainer>
     </InputContainer>
   );
 };

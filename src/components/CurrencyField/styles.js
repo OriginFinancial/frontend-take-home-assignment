@@ -16,7 +16,19 @@ export const CurrencyField = styled(CurrencyInput)`
   border-radius: 0 4px 4px 0;
 `;
 
+export const InputLabel = styled.span`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 4px;
+`;
+
 export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FieldContainer = styled.div`
   display: flex;
 `;
 
