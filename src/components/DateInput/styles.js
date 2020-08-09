@@ -40,6 +40,14 @@ export const InputButton = styled.button`
   font-size: 22px;
   line-height: 26px;
   color: #657786;
+
+  :hover {
+    cursor: pointer;
+  }
+
+  :disabled {
+    cursor: no-drop;
+  }
 `;
 
 export const LeftButton = styled(InputButton)`

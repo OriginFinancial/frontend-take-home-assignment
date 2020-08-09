@@ -23,6 +23,11 @@ export const Header = styled.span`
   color: #1b31a8;
 `;
 
+export const HomeIcon = styled.img`
+  width: 37px;
+  height: 37px;
+`;
+
 export const ContainerTitle = styled.h1`
   font-size: 32px;
   line-height: 48px;

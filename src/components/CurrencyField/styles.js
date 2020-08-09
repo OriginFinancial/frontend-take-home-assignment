@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import CurrencyInput from 'react-currency-input';
 
-export const CurrencyField = styled.input`
+export const CurrencyField = styled(CurrencyInput)`
   height: 56px;
   width: 177px;
   background: #ffffff;

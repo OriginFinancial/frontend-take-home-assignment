@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { addMonths } from 'date-fns';
+
 import {
   DateField,
   InputContainer,
@@ -8,11 +10,13 @@ import {
   Month
 } from './styles';
 
+import { isSameMonth } from 'date-fns';
+
 const DateInput = props => {
   const { value, onChange, ...rest } = props;
-  // const [currentDate, setCurrentDate] = useState();
   const PLUS_ONE = +1;
   const MINUS_ONE = -1;
+  const MINIMUM_DATE: Date = addMonths(new Date(), 1);
 
   const changeDate = (addition: number): void => {
     const selectedDate: Date = value;
@@ -33,7 +37,12 @@ const DateInput = props => {
 
   return (
     <InputContainer>
-      <LeftButton onClick={() => changeDate(MINUS_ONE)}>{'<'}</LeftButton>
+      <LeftButton
+        onClick={() => changeDate(MINUS_ONE)}
+        disabled={isSameMonth(value, MINIMUM_DATE)}
+      >
+        {'<'}
+      </LeftButton>
       <DateField>
         <Month>{parseSelectedMonth(value)}</Month>
         <Year>{value.getFullYear()}</Year>
