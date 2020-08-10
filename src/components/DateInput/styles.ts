@@ -22,14 +22,14 @@ export const Month = styled.span`
   line-height: 24px;
 `;
 
-Month.displayName = "month";
+Month.displayName = "Month";
 
 export const Year = styled.span`
   font-size: 16px;
   line-height: 20px;
 `;
 
-Year.displayName = "year";
+Year.displayName = "Year";
 
 export const FieldContainer = styled.div`
   display: flex;
@@ -46,6 +46,8 @@ export const InputLabel = styled.span`
   line-height: 20px;
   margin-bottom: 4px;
 `;
+
+InputLabel.displayName = 'InputLabel';
 
 export const InputButton = styled.button`
   display: flex;
