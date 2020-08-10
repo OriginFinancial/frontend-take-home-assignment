@@ -7,7 +7,12 @@ import {
   InputAdornment
 } from './styles';
 
-const CurrencyField = props => {
+export interface InputCurrencyProps {
+  value?: number,
+  onChange?: (value: number) => void;
+}
+
+const CurrencyField = (props: InputCurrencyProps) => {
   const { onChange, ...rest } = props;
 
   const onChange_ = (value: string): void => {

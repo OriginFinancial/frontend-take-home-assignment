@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { addMonths } from 'date-fns';
-
+import arrow from '../../icons/arrow.svg';
 import {
   DateField,
   InputLabel,
@@ -14,8 +14,13 @@ import {
 
 import { isSameMonth } from 'date-fns';
 
-const DateInput = props => {
-  const { value, onChange, ...rest } = props;
+export interface DateInputProps {
+  value: Date; 
+  onChange: (value: Date) => void;
+}
+
+const DateInput = (props: DateInputProps) => {
+  const { value, onChange } = props;
   const PLUS_ONE = +1;
   const MINUS_ONE = -1;
   const MINIMUM_DATE: Date = addMonths(new Date(), 1);
@@ -37,6 +42,8 @@ const DateInput = props => {
     }
   };
 
+  const arrowImg = <img src={arrow} />;
+
   return (
     <InputContainer>
       <InputLabel>Reach goal by</InputLabel>
@@ -45,13 +52,15 @@ const DateInput = props => {
           onClick={() => changeDate(MINUS_ONE)}
           disabled={isSameMonth(value, MINIMUM_DATE)}
         >
-          {'<'}
+          {arrowImg}
         </LeftButton>
         <DateField>
           <Month>{parseSelectedMonth(value)}</Month>
           <Year>{value.getFullYear()}</Year>
         </DateField>
-        <RightButton onClick={() => changeDate(PLUS_ONE)}>{'>'}</RightButton>
+        <RightButton onClick={() => changeDate(PLUS_ONE)}>
+          {arrowImg}
+        </RightButton>
       </FieldContainer>
     </InputContainer>
   );

@@ -54,6 +54,7 @@ export const InputButton = styled.button`
   font-size: 22px;
   line-height: 26px;
   color: #657786;
+  border-radius: 4px 0 0 4px;
 
   :hover {
     cursor: pointer;
@@ -64,10 +65,8 @@ export const InputButton = styled.button`
   }
 `;
 
-export const LeftButton = styled(InputButton)`
-  border-radius: 4px 0 0 4px;
-`;
+export const LeftButton = styled(InputButton)``;
 
 export const RightButton = styled(InputButton)`
-  border-radius: 0 4px 4px 0;
+  transform: scaleX(-1);
 `;

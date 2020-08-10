@@ -17,33 +17,21 @@ import {
   SDateField
 } from './styles';
 
-import Button from '../../components/Button';
-// import CurrencyField from '../../components/CurrencyField';
+import { currencyFormatter } from '../../helpers/formatters';
 import { differenceInCalendarMonths, addMonths } from 'date-fns';
 
 const SavingGoal = () => {
+  const TODAY_DATE = new Date();
   const [savingAmount, setSavingAmount] = useState(0);
-  const [goalDate, setGoalDate] = useState(addMonths(new Date(), 1));
+  const [goalDate, setGoalDate] = useState(addMonths(TODAY_DATE, 1));
   const [monthlyAmount, setMonthlyAmount] = useState(0);
-  const TODAY = new Date();
 
   useEffect(() => {
-    const monthDiff: number = differenceInCalendarMonths(goalDate, TODAY);
+    const monthDiff: number = differenceInCalendarMonths(goalDate, TODAY_DATE);
     const monthlyAmountResult: number =
       monthDiff > 0 ? savingAmount / monthDiff : savingAmount;
     setMonthlyAmount(monthlyAmountResult);
-  }, [goalDate, savingAmount]);
-
-  const currencyFormatter = (value: number): string => {
-    const formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 2,
-      minimumFractionDigits: 2
-    });
-
-    return formatter.format(value).toString();
-  };
+  }, [TODAY_DATE, goalDate, savingAmount]);
 
   const setDate = (value: Date): void => {
     setGoalDate(value);
@@ -61,7 +49,7 @@ const SavingGoal = () => {
 
         <InputsContainer>
           <SCurrencyField
-            onChange={value => setSavingAmount(value)}
+            onChange={(value: number) => setSavingAmount(value)}
             value={savingAmount}
           />
           <SDateField value={goalDate} onChange={setDate} />
@@ -75,7 +63,8 @@ const SavingGoal = () => {
           <ResultMessage>
             You're planning{' '}
             <strong>
-              {differenceInCalendarMonths(goalDate, TODAY)} monthly deposits
+              {differenceInCalendarMonths(goalDate, TODAY_DATE)} monthly
+              deposits
             </strong>{' '}
             to reach your <strong>{currencyFormatter(savingAmount)}</strong>{' '}
             goal by{' '}

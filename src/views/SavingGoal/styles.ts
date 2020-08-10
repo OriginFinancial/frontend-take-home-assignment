@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from '../../components/Button';
 import CurrencyField from '../../components/CurrencyField';
 import DateInput from '../../components/DateInput';
 
@@ -132,11 +131,17 @@ export const SDateField = styled(DateInput)`
   }
 `;
 
-export const ConfirmButton = styled(Button)`
+export const ConfirmButton = styled.button`
+  background-color: #1b31a8;
+  color: white;
+  height: 56px;
+  border-radius: 32px;
+  border: none;
+  max-width: 400px;
+  font-weight: 600;
   align-self: center;
   width: 400px;
   margin: 9 40 0 40px;
-
   @media (max-width: 376px) {
     width: 100%;
     margin: 25px 0 36px 0;
