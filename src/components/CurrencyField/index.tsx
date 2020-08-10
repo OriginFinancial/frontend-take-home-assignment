@@ -16,7 +16,7 @@ const CurrencyField = (props: InputCurrencyProps) => {
   const { onChange, ...rest } = props;
 
   const onChange_ = (value: string): void => {
-    const parsedValue = Number(value.replace(/\D/gi, '')) / 100;
+    const parsedValue: number = Number(value.replace(/\D/gi, '')) / 100;
     return onChange(parsedValue);
   };
 

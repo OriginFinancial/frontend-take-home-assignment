@@ -17,7 +17,7 @@ import {
   SDateField
 } from './styles';
 
-import { currencyFormatter } from '../../helpers/formatters';
+import { currencyFormatter, parseDateToString } from '../../helpers/formatters';
 import { differenceInCalendarMonths, addMonths } from 'date-fns';
 
 const SavingGoal = () => {
@@ -32,10 +32,6 @@ const SavingGoal = () => {
       monthDiff > 0 ? savingAmount / monthDiff : savingAmount;
     setMonthlyAmount(monthlyAmountResult);
   }, [TODAY_DATE, goalDate, savingAmount]);
-
-  const setDate = (value: Date): void => {
-    setGoalDate(value);
-  };
 
   return (
     <Main>
@@ -52,7 +48,7 @@ const SavingGoal = () => {
             onChange={(value: number) => setSavingAmount(value)}
             value={savingAmount}
           />
-          <SDateField value={goalDate} onChange={setDate} />
+          <SDateField value={goalDate} onChange={setGoalDate} />
         </InputsContainer>
 
         <ResultContainer>
@@ -69,10 +65,7 @@ const SavingGoal = () => {
             to reach your <strong>{currencyFormatter(savingAmount)}</strong>{' '}
             goal by{' '}
             <strong>
-              {goalDate.toLocaleString('default', {
-                month: 'long',
-                year: 'numeric'
-              })}
+              {parseDateToString(goalDate, true, true)}
             </strong>
           </ResultMessage>
         </ResultContainer>

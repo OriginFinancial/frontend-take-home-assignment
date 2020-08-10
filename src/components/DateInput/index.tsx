@@ -1,5 +1,4 @@
 import React from 'react';
-import { addMonths } from 'date-fns';
 import arrow from '../../icons/arrow.svg';
 import {
   DateField,
@@ -12,7 +11,8 @@ import {
   Month
 } from './styles';
 
-import { isSameMonth } from 'date-fns';
+import { isSameMonth, addMonths } from 'date-fns';
+import {parseDateToString} from '../../helpers/formatters';
 
 export interface DateInputProps {
   value: Date; 
@@ -21,25 +21,14 @@ export interface DateInputProps {
 
 const DateInput = (props: DateInputProps) => {
   const { value, onChange } = props;
-  const PLUS_ONE = +1;
-  const MINUS_ONE = -1;
+  const PLUS_ONE:number = +1;
+  const MINUS_ONE:number = -1;
   const MINIMUM_DATE: Date = addMonths(new Date(), 1);
 
   const changeDate = (addition: number): void => {
     const selectedDate: Date = value;
-    const newDate = new Date(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth() + addition,
-      selectedDate.getDate()
-    );
+    const newDate: Date = addMonths(selectedDate, addition);
     onChange(new Date(newDate));
-  };
-
-  const parseSelectedMonth = (value: Date): string => {
-    if (value) {
-      const month = value.toLocaleDateString('en-US', { month: 'long' });
-      return month;
-    }
   };
 
   const arrowImg = <img src={arrow} />;
@@ -55,8 +44,8 @@ const DateInput = (props: DateInputProps) => {
           {arrowImg}
         </LeftButton>
         <DateField>
-          <Month>{parseSelectedMonth(value)}</Month>
-          <Year>{value.getFullYear()}</Year>
+          <Month>{parseDateToString(value, true, false)}</Month>
+          <Year>{parseDateToString(value, false, true)}</Year>
         </DateField>
         <RightButton onClick={() => changeDate(PLUS_ONE)}>
           {arrowImg}
