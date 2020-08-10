@@ -16,6 +16,8 @@ export const CurrencyField = styled(CurrencyInput)`
   border-radius: 0 4px 4px 0;
 `;
 
+CurrencyField.displayName = "currencyinput"
+
 export const InputLabel = styled.span`
   font-weight: 500;
   font-size: 16px;

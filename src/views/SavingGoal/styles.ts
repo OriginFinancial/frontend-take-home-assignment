@@ -43,6 +43,8 @@ export const ContainerTitle = styled.h1`
   line-height: 48px;
 `;
 
+ContainerTitle.displayName = "ContainerTitle";
+
 export const ContainerSubtitle = styled.span`
   font-size: 16px;
   line-height: 20px;
@@ -147,3 +149,5 @@ export const ConfirmButton = styled.button`
     margin: 25px 0 36px 0;
   }
 `;
+
+ConfirmButton.displayName = "ConfirmButton";

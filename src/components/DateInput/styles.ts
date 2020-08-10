@@ -22,10 +22,14 @@ export const Month = styled.span`
   line-height: 24px;
 `;
 
+Month.displayName = "month";
+
 export const Year = styled.span`
   font-size: 16px;
   line-height: 20px;
 `;
+
+Year.displayName = "year";
 
 export const FieldContainer = styled.div`
   display: flex;
@@ -67,6 +71,10 @@ export const InputButton = styled.button`
 
 export const LeftButton = styled(InputButton)``;
 
+LeftButton.displayName = "leftbtn";
+
 export const RightButton = styled(InputButton)`
   transform: scaleX(-1);
 `;
+
+RightButton.displayName = "rightbtn";
