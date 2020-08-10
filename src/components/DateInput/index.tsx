@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useCallback} from 'react';
 import arrow from '../../icons/arrow.svg';
 import {
   DateField,
@@ -25,11 +25,25 @@ const DateInput = (props: DateInputProps) => {
   const MINUS_ONE:number = -1;
   const MINIMUM_DATE: Date = addMonths(new Date(), 1);
 
-  const changeDate = (addition: number): void => {
+  const changeDate = useCallback((addition: number): void => {
     const selectedDate: Date = value;
     const newDate: Date = addMonths(selectedDate, addition);
-    onChange(new Date(newDate));
-  };
+    onChange(newDate);
+  }, [value]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft' && !isSameMonth(value, MINIMUM_DATE)) {
+        changeDate(MINUS_ONE);
+      } else if (e.key === 'ArrowRight') {
+        changeDate(PLUS_ONE);
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [value]);
 
   const arrowImg = <img src={arrow} />;
 

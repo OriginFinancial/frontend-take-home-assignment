@@ -21,4 +21,17 @@ describe('DatePicker', () => {
 
     expect(handleChange).toBeCalled();
   });
+
+  it('should call onChange when press arrow keys', () => {
+    const map: Record<string, any> = {};
+    document.addEventListener = jest.fn((event, cb) => {
+      map[event] = cb;
+    });
+    const handleChange = jest.fn();
+    mount(<DateInput value={new Date()} onChange={handleChange} />);
+    map.keydown({ key: 'ArrowRight' });
+    expect(handleChange).toBeCalled();
+    map.keydown({ key: 'ArrowLeft' });
+    expect(handleChange).toBeCalled();
+  });
 });
