@@ -1,7 +1,16 @@
 import * as React from 'react';
+import AppBar from './components/AppBar';
+import SavingGoal from './views/SavingGoal';
+import GlobalStyle from './styles';
 
 const App: React.FunctionComponent = () => {
-  return <div>Origin Frontend Take Home</div>;
+  return (
+    <main id="main">
+      <GlobalStyle />
+      <AppBar />
+      <SavingGoal />
+    </main>
+  );
 };
 
 export default App;
