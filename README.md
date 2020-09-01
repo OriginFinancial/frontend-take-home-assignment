@@ -17,11 +17,12 @@ When the users change the value of any of the inputs, the monthly deposit value 
 
 # Development Instructions
 
-We expect you to:
-
-1. Develop the page as close as possible to the mockups, both on mobile & desktop.
-2. Implement business rules.
-3. Test the codebase.
+### Evaluation 
+Be aware that Origin will mainly take into consideration the following evaluation criteria:
+* How close your page is to the mockups, both on mobile & desktop;
+* How clean and organized your code is;
+* How good your automated tests are (qualitative over quantitative);
+* And if you implemented the business rules correctly.
 
 ### Assets
 
