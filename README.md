@@ -56,10 +56,7 @@ We've added a project structure (build system with react, redux, jest, styled-co
 
 # Delivery Instructions
 
-We expect you to deliver your final code with one of these options:
-
-- You can open a Pull Request to this Github repository.
-- You can send to us the link for your repository (make sure to make it public)
+Send us the link to your repository and make sure to make it public.
 
 # Usage
 
