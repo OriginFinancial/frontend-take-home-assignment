@@ -1,4 +1,17 @@
 version: 2.1
+
+aliases:
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore Npm Package Cache
+      keys:
+        - yarn-cache-netlify-{{ checksum "yarn.lock" }}
+
+  install_node_modules: &install_node_modules
+    run:
+      name: Install dependencies
+      command: yarn
+
 jobs:
   test_and_lint:
     docker:
@@ -6,15 +19,8 @@ jobs:
     working_directory: /home/circleci/frontend-take-home-assignment
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - frontend-take-home-assignment-deps-{{ .Branch }}-{{ checksum "package.json" }}
-            - frontend-take-home-assignment-deps-develop-{{ checksum "package.json" }}
-            - frontend-take-home-assignment-deps-develop
-      - run:
-          name: Install dependencies
-          command: |
-            yarn install
+      - <<: *restore_cache
+      - <<: *install_node_modules
       - run:
           name: Linter
           command: |
@@ -23,31 +29,49 @@ jobs:
           name: Run tests
           command: |
             yarn run test
+#      @TODO: configure code coverage on coverall
+#      - run:
+#          name: code-coverage
+#          command: npm run coverage
+#          - coveralls/upload
+#      - store_artifacts:
+#          path: test-results
+#          prefix: tests
+#      - store_artifacts:
+#          path: coverage
+#          prefix: coverage
+#      - store_test_results:
+#          path: test-results
+
+#     @TODO: configure cypress at pipeline
+#      - run:
+#          name: Run E2E tests
+#          command: |
+#            yarn run e2e
+
+  deploy:
+    executor: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./
       - run:
-          name: code-coverage
-          command: npm run coverage
-          - coveralls/upload
-          - store_artifacts:
-              path: test-results
-              prefix: tests
-          - store_artifacts:
-              path: coverage
-              prefix: coverage
-          - store_test_results:
-              path: test-results
-          - run:
-              name: "What branch am I on?"
-              command: echo ${CIRCLE_BRANCH}
-              notify:
-                webhooks:
-                  - url: https://coveralls.io/webhook?repo_token=${COVERALLS_REPO_TOKEN}
+          name: Install netlify-cli
+          command: sudo npm install -g --silent netlify-cli
       - run:
-          name: Run E2E tests
-          command: |
-            yarn run e2e
+          name: Deploy to Netlify
+          command: netlify deploy --dir=./dist -p
+
+# @TODO: configure COVERALLS notify
+#  notify:
+#    webhooks:
+#      - url: https://coveralls.io/webhook?repo_token=${COVERALLS_REPO_TOKEN}
 
 workflows:
   version: 2
   pipeline:
     jobs:
       - test_and_lint
+      - deploy
+#      @TODO configure COVERALLS notify
+#      - notify
