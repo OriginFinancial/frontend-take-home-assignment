@@ -6,13 +6,13 @@ import logo from '../icons/logo.svg';
 const Container = styled.header`
   display: flex;
   align-items: center;
-  height: 55px;
+  height: 56px;
   padding: 0 16px;
   background: #fff;
 
   ${props => `
     ${props.theme.breakpoints.md} {
-      height: 80px;
+      height: 79px;
       padding: 0 37px;
     }
   `}

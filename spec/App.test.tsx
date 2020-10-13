@@ -5,7 +5,6 @@ import App from '../src/App';
 describe('App', () => {
   it('renders', () => {
     render(<App />);
-
-    expect(screen.getByAltText('Origin Logo')).toBeTruthy();
+    expect(screen.getByAltText(/origin logo/i)).toBeTruthy();
   });
 });
