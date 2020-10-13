@@ -66,6 +66,7 @@ const Subtitle = styled.div`
 
 const Body = styled.div`
   margin-top: 36px;
+  width: 100%;
 
   ${props => `
     ${props.theme.breakpoints.md} {

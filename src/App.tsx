@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Work Sans', sans-serif;
     min-height: 100vh;
     background: #f2f2f2;
+    color: #1c1e1f
   }
 `;
 
