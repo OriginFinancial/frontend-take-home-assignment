@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
 import Icon from '../components/Icon';
+import Button from '../components/Button';
 
 const AlertWrapper = styled.div`
   margin-top: 30px;
@@ -73,6 +74,10 @@ const PlanYourSavings: React.FunctionComponent = () => {
                 </Alert.Footer>
               </Alert>
             </AlertWrapper>
+
+            <Card.Action>
+              <Button>Confirm</Button>
+            </Card.Action>
           </Card.Body>
         </Card>
       </Page.Body>
