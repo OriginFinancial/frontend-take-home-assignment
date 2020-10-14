@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { format, differenceInMonths } from 'date-fns';
 
 import Page from '../components/Page';
 import Card from '../components/Card';
@@ -33,6 +34,9 @@ const MonthlyAmountValue = styled.div`
 `;
 
 const PlanYourSavings: React.FunctionComponent = () => {
+  const [date, setDate] = React.useState();
+  const [now] = React.useState(Date.now());
+
   return (
     <Page>
       <Page.Title>
@@ -57,7 +61,7 @@ const PlanYourSavings: React.FunctionComponent = () => {
 
                 <Form.Control>
                   <Form.Label htmlFor="goal">Reach goal by</Form.Label>
-                  <InputMonth />
+                  <InputMonth onChange={setDate} />
                 </Form.Control>
               </Form.Group>
             </Form>
@@ -69,9 +73,16 @@ const PlanYourSavings: React.FunctionComponent = () => {
                   <MonthlyAmountValue>$521</MonthlyAmountValue>
                 </Alert.Body>
                 <Alert.Footer>
-                  You’re planning <strong>48 monthly deposits</strong> to reach
-                  your <strong>$25,000</strong> goal by
-                  <strong>October 2020.</strong>
+                  You’re planning{' '}
+                  <strong data-testid="alert-date-distance">
+                    {date && differenceInMonths(date, now)} monthly deposits
+                  </strong>{' '}
+                  to reach your{' '}
+                  <strong data-testid="alert-goal">$25,000</strong> goal by{' '}
+                  <strong data-testid="alert-selected-date">
+                    {date && format(date, 'MMMM')}{' '}
+                    {date && format(date, 'yyyy')}
+                  </strong>
                 </Alert.Footer>
               </Alert>
             </AlertWrapper>

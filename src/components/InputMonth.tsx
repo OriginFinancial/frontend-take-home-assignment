@@ -4,6 +4,7 @@ import { addMonths, subMonths, format, getMonth, getYear } from 'date-fns';
 
 interface InputMonthProps {
   startAt?: Date;
+  onChange?: Function;
 }
 
 const Container = styled.div`
@@ -52,17 +53,24 @@ const inputMonthReducer: React.Reducer<Date, INPUT_ACTIONS> = (
 };
 
 const InputMonth: React.FunctionComponent<InputMonthProps> = ({
-  startAt
+  startAt,
+  onChange
 }) => {
   const now = Date.now();
   const initialDate = startAt || new Date(now);
 
   const [date, dispatch] = React.useReducer(inputMonthReducer, initialDate);
 
+  React.useEffect(() => {
+    if (onChange) {
+      onChange(date);
+    }
+  }, [date, onChange]);
+
   return (
     <Container>
       <Button
-        data-testid="decrease"
+        aria-label="Decrease"
         onClick={() => {
           const isCurrentMonth = getMonth(date) === getMonth(now);
           const isCurrentYear = getYear(date) === getYear(now);
@@ -79,7 +87,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
         <Year>{format(date, 'yyyy')}</Year>
       </Value>
       <Button
-        data-testid="increase"
+        aria-label="Increase"
         onClick={() => dispatch(INPUT_ACTIONS.INCREASE)}
       />
     </Container>

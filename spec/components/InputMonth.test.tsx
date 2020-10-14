@@ -16,7 +16,7 @@ describe('InputMonth', () => {
 
     expect(screen.getByText(/october/i)).toBeTruthy();
 
-    const increaseButton = screen.getByTestId(/increase/i);
+    const increaseButton = screen.getByLabelText(/increase/i);
     userEvent.click(increaseButton);
 
     expect(screen.getByText(/november/i)).toBeTruthy();
@@ -27,7 +27,7 @@ describe('InputMonth', () => {
 
     expect(screen.getByText(/november/i)).toBeTruthy();
 
-    const decreaseButton = screen.getByTestId(/decrease/i);
+    const decreaseButton = screen.getByLabelText(/decrease/i);
     userEvent.click(decreaseButton);
 
     expect(screen.getByText(/october/i)).toBeTruthy();
@@ -38,7 +38,7 @@ describe('InputMonth', () => {
 
     expect(screen.getByText(/october/i)).toBeTruthy();
 
-    const decreaseButton = screen.getByTestId(/decrease/i);
+    const decreaseButton = screen.getByLabelText(/decrease/i);
     userEvent.click(decreaseButton);
 
     expect(screen.getByText(/october/i)).toBeTruthy();
