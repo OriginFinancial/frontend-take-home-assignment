@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import InputMonth from '../../src/components/InputMonth';
 
@@ -40,6 +40,32 @@ describe('InputMonth', () => {
 
     const decreaseButton = screen.getByLabelText(/decrease/i);
     userEvent.click(decreaseButton);
+
+    expect(screen.getByText(/october/i)).toBeTruthy();
+  });
+
+  it('adds a month when right arrow key is pressed', () => {
+    const { container } = render(<InputMonth />);
+
+    expect(screen.getByText(/october/i)).toBeTruthy();
+
+    fireEvent.keyUp(container, {
+      key: 'ArrowRight',
+      keyCode: 39
+    });
+
+    expect(screen.getByText(/november/i)).toBeTruthy();
+  });
+
+  it('subtracts a month when left arrow key is pressed', () => {
+    const { container } = render(<InputMonth startAt={new Date('november 15, 2020')}/>);
+
+    expect(screen.getByText(/november/i)).toBeTruthy();
+
+    fireEvent.keyUp(container, {
+      key: 'ArrowLeft',
+      keyCode: 37
+    });
 
     expect(screen.getByText(/october/i)).toBeTruthy();
   });

@@ -14,6 +14,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 1px solid #e1e8ed;
+  border-radius: 4px;
 `;
 
 const Button = styled.button`
@@ -60,8 +62,34 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
 }) => {
   const now = Date.now();
   const initialDate = startAt || new Date(now);
+  const increaseRef = React.useRef();
+  const decreaseRef = React.useRef();
 
   const [date, dispatch] = React.useReducer(inputMonthReducer, initialDate);
+
+  React.useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      const decreaseButton: HTMLElement = decreaseRef.current;
+      const increaseButton: HTMLElement = increaseRef.current;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          decreaseButton.click();
+          decreaseButton.focus();
+          break;
+        case 'ArrowRight':
+          increaseButton.click();
+          increaseButton.focus();
+          break;
+      }
+    };
+
+    window.addEventListener('keyup', handleKey);
+
+    return () => {
+      window.removeEventListener('keyup', handleKey);
+    };
+  }, [increaseRef, decreaseRef]);
 
   React.useEffect(() => {
     if (onChange) {
@@ -72,6 +100,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
   return (
     <Container>
       <Button
+        ref={decreaseRef}
         aria-label="Decrease"
         onClick={() => {
           const isCurrentMonth = getMonth(date) === getMonth(now);
@@ -91,6 +120,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
         <Year>{format(date, 'yyyy')}</Year>
       </Value>
       <Button
+        ref={increaseRef}
         aria-label="Increase"
         onClick={() => dispatch(INPUT_ACTIONS.INCREASE)}
       >
