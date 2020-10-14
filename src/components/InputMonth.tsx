@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { addMonths, subMonths, format, getMonth, getYear } from 'date-fns';
 
 interface InputMonthProps {
-  pastDates?: boolean;
+  startAt?: Date;
 }
 
 const Container = styled.div`
@@ -52,20 +52,18 @@ const inputMonthReducer: React.Reducer<Date, INPUT_ACTIONS> = (
 };
 
 const InputMonth: React.FunctionComponent<InputMonthProps> = ({
-  pastDates = true
+  startAt
 }) => {
   const now = Date.now();
-  const [date, dispatch] = React.useReducer(inputMonthReducer, new Date(now));
+  const initialDate = startAt || new Date(now);
+
+  const [date, dispatch] = React.useReducer(inputMonthReducer, initialDate);
 
   return (
     <Container>
       <Button
         data-testid="decrease"
         onClick={() => {
-          if (pastDates) {
-            return dispatch(INPUT_ACTIONS.DECREASE);
-          }
-
           const isCurrentMonth = getMonth(date) === getMonth(now);
           const isCurrentYear = getYear(date) === getYear(now);
 
