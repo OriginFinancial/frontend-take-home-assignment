@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { addMonths, subMonths, format, getMonth, getYear } from 'date-fns';
+import Icon from './Icon';
 
 interface InputMonthProps {
   startAt?: Date;
@@ -18,6 +19,7 @@ const Container = styled.div`
 const Button = styled.button`
   height: 100%;
   width: 48px;
+  padding: 15px;
   border: none;
 `;
 
@@ -81,7 +83,9 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
 
           dispatch(INPUT_ACTIONS.DECREASE);
         }}
-      />
+      >
+        <Icon.ArrowLeft />
+      </Button>
       <Value>
         <Month>{format(date, 'MMMM')}</Month>
         <Year>{format(date, 'yyyy')}</Year>
@@ -89,7 +93,9 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
       <Button
         aria-label="Increase"
         onClick={() => dispatch(INPUT_ACTIONS.INCREASE)}
-      />
+      >
+        <Icon.ArrowRight />
+      </Button>
     </Container>
   );
 };
