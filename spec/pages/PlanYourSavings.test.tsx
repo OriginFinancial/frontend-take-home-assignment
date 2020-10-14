@@ -5,7 +5,7 @@ import { render, screen } from '@testing-library/react';
 import theme from '../../src/theme';
 import PlanYourSavings from '../../src/pages/PlanYourSavings';
 
-describe('App', () => {
+describe('Plan Your Savings', () => {
   it('renders', () => {
     render(
       <ThemeProvider theme={theme}>

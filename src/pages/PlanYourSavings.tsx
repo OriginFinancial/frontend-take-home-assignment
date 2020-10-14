@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
 import Icon from '../components/Icon';
+import InputMonth from '../components/InputMonth';
 import Button from '../components/Button';
 
 const AlertWrapper = styled.div`
@@ -56,7 +57,7 @@ const PlanYourSavings: React.FunctionComponent = () => {
 
                 <Form.Control>
                   <Form.Label htmlFor="goal">Reach goal by</Form.Label>
-                  <input />
+                  <InputMonth />
                 </Form.Control>
               </Form.Group>
             </Form>
