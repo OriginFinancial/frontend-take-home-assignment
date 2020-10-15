@@ -15,6 +15,7 @@ const Container = styled.main`
 const Title = styled.h2`
   text-align: center;
   font-size: 18px;
+  font-weight: 400;
   margin-top: 23px;
   color: #1b31a8;
 

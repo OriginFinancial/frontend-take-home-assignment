@@ -11,6 +11,12 @@ describe('InputMonth', () => {
     });
   });
 
+  it('renders correct date when one is provided', () => {
+    render(<InputMonth startDate={new Date('2020 30, december')} />);
+
+    expect(screen.getByText(/december/i)).toBeTruthy();
+  });
+
   it('adds a month when button increase is clicked', () => {
     render(<InputMonth />);
 

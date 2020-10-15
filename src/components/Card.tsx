@@ -19,12 +19,14 @@ const Container = styled.section`
   padding: 24px;
   background: #fff;
   box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
+  border-radius: 20px 20px 0 0;
 
   ${props => `
     ${props.theme.breakpoints.md} {
       padding: 40px;
       border: 1px solid #e1e8ed;
       box-shadow: 0px 1px 4px rgba(150, 164, 176, 0.1);
+      border-radius: 8px;
     }
   `}
 `;
@@ -85,7 +87,12 @@ const BodySection = styled.div`
 
 const Action = styled(Body)`
   max-width: 400px;
-  margin: auto;
+
+  ${props => `
+    ${props.theme.breakpoints.md} {
+      margin: 36px auto 0;
+    }
+  `}
 `;
 
 const Card: Card = ({ children }) => {

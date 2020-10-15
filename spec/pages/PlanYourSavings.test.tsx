@@ -36,13 +36,13 @@ describe('Plan Your Savings', () => {
     const alertSelectedDate = screen.getByTestId(/alert-selected-date/i);
     const alertDateDistance = screen.getByTestId(/alert-date-distance/);
 
-    expect(alertSelectedDate).toHaveTextContent(/october 2020/gi);
-    expect(alertDateDistance).toHaveTextContent(/0/gi);
+    expect(alertSelectedDate).toHaveTextContent(/november 2020/gi);
+    expect(alertDateDistance).toHaveTextContent(/1/gi);
 
     const increaseButton = screen.getByLabelText(/increase/i);
     userEvent.click(increaseButton);
 
-    expect(alertSelectedDate).toHaveTextContent(/november 2020/gi);
-    expect(alertDateDistance).toHaveTextContent(/1/gi);
+    expect(alertSelectedDate).toHaveTextContent(/december 2020/gi);
+    expect(alertDateDistance).toHaveTextContent(/2/gi);
   });
 });

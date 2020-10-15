@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
     padding: 0;
     margin: 0;
   }

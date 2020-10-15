@@ -4,7 +4,9 @@ import { addMonths, subMonths, format } from 'date-fns';
 import Icon from './Icon';
 
 interface InputMonthProps {
+  startDate?: Date;
   onChange?: Function;
+  stateReducer?: React.Reducer<Date, INPUT_MONTH_ACTIONS>;
 }
 
 const Container = styled.div`
@@ -20,7 +22,7 @@ const Container = styled.div`
 const Button = styled.button`
   height: 100%;
   width: 48px;
-  padding: 15px;
+  padding: 18px;
   border: none;
 `;
 
@@ -38,32 +40,35 @@ const Month = styled.div`
 
 const Year = styled.div``;
 
-enum INPUT_ACTIONS {
+export enum INPUT_MONTH_ACTIONS {
   INCREASE,
   DECREASE
 }
 
-const inputMonthReducer: React.Reducer<Date, INPUT_ACTIONS> = (
+const inputMonthReducer: React.Reducer<Date, INPUT_MONTH_ACTIONS> = (
   date,
   action
 ) => {
   switch (action) {
-    case INPUT_ACTIONS.INCREASE:
+    case INPUT_MONTH_ACTIONS.INCREASE:
       return addMonths(date, 1);
-    case INPUT_ACTIONS.DECREASE:
+    case INPUT_MONTH_ACTIONS.DECREASE:
       return subMonths(date, 1);
   }
 };
 
 const InputMonth: React.FunctionComponent<InputMonthProps> = ({
-  onChange
+  startDate,
+  onChange,
+  stateReducer = inputMonthReducer
 }) => {
   const now = Date.now();
-  const initialDate = new Date(now);
+  const initialDate = startDate || new Date(now);
+
   const increaseRef = React.useRef();
   const decreaseRef = React.useRef();
 
-  const [date, dispatch] = React.useReducer(inputMonthReducer, initialDate);
+  const [date, dispatch] = React.useReducer(stateReducer, initialDate);
 
   React.useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -100,7 +105,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
       <Button
         ref={decreaseRef}
         aria-label="Decrease"
-        onClick={() => dispatch(INPUT_ACTIONS.DECREASE)}
+        onClick={() => dispatch(INPUT_MONTH_ACTIONS.DECREASE)}
       >
         <Icon.ArrowLeft />
       </Button>
@@ -111,7 +116,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
       <Button
         ref={increaseRef}
         aria-label="Increase"
-        onClick={() => dispatch(INPUT_ACTIONS.INCREASE)}
+        onClick={() => dispatch(INPUT_MONTH_ACTIONS.INCREASE)}
       >
         <Icon.ArrowRight />
       </Button>

@@ -18,8 +18,8 @@ const Container = styled.div`
 
 const Button = styled.button`
   height: 100%;
-  width: 48px;
-  padding: 15px;
+  width: 56px;
+  padding: 16px 20px;
   border: none;
   pointer-events: none;
 `;

@@ -1,16 +1,47 @@
 import * as React from 'react';
-import { differenceInMonths, format } from 'date-fns';
+import {
+  differenceInMonths,
+  format,
+  subMonths,
+  addMonths,
+  getMonth,
+  getYear
+} from 'date-fns';
 
 import Page from '../components/Page';
 import Card from '../components/Card';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
 import Icon from '../components/Icon';
-import InputMonth from '../components/InputMonth';
+import InputMonth, { INPUT_MONTH_ACTIONS } from '../components/InputMonth';
 import InputMoney from '../components/InputMoney';
 import Button from '../components/Button';
 
 import { formatMoney } from '../helpers/MoneyFormatter';
+
+const monthReducer: React.Reducer<Date, INPUT_MONTH_ACTIONS> = (
+  date,
+  action
+) => {
+  const startDate = addMonths(Date.now(), 1);
+
+  const startMonth = getMonth(startDate);
+  const startYear = getYear(startDate);
+
+  const currentMonth = getMonth(date);
+  const currentYear = getYear(date);
+
+  switch (action) {
+    case INPUT_MONTH_ACTIONS.DECREASE:
+      if (currentMonth === startMonth && startYear === currentYear) {
+        return date;
+      }
+
+      return subMonths(date, 1);
+    case INPUT_MONTH_ACTIONS.INCREASE:
+      return addMonths(date, 1);
+  }
+};
 
 const PlanYourSavings: React.FunctionComponent = () => {
   const [date, setDate] = React.useState();
@@ -76,7 +107,11 @@ const PlanYourSavings: React.FunctionComponent = () => {
 
                   <Form.Control>
                     <Form.Label htmlFor="goal">Reach goal by</Form.Label>
-                    <InputMonth onChange={setDate} />
+                    <InputMonth
+                      onChange={setDate}
+                      startDate={addMonths(now, 1)}
+                      stateReducer={monthReducer}
+                    />
                   </Form.Control>
                 </Form.Group>
               </Form>
@@ -90,7 +125,9 @@ const PlanYourSavings: React.FunctionComponent = () => {
                 </Alert.Body>
                 <Alert.Footer>
                   You’re planning{' '}
-                  <strong data-testid="alert-date-distance">{distance} monthly deposits</strong>{' '}
+                  <strong data-testid="alert-date-distance">
+                    {distance} monthly deposit{distance > 1 && 's'}
+                  </strong>{' '}
                   to reach your{' '}
                   <strong data-testid="alert-goal">${totalAmount}</strong> goal
                   by{' '}
