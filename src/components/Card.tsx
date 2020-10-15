@@ -6,6 +6,7 @@ export interface Card extends React.FunctionComponent {
   Title?: React.FunctionComponent;
   Subtitle?: React.FunctionComponent;
   Body?: React.FunctionComponent;
+  BodySection?: React.FunctionComponent;
   Action?: React.FunctionComponent;
 }
 
@@ -14,7 +15,7 @@ const Container = styled.section`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 600px;
+  max-width: 560px;
   padding: 24px;
   background: #fff;
   box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
@@ -76,16 +77,15 @@ const Body = styled.div`
   `}
 `;
 
-const Action = styled.div`
-  margin-top: 36px;
-  width: 100%;
-  max-width: 400px;
+const BodySection = styled.div`
+  &:not(:first-child) {
+    margin-top: 30px;
+  }
+`;
 
-  ${props => `
-    ${props.theme.breakpoints.md} {
-      margin: 40px auto 0;
-    }
-  `}
+const Action = styled(Body)`
+  max-width: 400px;
+  margin: auto;
 `;
 
 const Card: Card = ({ children }) => {
@@ -96,6 +96,7 @@ Card.Icon = Icon;
 Card.Title = Title;
 Card.Subtitle = Subtitle;
 Card.Body = Body;
+Card.BodySection = BodySection;
 Card.Action = Action;
 
 export default Card;
