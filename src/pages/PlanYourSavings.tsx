@@ -49,8 +49,10 @@ const PlanYourSavings: React.FunctionComponent = () => {
 
   const [year, setYear] = React.useState(null);
   const [month, setMonth] = React.useState(null);
-  const [distance, setDistance] = React.useState(null);
+
+  const [distance, setDistance] = React.useState(1);
   const [monthlyAmount, setMonthlyAmount] = React.useState('0');
+
   const [totalAmount, setTotalAmount] = React.useState('0');
 
   const [now] = React.useState(Date.now());
@@ -70,13 +72,8 @@ const PlanYourSavings: React.FunctionComponent = () => {
   }, [date, now]);
 
   React.useEffect(() => {
-    if (!value) {
-      return;
-    }
-
-    // @ts-ignore
-    const formattedMonthlyAmount = formatMoney(value / distance);
-    const formattedTotalAmount = formatMoney(value);
+    const formattedMonthlyAmount = formatMoney(value || 0 / distance);
+    const formattedTotalAmount = formatMoney(value || 0);
 
     setMonthlyAmount(formattedMonthlyAmount);
     setTotalAmount(formattedTotalAmount);

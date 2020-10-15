@@ -86,12 +86,12 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
           break;
       }
     };
-
-    window.addEventListener('keyup', handleKey);
-
-    return () => {
-      window.removeEventListener('keyup', handleKey);
-    };
+    //
+    // window.addEventListener('keyup', handleKey);
+    //
+    // return () => {
+    //   window.removeEventListener('keyup', handleKey);
+    // };
   }, [increaseRef, decreaseRef]);
 
   React.useEffect(() => {
