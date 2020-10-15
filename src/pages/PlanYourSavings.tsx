@@ -72,7 +72,7 @@ const PlanYourSavings: React.FunctionComponent = () => {
   }, [date, now]);
 
   React.useEffect(() => {
-    const formattedMonthlyAmount = formatMoney(value || 0 / distance);
+    const formattedMonthlyAmount = formatMoney((value || 0) / distance);
     const formattedTotalAmount = formatMoney(value || 0);
 
     setMonthlyAmount(formattedMonthlyAmount);

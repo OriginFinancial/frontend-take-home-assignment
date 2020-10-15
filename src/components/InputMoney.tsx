@@ -54,6 +54,7 @@ const InputMoney: React.FunctionComponent<InputMoneyProps> = ({ onChange }) => {
       </Button>
       {(isEditing) ? (
         <Input
+          type="number"
           value={value}
           onChange={event => {
             // @ts-ignore

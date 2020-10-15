@@ -65,16 +65,16 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
   const now = Date.now();
   const initialDate = startDate || new Date(now);
 
-  const increaseRef = React.useRef();
-  const decreaseRef = React.useRef();
+  const increaseRef = React.useRef<HTMLButtonElement>();
+  const decreaseRef = React.useRef<HTMLButtonElement>();
 
   const [date, dispatch] = React.useReducer(stateReducer, initialDate);
 
   React.useEffect(() => {
-    const handleKey = (event: KeyboardEvent) => {
-      const decreaseButton: HTMLElement = decreaseRef.current;
-      const increaseButton: HTMLElement = increaseRef.current;
+    const decreaseButton = decreaseRef.current;
+    const increaseButton = increaseRef.current;
 
+    const handleKey = (event: KeyboardEvent) => {
       switch (event.key) {
         case 'ArrowLeft':
           decreaseButton.click();
@@ -86,12 +86,12 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
           break;
       }
     };
-    //
-    // window.addEventListener('keyup', handleKey);
-    //
-    // return () => {
-    //   window.removeEventListener('keyup', handleKey);
-    // };
+
+    window.addEventListener('keyup', handleKey);
+
+    return () => {
+      window.removeEventListener('keyup', handleKey);
+    };
   }, [increaseRef, decreaseRef]);
 
   React.useEffect(() => {
