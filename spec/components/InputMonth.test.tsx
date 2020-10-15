@@ -23,17 +23,6 @@ describe('InputMonth', () => {
   });
 
   it('subtracts a month when button decrease is clicked', () => {
-    render(<InputMonth startAt={new Date('november 15, 2020')} />);
-
-    expect(screen.getByText(/november/i)).toBeTruthy();
-
-    const decreaseButton = screen.getByLabelText(/decrease/i);
-    userEvent.click(decreaseButton);
-
-    expect(screen.getByText(/october/i)).toBeTruthy();
-  });
-
-  it('does not allow past dates', () => {
     render(<InputMonth />);
 
     expect(screen.getByText(/october/i)).toBeTruthy();
@@ -41,7 +30,7 @@ describe('InputMonth', () => {
     const decreaseButton = screen.getByLabelText(/decrease/i);
     userEvent.click(decreaseButton);
 
-    expect(screen.getByText(/october/i)).toBeTruthy();
+    expect(screen.getByText(/september/i)).toBeTruthy();
   });
 
   it('adds a month when right arrow key is pressed', () => {
@@ -58,15 +47,15 @@ describe('InputMonth', () => {
   });
 
   it('subtracts a month when left arrow key is pressed', () => {
-    const { container } = render(<InputMonth startAt={new Date('november 15, 2020')}/>);
+    const { container } = render(<InputMonth />);
 
-    expect(screen.getByText(/november/i)).toBeTruthy();
+    expect(screen.getByText(/october/i)).toBeTruthy();
 
     fireEvent.keyUp(container, {
       key: 'ArrowLeft',
       keyCode: 37
     });
 
-    expect(screen.getByText(/october/i)).toBeTruthy();
+    expect(screen.getByText(/september/i)).toBeTruthy();
   });
 });

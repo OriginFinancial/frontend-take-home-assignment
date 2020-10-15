@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { addMonths, subMonths, format, getMonth, getYear } from 'date-fns';
+import { addMonths, subMonths, format } from 'date-fns';
 import Icon from './Icon';
 
 interface InputMonthProps {
-  startAt?: Date;
   onChange?: Function;
 }
 
@@ -57,11 +56,10 @@ const inputMonthReducer: React.Reducer<Date, INPUT_ACTIONS> = (
 };
 
 const InputMonth: React.FunctionComponent<InputMonthProps> = ({
-  startAt,
   onChange
 }) => {
   const now = Date.now();
-  const initialDate = startAt || new Date(now);
+  const initialDate = new Date(now);
   const increaseRef = React.useRef();
   const decreaseRef = React.useRef();
 
@@ -102,16 +100,7 @@ const InputMonth: React.FunctionComponent<InputMonthProps> = ({
       <Button
         ref={decreaseRef}
         aria-label="Decrease"
-        onClick={() => {
-          const isCurrentMonth = getMonth(date) === getMonth(now);
-          const isCurrentYear = getYear(date) === getYear(now);
-
-          if (isCurrentMonth && isCurrentYear) {
-            return;
-          }
-
-          dispatch(INPUT_ACTIONS.DECREASE);
-        }}
+        onClick={() => dispatch(INPUT_ACTIONS.DECREASE)}
       >
         <Icon.ArrowLeft />
       </Button>
