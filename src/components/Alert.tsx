@@ -9,12 +9,12 @@ export interface Alert extends React.FunctionComponent {
 }
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   background: #fff;
+  border-radius: 4px;
   border: 1px solid #e1e8ed;
   box-shadow: 0px 1px 4px rgba(150, 164, 176, 0.1);
-  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Title = styled.div`
@@ -26,8 +26,8 @@ const Title = styled.div`
 `;
 
 const Money = styled.div`
-  font-size: 26px;
   color: #0079ff;
+  font-size: 26px;
   max-width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -40,9 +40,9 @@ const Money = styled.div`
 `;
 
 const Body = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 16px 24px;
 
   ${props => `
@@ -54,9 +54,9 @@ const Body = styled.div`
 
 const Footer = styled.div`
   background: #f4f8fa;
+  min-height: 60px;
   padding: 16px 32px;
   font-size: 12px;
-  min-height: 60px;
 `;
 
 const Alert: Alert = ({ children }) => {

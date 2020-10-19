@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import logo from '../icons/logo.svg';
 
 const Container = styled.header`
-  display: flex;
   align-items: center;
+  background: #fff;
+  display: flex;
   height: 56px;
   padding: 0 16px;
-  background: #fff;
 
   ${props => `
     ${props.theme.breakpoints.md} {

@@ -11,42 +11,42 @@ export interface Card extends React.FunctionComponent {
 }
 
 const Container = styled.section`
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
   max-width: 560px;
   padding: 24px;
-  background: #fff;
-  box-shadow: 0px 2px 16px rgba(225, 232, 237, 0.8);
-  border-radius: 20px 20px 0 0;
+  width: 100%;
 
   ${props => `
     ${props.theme.breakpoints.md} {
-      padding: 40px;
       border: 1px solid #e1e8ed;
-      box-shadow: 0px 1px 4px rgba(150, 164, 176, 0.1);
       border-radius: 8px;
+      box-shadow: 0px 1px 4px rgba(150, 164, 176, 0.1);
+      padding: 40px;
     }
   `}
 `;
 
 const Icon = styled.div`
-  width: 32px;
   height: 32px;
   margin-bottom: 5px;
+  width: 32px;
 
   ${props => `
     ${props.theme.breakpoints.md} {
-      width: 40px;
       height: 40px;
+      width: 40px;
     }
   `}
 `;
 
 const Title = styled.div`
-  font-weight: 600;
   font-size: 24px;
+  font-weight: 600;
 
   ${props => `
     ${props.theme.breakpoints.md} {
@@ -56,10 +56,10 @@ const Title = styled.div`
 `;
 
 const Subtitle = styled.div`
-  font-weight: 400;
-  font-size: 14px;
   color: #657786;
   margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
 
   ${props => `
     ${props.theme.breakpoints.md} {

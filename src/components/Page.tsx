@@ -7,32 +7,32 @@ export interface PageComponent extends React.FunctionComponent {
 }
 
 const Container = styled.main`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 const Title = styled.h2`
-  text-align: center;
+  color: #1b31a8;
   font-size: 18px;
   font-weight: 400;
   margin-top: 23px;
-  color: #1b31a8;
+  text-align: center;
 
   ${props => `
     ${props.theme.breakpoints.md} {
-      margin-top: 54px;
       font-size: 24px;
+      margin-top: 54px;
     }
   `}
 `;
 
 const Body = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
   margin-top: 24px;
+  width: 100%;
 
   ${props => `
     ${props.theme.breakpoints.md} {

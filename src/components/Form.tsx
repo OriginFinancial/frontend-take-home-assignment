@@ -25,8 +25,8 @@ const Group = styled.div`
 
 const Control = styled.div`
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
 
   &:not(:first-child) {
     margin-top: 16px;
@@ -35,8 +35,8 @@ const Control = styled.div`
   ${props => `
     ${props.theme.breakpoints.md} {
       &:not(:first-child) {
-        margin-top: 0;
         margin-left: 16px;
+        margin-top: 0;
       }
     }
   `}

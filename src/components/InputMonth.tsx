@@ -27,9 +27,9 @@ const Button = styled.button`
 `;
 
 const Value = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 const Month = styled.div`

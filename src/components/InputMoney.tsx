@@ -11,26 +11,26 @@ const Container = styled.div`
   align-items: center;
   border: 1px solid #e1e8ed;
   border-radius: 4px;
-  height: 56px;
   display: flex;
+  height: 56px;
   width: 100%;
 `;
 
 const Button = styled.button`
-  height: 100%;
-  width: 56px;
-  padding: 16px 20px;
   border: none;
+  height: 100%;
+  padding: 16px 20px;
   pointer-events: none;
+  width: 56px;
 `;
 
 const Input = styled(CurrencyInput)`
-  height: 100%;
-  width: 100%;
   border: none;
-  padding: 10px;
-  font-weight: 600;
   font-size: 20px;
+  font-weight: 600;
+  height: 100%;
+  padding: 10px;
+  width: 100%;
 `;
 
 const InputMoney: React.FunctionComponent<InputMoneyProps> = ({ onChange }) => {
