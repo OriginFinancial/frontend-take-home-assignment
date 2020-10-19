@@ -26,7 +26,7 @@ const Title = styled.div`
 `;
 
 const Money = styled.div`
-  color: #0079ff;
+  color: ${props => props.theme.fonts.highlightColor};
   font-size: 26px;
   max-width: 50%;
   overflow: hidden;

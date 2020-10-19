@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Work Sans', sans-serif;
     min-height: 100vh;
-    background: #f4f8fa;
-    color: #1c1e1f
+    background: ${props => props.theme.page.backgroundColor};
+    color: ${props => props.theme.fonts.mainColor};
   }
 `;
 

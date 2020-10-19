@@ -56,7 +56,7 @@ const Title = styled.div`
 `;
 
 const Subtitle = styled.div`
-  color: #657786;
+  color: ${props => props.theme.fonts.secondaryColor};
   margin-top: 5px;
   font-size: 14px;
   font-weight: 400;
