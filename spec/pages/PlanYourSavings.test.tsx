@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
 import theme from '../../src/theme';
 import PlanYourSavings from '../../src/pages/PlanYourSavings';
-import userEvent from '@testing-library/user-event';
 
 describe('Plan Your Savings', () => {
   beforeAll(() => {
@@ -15,7 +15,7 @@ describe('Plan Your Savings', () => {
     });
   });
 
-  it('renders', () => {
+  it('displays its correct title', () => {
     render(
       <ThemeProvider theme={theme}>
         <PlanYourSavings />
@@ -48,8 +48,8 @@ describe('Plan Your Savings', () => {
       </ThemeProvider>
     );
 
-    const alertSelectedDate = screen.getByTestId(/alert-selected-date/);
-    const alertDateDistance = screen.getByTestId(/alert-date-distance/);
+    const alertSelectedDate = screen.getByTestId('alert-selected-date');
+    const alertDateDistance = screen.getByTestId('alert-date-distance');
 
     expect(alertSelectedDate).toHaveTextContent(/november 2020/gi);
     expect(alertDateDistance).toHaveTextContent(/1/gi);
@@ -68,13 +68,13 @@ describe('Plan Your Savings', () => {
       </ThemeProvider>
     );
 
-    const alertMonthlyAmount = screen.getByTestId(/alert-monthly-amount/);
-    const alertGoal = screen.getByTestId(/alert-goal/);
+    const alertMonthlyAmount = screen.getByTestId('alert-monthly-amount');
+    const alertGoal = screen.getByTestId('alert-goal');
 
     expect(alertMonthlyAmount).toHaveTextContent('$0');
     expect(alertGoal).toHaveTextContent('$0');
 
-    const amountInput = screen.getByTestId(/input-money/i);
+    const amountInput = screen.getByTestId('input-money');
     userEvent.type(amountInput, '1000');
 
     expect(alertGoal).toHaveTextContent('$1000');
@@ -88,10 +88,10 @@ describe('Plan Your Savings', () => {
       </ThemeProvider>
     );
 
-    const alertMonthlyAmount = screen.getByTestId(/alert-monthly-amount/);
+    const alertMonthlyAmount = screen.getByTestId('alert-monthly-amount');
     expect(alertMonthlyAmount).toHaveTextContent('$0');
 
-    const amountInput = screen.getByTestId(/input-money/i);
+    const amountInput = screen.getByTestId('input-money');
     const increaseButton = screen.getByLabelText(/increase/i);
 
     userEvent.type(amountInput, '1000');
