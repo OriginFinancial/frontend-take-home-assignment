@@ -17,8 +17,6 @@ import InputMonth, { INPUT_MONTH_ACTIONS } from '../components/InputMonth';
 import InputMoney from '../components/InputMoney';
 import Button from '../components/Button';
 
-import { formatMoney } from '../helpers/MoneyFormatter';
-
 const monthReducer: React.Reducer<Date, INPUT_MONTH_ACTIONS> = (
   date,
   action
@@ -51,9 +49,9 @@ const PlanYourSavings: React.FunctionComponent = () => {
   const [month, setMonth] = React.useState(null);
 
   const [distance, setDistance] = React.useState(1);
-  const [monthlyAmount, setMonthlyAmount] = React.useState('0');
+  const [monthlyAmount, setMonthlyAmount] = React.useState(0);
 
-  const [totalAmount, setTotalAmount] = React.useState('0');
+  const [totalAmount, setTotalAmount] = React.useState(0);
 
   const [now] = React.useState(Date.now());
 
@@ -72,11 +70,11 @@ const PlanYourSavings: React.FunctionComponent = () => {
   }, [date, now]);
 
   React.useEffect(() => {
-    const formattedMonthlyAmount = formatMoney((value || 0) / distance);
-    const formattedTotalAmount = formatMoney(value || 0);
+    const monthlyAmount = (value || 0) / distance;
+    const totalAmount = value || 0;
 
-    setMonthlyAmount(formattedMonthlyAmount);
-    setTotalAmount(formattedTotalAmount);
+    setMonthlyAmount(monthlyAmount);
+    setTotalAmount(totalAmount);
   }, [value, distance]);
 
   return (
@@ -118,7 +116,7 @@ const PlanYourSavings: React.FunctionComponent = () => {
               <Alert>
                 <Alert.Body>
                   <Alert.Title>Monthly amount</Alert.Title>
-                  <Alert.Money>${monthlyAmount}</Alert.Money>
+                  <Alert.Money data-testid="alert-monthly-amount">${monthlyAmount}</Alert.Money>
                 </Alert.Body>
                 <Alert.Footer>
                   You’re planning{' '}

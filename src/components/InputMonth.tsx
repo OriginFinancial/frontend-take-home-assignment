@@ -10,20 +10,20 @@ interface InputMonthProps {
 }
 
 const Container = styled.div`
-  height: 56px;
-  width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   border: 1px solid #e1e8ed;
   border-radius: 4px;
+  display: flex;
+  height: 56px;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const Button = styled.button`
-  height: 100%;
-  width: 48px;
-  padding: 18px;
   border: none;
+  height: 100%;
+  padding: 18px;
+  width: 48px;
 `;
 
 const Value = styled.div`

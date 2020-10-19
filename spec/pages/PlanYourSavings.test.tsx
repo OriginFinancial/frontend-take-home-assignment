@@ -26,6 +26,21 @@ describe('Plan Your Savings', () => {
     expect(screen.getByText(/saving goal./i)).toBeTruthy();
   });
 
+  it('does not allow past dates', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <PlanYourSavings />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByText('November')).toBeTruthy();
+
+    const decreaseButton = screen.getByLabelText(/decrease/i);
+    userEvent.click(decreaseButton);
+
+    expect(screen.getByText('November')).toBeTruthy();
+  });
+
   it('updates alert when goal field changes', () => {
     render(
       <ThemeProvider theme={theme}>
@@ -33,7 +48,7 @@ describe('Plan Your Savings', () => {
       </ThemeProvider>
     );
 
-    const alertSelectedDate = screen.getByTestId(/alert-selected-date/i);
+    const alertSelectedDate = screen.getByTestId(/alert-selected-date/);
     const alertDateDistance = screen.getByTestId(/alert-date-distance/);
 
     expect(alertSelectedDate).toHaveTextContent(/november 2020/gi);
@@ -44,5 +59,44 @@ describe('Plan Your Savings', () => {
 
     expect(alertSelectedDate).toHaveTextContent(/december 2020/gi);
     expect(alertDateDistance).toHaveTextContent(/2/gi);
+  });
+
+  it('updates alert when total amount field changes', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <PlanYourSavings />
+      </ThemeProvider>
+    );
+
+    const alertMonthlyAmount = screen.getByTestId(/alert-monthly-amount/);
+    const alertGoal = screen.getByTestId(/alert-goal/);
+
+    expect(alertMonthlyAmount).toHaveTextContent('$0');
+    expect(alertGoal).toHaveTextContent('$0');
+
+    const amountInput = screen.getByTestId(/input-money/i);
+    userEvent.type(amountInput, '1000');
+
+    expect(alertGoal).toHaveTextContent('$1000');
+    expect(alertMonthlyAmount).toHaveTextContent('$1000');
+  });
+
+  it('updates monthly amount according to total amount and goal input', () => {
+    render(
+      <ThemeProvider theme={theme}>
+        <PlanYourSavings />
+      </ThemeProvider>
+    );
+
+    const alertMonthlyAmount = screen.getByTestId(/alert-monthly-amount/);
+    expect(alertMonthlyAmount).toHaveTextContent('$0');
+
+    const amountInput = screen.getByTestId(/input-money/i);
+    const increaseButton = screen.getByLabelText(/increase/i);
+
+    userEvent.type(amountInput, '1000');
+    userEvent.click(increaseButton);
+
+    expect(alertMonthlyAmount).toHaveTextContent('$500');
   });
 });

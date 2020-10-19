@@ -1,19 +1,19 @@
 import * as React from 'react';
+import CurrencyInput from 'react-currency-input-field';
 import styled from 'styled-components';
 import Icon from './Icon';
-import { formatMoney } from '../helpers/MoneyFormatter';
 
 export interface InputMoneyProps {
   readonly onChange?: Function;
 }
 
 const Container = styled.div`
-  height: 56px;
-  width: 100%;
-  display: flex;
   align-items: center;
   border: 1px solid #e1e8ed;
   border-radius: 4px;
+  height: 56px;
+  display: flex;
+  width: 100%;
 `;
 
 const Button = styled.button`
@@ -24,7 +24,7 @@ const Button = styled.button`
   pointer-events: none;
 `;
 
-const Input = styled.input`
+const Input = styled(CurrencyInput)`
   height: 100%;
   width: 100%;
   border: none;
@@ -35,13 +35,8 @@ const Input = styled.input`
 
 const InputMoney: React.FunctionComponent<InputMoneyProps> = ({ onChange }) => {
   const [value, setValue] = React.useState(0);
-  const [formattedValue, setFormattedValue] = React.useState('0');
-  const [isEditing, setEditing] = React.useState(false);
 
   React.useEffect(() => {
-    const newValue = formatMoney(value);
-    setFormattedValue(newValue);
-
     if (onChange) {
       onChange(value);
     }
@@ -52,23 +47,14 @@ const InputMoney: React.FunctionComponent<InputMoneyProps> = ({ onChange }) => {
       <Button>
         <Icon.Money />
       </Button>
-      {(isEditing) ? (
-        <Input
-          type="number"
-          value={value}
-          onChange={event => {
-            // @ts-ignore
-            setValue(event.target.value);
-          }}
-          onBlur={() => setEditing(false)}
-        />
-      ) : (
-        <Input
-          value={formattedValue}
-          readOnly
-          onClick={() => setEditing(true)}
-        />
-      )}
+      <Input
+        placeholder="1,000.00"
+        data-testid="input-money"
+        value={value}
+        onChange={value => {
+          setValue(Number(value || 0));
+        }}
+      />
     </Container>
   );
 };
