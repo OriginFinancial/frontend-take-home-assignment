@@ -2,9 +2,9 @@ import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
 
 import theme from '../../src/theme';
+
 import PlanYourSavings from '../../src/pages/PlanYourSavings';
 
 describe('Plan Your Savings', () => {

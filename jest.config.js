@@ -10,5 +10,6 @@ module.exports = {
   moduleNameMapper: {
     '\\.(svg|jpg|png|css)$': '<rootDir>/__mocks__/file.js'
   },
-  moduleDirectories: ['node_modules', 'src']
+  moduleDirectories: ['node_modules', 'src'],
+  setupFilesAfterEnv: ['<rootDir>/spec/setup-file.ts']
 };
