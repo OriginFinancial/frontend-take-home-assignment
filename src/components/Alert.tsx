@@ -28,6 +28,9 @@ const Title = styled.div`
 const Money = styled.div`
   font-size: 26px;
   color: #0079ff;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   ${props => `
     ${props.theme.breakpoints.md} {
@@ -53,6 +56,7 @@ const Footer = styled.div`
   background: #f4f8fa;
   padding: 16px 32px;
   font-size: 12px;
+  min-height: 60px;
 `;
 
 const Alert: Alert = ({ children }) => {

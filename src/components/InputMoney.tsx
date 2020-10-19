@@ -49,6 +49,8 @@ const InputMoney: React.FunctionComponent<InputMoneyProps> = ({ onChange }) => {
       </Button>
       <Input
         placeholder="1,000.00"
+        decimalsLimit={2}
+        allowNegativeValue={false}
         data-testid="input-money"
         value={value}
         onChange={value => {
