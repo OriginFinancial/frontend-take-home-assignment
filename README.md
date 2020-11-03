@@ -17,7 +17,7 @@ When the users change the value of any of the inputs, the monthly deposit value 
 
 # Development Instructions
 
-### Evaluation 
+### Evaluation
 Be aware that Origin will mainly take into consideration the following evaluation criteria:
 * How close your page is to the mockups, both on mobile & desktop;
 * How clean and organized your code is;
@@ -27,7 +27,7 @@ Be aware that Origin will mainly take into consideration the following evaluatio
 ### Assets
 
 You can find the layout mockups here on our Figma project:
-[Layout mockups](https://www.figma.com/file/kQbSy4KVXeF1tJsQRcYc5o/Take-Home-Assignment?node-id=0%3A1)
+[Layout mockups](https://www.figma.com/file/Axdg0WSJURcxp8Arq3gg9x/Take-Home-Assignment-v2)
 
 Once you have opened the link you must sign up and log in so you can have access to the colors, fonts, margins and assets information.
 
