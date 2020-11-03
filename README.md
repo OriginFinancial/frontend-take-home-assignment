@@ -24,8 +24,13 @@ Be aware that Origin will mainly take into consideration the following evaluatio
 * How good your automated tests are (qualitative over quantitative);
 * And if you implemented the business rules correctly.
 
-### Assets
+### Assets - Pay attention on the dates below
 
+#### Use this mockup if you started the THA before 04 November 2020
+You can find the layout mockups here on our Figma project:
+[Layout mockups](https://www.figma.com/file/kQbSy4KVXeF1tJsQRcYc5o/Take-Home-Assignment?node-id=0%3A1)
+
+#### Use this new one mockup if you started the THA on 04 November 2020 or later
 You can find the layout mockups here on our Figma project:
 [Layout mockups](https://www.figma.com/file/Axdg0WSJURcxp8Arq3gg9x/Take-Home-Assignment-v2)
 
