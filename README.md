@@ -1,5 +1,7 @@
 # Origin Frontend Take-Home Assignment
 
+**IMPORTANT**: you can choose any technology stack to implement this assignment. Using our stack is not a requirement in the selection process - we will consider exclusively the quality of your project (technology and product-wise) to evaluate your work. We've added a project structure in this repository (a buildwith react, redux, jest, styled-components and typescript) to save you time if you want to use it. If you prefer another stack, feel free to use it.
+
 Origin is a platform that helps our customers' employees put their financial lives on track.
 
 One key to financial well-being is planning & saving for your goals. Users can have many saving goals (e.g. go to college or throw a wedding party) and it is our job to help them accomplish it.
@@ -48,10 +50,6 @@ The date input component should:
 #### Confirm button
 
 You don't need to add any action on the confirmation button
-
-### Project structure
-
-We've added a project structure (build system with react, redux, jest, styled-components and typescript) so you don't waste your time with configuration. If you are more comfortable with a different stack, feel free to change it.
 
 # Delivery Instructions
 
