@@ -38,6 +38,7 @@ The money input component should:
 
 - Allow only numbers
 - Display the value formatted as money (e.g 3500.45 should be 3,500.44)
+- We recommend you name this input as "amount"
 
 #### Date input
 
@@ -45,7 +46,8 @@ The date input component should:
 
 - Allow only future months
 - When clicking on the arrow buttons it should go up and down month by month
-- The users should be able to move the months by typing the Left and Right arrow key on the keyboard
+- On focused, the users should be able to move the months by typing the Left and Right arrow key on the keyboard
+- We recommend you name this input as "reachDate"
 
 #### Confirm button
 
@@ -57,9 +59,12 @@ Don't create a fork, send us the link to your repository and make sure to make i
 
 # Usage
 
-This project requires `Node >=12` and `NPM >= 6`.
+This project requires the latest LTS version of NodeJS and you may need to install the yarn as global dependency
+```bash
+npm install -g yarn
+```
 
-After you have cloned this repo, install the dependencies with:
+After you have cloned this repo and install the yarn, install the dependencies with:
 
 ```
 yarn install
