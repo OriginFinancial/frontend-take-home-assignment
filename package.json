@@ -1,51 +1,58 @@
 {
-  "name": "frontend-challenge",
-  "version": "0.0.1",
-  "description": "Origin Frontend Challenge",
-  "main": "src/index.ts",
+  "name": "frontend-take-home-assignment",
+  "version": "0.1.0",
   "dependencies": {
-    "acorn": "^7.1.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^4.4.1"
-  },
-  "devDependencies": {
-    "@types/enzyme": "^3.10.5",
-    "@types/jest": "^24.9.1",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.5",
-    "@types/styled-components": "^4.4.3",
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
-    "babel-jest": "^25.2.3",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.1",
-    "jest": "^25.2.3",
-    "mkdirp": "^1.0.3",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^1.19.1",
-    "ts-jest": "^25.2.1",
-    "typescript": "^3.8.3"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.3.0",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "test": "jest",
-    "lint": "eslint './src/**/*.{ts,tsx}' './spec/**/*.{ts,tsx}' --quiet",
-    "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.{ts,tsx}",
+    "lint": "eslint './src/**/*.{ts,tsx}' --max-warnings=0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OriginFinancial/frontend-challenge.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OriginFinancial/frontend-challenge/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/OriginFinancial/frontend-challenge#readme"
+  "devDependencies": {
+    "@types/enzyme": "^3.10.8",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.2",
+    "enzyme": "^3.11.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.3.1"
+  }
 }

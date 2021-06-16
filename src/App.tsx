@@ -1,7 +1,5 @@
-import * as React from 'react';
+import React from 'react';
 
-const App: React.FunctionComponent = () => {
-  return <div>Origin Frontend Take Home</div>;
-};
-
-export default App;
+export function App(): JSX.Element {
+  return <div data-testid="greetings-container">Welcome to the Origin THA</div>;
+}

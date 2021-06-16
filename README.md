@@ -23,10 +23,10 @@ When the users change the value of any of the inputs, the monthly deposit value 
 Be aware that Origin will mainly take into consideration the following evaluation criteria:
 * How close your page is to the mockups, both on mobile & desktop;
 * How clean and organized your code is;
-* How good your automated tests are (qualitative over quantitative);
-* And if you implemented the business rules correctly.
+* How good your automated tests are, i.e.: qualitative over quantitative (in case of usage of this base project, feel free to choose between jest or testing library);
+* If you implemented the business rules correctly.
 
-### Assets - Pay attention on the dates below
+### Assets
 You can find the layout mockups here on our Figma project:
 [Layout mockups](https://www.figma.com/file/Axdg0WSJURcxp8Arq3gg9x/Take-Home-Assignment-v2)
 
@@ -43,7 +43,7 @@ The money input component should:
 
 The date input component should:
 
-- Allow only future dates
+- Allow only future months
 - When clicking on the arrow buttons it should go up and down month by month
 - The users should be able to move the months by typing the Left and Right arrow key on the keyboard
 
@@ -53,7 +53,7 @@ You don't need to add any action on the confirmation button
 
 # Delivery Instructions
 
-Send us the link to your repository and make sure to make it public.
+Don't create a fork, send us the link to your repository and make sure to make it public.
 
 # Usage
 
@@ -62,25 +62,26 @@ This project requires `Node >=12` and `NPM >= 6`.
 After you have cloned this repo, install the dependencies with:
 
 ```
-npm install
+yarn install
 ```
 
 You can then start the application running:
 
 ```
-npm run dev
+yarn start
 ```
 
-That's it. Just Access `http://localhost:1234` in your browser.
+That's it. Just Access `http://localhost:3000` in your browser.
 
-### Linting
+### Linting and Format
 
 ```
-npm run lint
+yarn lint
+yarn format
 ```
 
 ### Testing
 
 ```
-npm run test
+yarn test
 ```
